@@ -494,6 +494,11 @@ Items habe folgende Basisdaten
   * Liste der Items (list) auf die Items mit den Ids 'id1;id2;id3,...' filtern. 
     Falls eine Id nicht vorhanden ist wird diese mit einer Anzahl 0 eingefügt.
 
+* {{#itemlistarray list 'id1;id2;id3,...'}}
+  * Liste der Items (list) auf die Items mit den Ids 'id1;id2;id3,...' filtern. 
+    Falls eine Id nicht vorhanden ist wird diese mit einer Anzahl 0 eingefügt.
+    Liefert das Ergebnis als Liste zurück welche per foreach oder anderen Listenfunktionen weiterverarbeitet werden kann
+
 + {{#orderbylist list 'id1;id2;id3,...'}}
   + Liste (list) von Items an Hand der Idliste sortieren. Items welche nicht in der Liste sind werden ans Ende sortiert
 
@@ -1692,6 +1697,11 @@ Items have the following basic data
 
 * {{#itemlist list 'id1;id2;id3'}}
   * Itemlist the the selected items (ids) even if they don't in the list (list)
+
+* {{#itemlistarray list 'id1;id2;id3,...'}}
+  * Filter the list of items (list) to the items with the IDs 'id1;id2;id3,...'. 
+    If an id is not available, it is inserted with a number 0.
+    Returns the result as a list which can be further processed using foreach or other list functions
 
 + {{#orderbylist list 'id1;id2;id3,...'}}
   + sort list of items based on the idlist. Items that are not in the list are sorted to the end

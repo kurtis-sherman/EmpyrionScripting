@@ -246,6 +246,56 @@ namespace EmpyrionScripting.CustomHelpers
             }
         }
 
+        [HandlebarTag("itemlistarray")]
+        public static void ItemListArrayBlockHelper(TextWriter output, object rootObject, HelperOptions options, dynamic context, object[] arguments)
+        {
+            if (arguments.Length != 2) throw new HandlebarsException("{{itemlistarray list ids}} helper must have exactly two argument: (list) (id1;id2;id3)");
+
+            var root = rootObject as IScriptRootData;
+            var items = arguments[0] as ItemsData[];
+            var idsList = (arguments[1] as string)
+                            .Split(new[] { ';', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(I => I.Trim())
+                            .Where(I => !string.IsNullOrEmpty(I))
+                            .ToArray();
+
+            try
+            {
+                var ids = new List<int>();
+
+                idsList.ForEach(I => {
+                    var delimiter = I.IndexOf('-', I.StartsWith("-") ? 1 : 0);
+                    if (delimiter > 0)
+                    {
+                        if (int.TryParse(I.Substring(0, delimiter), out int fromId) && int.TryParse(I.Substring(delimiter + 1), out var toId)) ids.AddRange(Enumerable.Range(fromId, toId - fromId + 1));
+                    }
+                    else if (int.TryParse(I, out var id)) ids.Add(id);
+                });
+
+                if (root.TimeLimitReached) return;
+
+                var list = items.ToDictionary(I => I.Id, I => I);
+                ids.Where(i => !list.ContainsKey(i)).ForEach(i => {
+                    ItemInfo details = null;
+                    EmpyrionScripting.ItemInfos?.ItemInfo?.TryGetValue(i, out details);
+                    list.Add(i, new ItemsData()
+                    {
+                        Id = i,
+                        Count = 0,
+                        Key = details == null ? i.ToString() : details.Key,
+                        Name = details == null ? i.ToString() : details.Name,
+                    });
+                });
+
+                if (list.Count > 0) options.Template(output, list.Values.Where(i => ids.Contains(i.Id)).ToArray());
+                else                options.Inverse(output, context as object);
+            }
+            catch (Exception error)
+            {
+                if (!CsScriptFunctions.FunctionNeedsMainThread(error, root)) output.Write("{{itemlistarray}} error " + EmpyrionScripting.ErrorFilter(error));
+            }
+        }
+
         [HandlebarTag("orderbylist")]
         public static void OrderByListBlockHelper(TextWriter output, object rootObject, HelperOptions options, dynamic context, object[] arguments)
         {
