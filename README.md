@@ -2,28 +2,30 @@
 [English part of this ReadMe.md](#English-Version)
 
 ## Installation
-1. Downloade die EmpyrionScripting.zip Datei vom aktuellen https://github.com/GitHub-TC/EmpyrionScripting/releases
-1. UnZip die Datei in dem Verzeichnis Content\\Mods directory
+1. Download the EmpyrionScripting.zip file from the current https://github.com/GitHub-TC/EmpyrionScripting/releases
+1. Unzip the file into the Content\\Mods directory
+1. Download the EmpyrionScripting.zip file from the current https://github.com/GitHub-TC/EmpyrionScripting/releases
+1. Unzip the file into the Content\\Mods directory
 
-#### Installation für SinglePlayer
-1. Downloade die EmpyrionScripting.zip Datei vom aktuellen https://github.com/GitHub-TC/EmpyrionScripting/releases
-1. UnZip die Datei in dem Verzeichnis Content\\Mods directory
-1. Das Spiel MUSS dann ohne EAC gestartet werden damit die Mods geladen werden
+#### Installation for SinglePlayer
+1. Download the EmpyrionScripting.zip file from the current https://github.com/GitHub-TC/EmpyrionScripting/releases
+1. Unzip the file into the Content\\Mods directory
+1. The game MUST then be started without EAC so that the mods are loaded
 
-### Wofür dient diese MOD?
+### What is this MOD for?
 ![](Screenshots/DemoShipScreen.png)
 
-Echte Spielinhalte direkt auf einem LCD ausgeben
+Display real game content directly on an LCD
 
-Eine dem Struktur 'LCDInfo-Demo' findest du im workshop
+You can find a structure like 'LCDInfo-Demo' in the workshop
 https://steamcommunity.com/workshop/filedetails/?id=1751409371
 
-#### Hilfe
+#### Help
 ![](Screenshots/RedAlert.png)
 ![](Screenshots/LCD1.png)
 
 YouTube video;
-* https://youtu.be/8nEpEygHBu8 (danke an Olly :-) )
+* https://youtu.be/8nEpEygHBu8 (thanks to Olly :-) )
 * https://youtu.be/8MzjdeYlzPU
 * https://youtu.be/gPp5CGJusr4
 * https://youtu.be/9601vpeLJAI
@@ -38,32 +40,32 @@ YouTube video;
 * https://youtu.be/oDOSbllwqSw
 * https://youtu.be/qhOnj2D3ejo
 
-* Änderungen mit der A11: https://youtu.be/hxvKs5U1I6I
+* Changes with A11: https://youtu.be/hxvKs5U1I6I
 
 Beginners guide (english):
 * https://steamcommunity.com/workshop/filedetails/discussion/1751409371/3191368095147121750/
 * https://youtu.be/IjJTNp_ZYUI
 
 ## Tutorials
-* Workshop von Sephrajin: DSEV LCD Script Tutorial, https://steamcommunity.com/sharedfiles/filedetails/?id=2863240303
-* Workshop von Noob: Scripting Tutorial Ship, https://steamcommunity.com/sharedfiles/filedetails/?id=2817433272
-* Workshop von ASTIC, Vega AI, https://steamcommunity.com/sharedfiles/filedetails/?id=2227639387
+* Workshop by Sephrajin: DSEV LCD Script Tutorial, https://steamcommunity.com/sharedfiles/filedetails/?id=2863240303
+* Workshop by Noob: Scripting Tutorial Ship, https://steamcommunity.com/sharedfiles/filedetails/?id=2817433272
+* Workshop by ASTIC, Vega AI, https://steamcommunity.com/sharedfiles/filedetails/?id=2227639387
 
-## Beispiele
-Allgemein: 
-Benötigt werden mindestens 2 LCD und mindestens 1 Container
-1. LCD 1 (Eingabe) wird mit der Abfrage programmiert siehe Beispiele unten. Der Namen des LCDs im ControlPanel MUSS mit "Script:" beginnen.
-1. LCD 2 (Ausgabe) Muss eindeutigen Namen haben z.B. "LCD Alle Erze"
-1. Jeder Kontainer der eine Information ausgeben soll, muss einen eindeutigen Namen haben
+## Examples
+General:
+At least 2 LCDs and at least 1 container are required
+1. LCD 1 (input) is programmed with the query, see examples below. The name of the LCD in the ControlPanel MUST start with "Script:".
+1. LCD 2 (output) must have a unique name, e.g. "LCD All Ores"
+1. Every container that should output information must have a unique name
 
-Unten stehen die ID Nummer für Erze und Barren.<br/>
-Einige Funktionen benötigen ein Komma"," andere benötigen Simikolon ";".<br/>
-Alles in "" sind Texte und nicht mit anzugeben.<br/>
-Einzelne ' sind mit anzugeben.<br/>
-Man kann eine Information auch auf 2 LCD's anzeigen lassen dannsortedeach bei Targets:Name LCD;Name LCD2<br/>
-Man kann eine Information auch auf n LCD's anzeigen lassen dann bei Targets:LCDAusgabe*<br/>
-Man kann eine Information auch auf n LCD's anzeigen lassen welche schon im ScriptLCD Namen angegeben sind Script:LCDAusgabe*<br/>
-Man kann auf einem LCD auch den Inhalt verschiedner Kisten anzeigen lassen!<br/>
+Below are the ID numbers for ores and ingots.<br/>
+Some functions require a comma "," others require a semicolon ";".<br/>
+Everything in "" are texts and should not be specified.<br/>
+Single ' should be specified.<br/>
+You can also display information on 2 LCDs, then at Targets:Name LCD;Name LCD2<br/>
+You can also display information on n LCDs, then at Targets:LCDOutput*<br/>
+You can also display information on n LCDs that are already specified in the ScriptLCD name Script:LCDOutput*<br/>
+You can also display the contents of different boxes on one LCD!<br/>
  
  ---
 
