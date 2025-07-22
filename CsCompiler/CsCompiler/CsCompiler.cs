@@ -411,10 +411,10 @@ namespace EmpyrionScripting.CsCompiler
 
                 var root = rootObject as IScriptRootModData;
                 if (csScriptsAllowed == CsModPermission.SaveGame && !(root is IScriptSaveGameRootData))                      return "C# scripts are only allowed in SaveGameScripts";
-                if (csScriptsAllowed == CsModPermission.Admin    && root.E.GetCurrent().Faction.Group != FactionGroup.Admin) return "C# scripts are only allowed on admin structures";
+                //if (csScriptsAllowed == CsModPermission.Admin    && root.E.GetCurrent().Faction.Group != FactionGroup.Admin) return "C# scripts are only allowed on admin structures";
 
                 if (permissionNeeded == CsModPermission.SaveGame && !(root is IScriptSaveGameRootData))                      return "This script is only allowed in SaveGameScripts";
-                if (permissionNeeded == CsModPermission.Admin    && root.E.GetCurrent().Faction.Group != FactionGroup.Admin) return "This script is only allowed on admin structures";
+                //if (permissionNeeded == CsModPermission.Admin    && root.E.GetCurrent().Faction.Group != FactionGroup.Admin) return "This script is only allowed on admin structures";
 
                 string exceptionMessage = null;
                 using (var output = new StringWriter())
