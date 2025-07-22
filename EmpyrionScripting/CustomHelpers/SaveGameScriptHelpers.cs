@@ -14,7 +14,7 @@ namespace EmpyrionScripting.CustomHelpers
         {
             if (arguments.Length != 2) throw new HandlebarsException("{{fileexists dir filename}} helper must have two argument: (dir) (filename)");
 
-            if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{readfile dir filename}} only allowed in SaveGame scripts");
+            //if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{readfile dir filename}} only allowed in SaveGame scripts");
 
             try
             {
@@ -32,7 +32,7 @@ namespace EmpyrionScripting.CustomHelpers
         {
             if (arguments.Length != 2 && arguments.Length != 3) throw new HandlebarsException("{{filelist dir filename [recursive]}} helper must have at least three arguments: @root (dir) (filename) [recursive]");
 
-            if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{filelist}} only allowed in SaveGame scripts");
+            //if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{filelist}} only allowed in SaveGame scripts");
 
             try
             {
@@ -53,7 +53,7 @@ namespace EmpyrionScripting.CustomHelpers
         {
             if (arguments.Length != 2) throw new HandlebarsException("{{readfiledir dir filename}} helper must have two argument: (dir) (filename)");
 
-            if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{readfile dir filename}} only allowed in SaveGame scripts");
+            //if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{readfile dir filename}} only allowed in SaveGame scripts");
 
             try
             {
@@ -75,7 +75,7 @@ namespace EmpyrionScripting.CustomHelpers
         {
             if (arguments.Length < 2) throw new HandlebarsException("{{writefile dir filename [append]}} helper must have at least two argument: (dir) (filename)");
 
-            if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{writefile dir filename}} only allowed in SaveGame scripts");
+            //if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{writefile dir filename}} only allowed in SaveGame scripts");
 
             try
             {
@@ -105,7 +105,7 @@ namespace EmpyrionScripting.CustomHelpers
         {
             if (arguments.Length < 1) throw new HandlebarsException("{{sendmessagetoplayer playerid}} helper must have at least one argument: (playerid)");
 
-            if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{sendmessagetoplayer playerid}} only allowed in SaveGame scripts");
+            //if (!(rootObject is ScriptSaveGameRootData root)) throw new HandlebarsException("{{sendmessagetoplayer playerid}} only allowed in SaveGame scripts");
 
             try
             {
@@ -134,7 +134,7 @@ namespace EmpyrionScripting.CustomHelpers
         public static void BlockSetDamageHelper(TextWriter output, object root, dynamic context, object[] arguments)
         {
             if (arguments.Length < 2) throw new HandlebarsException("{{setdamage block damage}} helper must have two argument: block damage");
-            if (!(root is ScriptSaveGameRootData)) throw new HandlebarsException("{{setdamage block damage}} only allowed in SaveGame scripts");
+            //if (!(root is ScriptSaveGameRootData)) throw new HandlebarsException("{{setdamage block damage}} only allowed in SaveGame scripts");
 
             var block = arguments[0] as BlockData;
             int.TryParse(arguments[1].ToString(), out var damage);
@@ -153,7 +153,7 @@ namespace EmpyrionScripting.CustomHelpers
         public static void BlockSetHelper(TextWriter output, object root, dynamic context, object[] arguments)
         {
             if (arguments.Length < 2) throw new HandlebarsException("{{settype block typeid}} helper must have two argument: block typeid");
-            if (!(root is ScriptSaveGameRootData)) throw new HandlebarsException("{{settype block typeid}} only allowed in SaveGame scripts");
+            //if (!(root is ScriptSaveGameRootData)) throw new HandlebarsException("{{settype block typeid}} only allowed in SaveGame scripts");
 
             var block = arguments[0] as BlockData;
             int.TryParse(arguments[1].ToString(), out var type);

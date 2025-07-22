@@ -50,7 +50,7 @@ namespace EmpyrionScripting.CustomHelpers
             var namesSearch         = arguments[0]?.ToString();
 
             var selectedTypes = arguments.Get(2)?.ToString();
-            if (!string.IsNullOrEmpty(selectedTypes) && !root.IsElevatedScript) throw new HandlebarsException("'selectedTypes' only allowed in elevated scripts");
+            //if (!string.IsNullOrEmpty(selectedTypes) && !root.IsElevatedScript) throw new HandlebarsException("'selectedTypes' only allowed in elevated scripts");
 
             if (int.TryParse(arguments.Get(1)?.ToString(), out var distance)) distance = root.IsElevatedScript ? distance     : Math.Min((int)EmpyrionScripting.Configuration.Current.EntityAccessMaxDistance, distance);
             else                                                              distance = root.IsElevatedScript ? int.MaxValue : (int)EmpyrionScripting.Configuration.Current.EntityAccessMaxDistance;

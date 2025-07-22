@@ -78,7 +78,7 @@ namespace EmpyrionScripting.CustomHelpers
             var S                   = arguments[0] as IStructureData;
             VectorInt3 position;
 
-            if(!root.IsElevatedScript) throw new HandlebarsException("{{lockdevice}} only allowed in elevated scripts");
+            //if(!root.IsElevatedScript) throw new HandlebarsException("{{lockdevice}} only allowed in elevated scripts");
 
             if (!root.DeviceLockAllowed)
             {
@@ -124,7 +124,7 @@ namespace EmpyrionScripting.CustomHelpers
             int.TryParse(arguments[1].ToString(), out var itemid);
             int.TryParse(arguments[2].ToString(), out var count);
 
-            if (!root.IsElevatedScript) throw new HandlebarsException("{{additems}} only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("{{additems}} only allowed in elevated scripts");
 
             try
             {
@@ -147,7 +147,7 @@ namespace EmpyrionScripting.CustomHelpers
             int.TryParse(arguments[1].ToString(), out var itemid);
             int.TryParse(arguments[2].ToString(), out var maxcount);
 
-            if (!root.IsElevatedScript) throw new HandlebarsException("{{removeitems}} only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("{{removeitems}} only allowed in elevated scripts");
 
             try
             {
@@ -1261,7 +1261,7 @@ namespace EmpyrionScripting.CustomHelpers
 
             try
             {
-                if(!root.IsElevatedScript) throw new HandlebarsException("only allowed in elevated scripts");
+                // if(!root.IsElevatedScript) throw new HandlebarsException("only allowed in elevated scripts");
 
                 var minPos      = E.S.GetCurrent().MinPos;
                 var maxPos      = E.S.GetCurrent().MaxPos;

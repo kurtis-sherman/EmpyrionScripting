@@ -331,7 +331,7 @@ namespace EmpyrionScripting.CustomHelpers
             if (arguments.Length != 2) throw new HandlebarsException("{{chatglobal sender text}} helper must have two argument: sender text");
 
             var root = rootObject as ScriptRootData;
-            if (!root.IsElevatedScript) throw new HandlebarsException("{{chatglobal}} only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("{{chatglobal}} only allowed in elevated scripts");
 
             EmpyrionScripting.Log($"chatglobal:[{arguments.Get(0)?.ToString()}] '{arguments.Get(1)?.ToString()}'", EmpyrionNetAPIDefinitions.LogLevel.Debug);
             EmpyrionScripting.ModApi.Application.SendChatMessage(new Eleon.MessageData
@@ -350,7 +350,7 @@ namespace EmpyrionScripting.CustomHelpers
             if (arguments.Length != 2) throw new HandlebarsException("{{chatserver sender text}}  helper must have two argument: sender text");
 
             var root = rootObject as ScriptRootData;
-            if (!root.IsElevatedScript) throw new HandlebarsException("{{chatserver}} only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("{{chatserver}} only allowed in elevated scripts");
 
             EmpyrionScripting.Log($"chatserver:[{arguments.Get(0)?.ToString()}] '{arguments.Get(1)?.ToString()}'", EmpyrionNetAPIDefinitions.LogLevel.Debug);
             EmpyrionScripting.ModApi.Application.SendChatMessage(new Eleon.MessageData
@@ -369,7 +369,7 @@ namespace EmpyrionScripting.CustomHelpers
             if (arguments.Length != 3) throw new HandlebarsException("{{chatplayer playerId sender text}} helper must have three argument: playerId sender text");
 
             var root = rootObject as ScriptRootData;
-            if (!root.IsElevatedScript) throw new HandlebarsException("{{chatplayer}} only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("{{chatplayer}} only allowed in elevated scripts");
 
             int.TryParse(arguments.Get(0)?.ToString(), out var PlayerId);
 
@@ -393,7 +393,7 @@ namespace EmpyrionScripting.CustomHelpers
             if (arguments.Length != 3) throw new HandlebarsException("{{chatfaction factionId sender text}} helper must have three argument: factionId sender text");
 
             var root = rootObject as ScriptRootData;
-            if (!root.IsElevatedScript) throw new HandlebarsException("{{chatfaction}} only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("{{chatfaction}} only allowed in elevated scripts");
 
             int.TryParse(arguments.Get(0)?.ToString(), out var RecipientFactionId);
 

@@ -145,11 +145,11 @@ namespace EmpyrionScripting.CustomHelpers
                 if (!(arguments[0] is IPlayerData player)) { output.Write("teleportplayer 'player' is missing"); return; }
 
                 var toBlock = arguments.Get(1) as IBlockData;
-                if (toBlock == null && !root.IsElevatedScript) { output.Write("teleportplayer to pos only allowed in elevated scripts"); return; }
+                //if (toBlock == null && !root.IsElevatedScript) { output.Write("teleportplayer to pos only allowed in elevated scripts"); return; }
 
                 var toPos         = arguments.Get(1) as Vector3?;
                 var playfieldName = arguments.Get(toPos.HasValue ? 2 : 4)?.ToString();
-                if (!string.IsNullOrEmpty(playfieldName) && !root.IsElevatedScript) { output.Write("teleportplayer to playfield only allowed in elevated scripts"); return; }
+                //if (!string.IsNullOrEmpty(playfieldName) && !root.IsElevatedScript) { output.Write("teleportplayer to playfield only allowed in elevated scripts"); return; }
 
                 if(toBlock != null)
                 {
@@ -182,7 +182,7 @@ namespace EmpyrionScripting.CustomHelpers
             var structure           = arguments[0] as IStructureData;
             var namesSearch         = arguments[1].ToString();
 
-            if (!root.IsElevatedScript) throw new HandlebarsException("only allowed in elevated scripts");
+            //if (!root.IsElevatedScript) throw new HandlebarsException("only allowed in elevated scripts");
 
             var uniqueNames = structure.AllCustomDeviceNames.GetUniqueNames(namesSearch);
 
