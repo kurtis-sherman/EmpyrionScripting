@@ -1,0 +1,221 @@
+{
+  "LogLevel": "Message",
+  "CsScriptsAllowedFor": "Player",
+  "InGameScriptsIntervallMS": 1000,
+  "DeviceLockOnlyAllowedEveryXCycles": 10,
+  "SaveGameScriptsIntervallMS": 10000,
+  "UseEveryNthGameUpdateCycle": 10,
+  "ScriptTracking": false,
+  "EntityAccessMaxDistance": 500.0,
+  "DelayStartForNSecondsOnPlayfieldLoad": 30,
+  "ExecMethod": "ThreadPool",
+  "ScriptsSyncExecution": 2,
+  "ScriptsParallelExecution": 2,
+  "ScriptLoopSyncTimeLimiterMS": 200,
+  "ScriptLoopBackgroundTimeLimiterMS": 2000,
+  "ScriptTrackingError": false,
+  "DetailedScriptsInfoData": false,
+  "MaxStoredEventsPerSignal": 10,
+  "ProcessMaxBlocksPerCycle": 200,
+  "OverrideScenarioPath": null,
+  "AddOnAssemblies": [],
+  "GardenerSalary": {
+    "ItemName": "MoneyCard",
+    "Amount": 0
+  },
+  "DeconstructSalary": {
+    "ItemName": "MoneyCard",
+    "Amount": 0
+  },
+  "RecycleSalary": {
+    "ItemName": "MoneyCard",
+    "Amount": 0
+  },
+  "AmountPerNumberOfBlocks": 1,
+  "DeconstructBlockSubstitutions": [
+    {
+      "ItemName": "ContainerUltraRare",
+      "Amount": 0
+    },
+    {
+      "ItemName": "AlienContainer",
+      "Amount": 0
+    },
+    {
+      "ItemName": "AlienContainerRare",
+      "Amount": 0
+    },
+    {
+      "ItemName": "AlienContainerVeryRare",
+      "Amount": 0
+    },
+    {
+      "ItemName": "AlienContainerUltraRare",
+      "Amount": 0
+    },
+    {
+      "ItemName": "AlienDeviceBlocks",
+      "Amount": 0
+    }
+  ],
+  "Ids": {
+    "Ore": ",AluminiumOre,CobaltOre,CopperOre,ErestrumOre,GoldOre,IronOre,MagnesiumOre,NeodymiumOre,PentaxidOre,PromethiumOre,SathiumOre,SiliconOre,TitanOre,ZascosiumOre,",
+    "Ingot": ",CobaltIngot,CopperIngot,CrushedStone,ErestrumIngot,GoldIngot,IronIngot,MagnesiumPowder,NeodymiumIngot,PentaxidCrystal,PlatinBar,PromethiumPellets,RockDust,SathiumIngot,SiliconIngot,ZascosiumIngot,",
+    "BlockL": ",AlienBlocks,AlienLargeBlocks,CombatRampBlocksL,ConcreteArmoredBlocks,ConcreteBlocks,ConcreteDestroyedBlocks,GrowingPot,GrowingPotConcrete,GrowingPotWood,HardenedRampBlocksL,HeavyWindowBlocks,HeavyWindowDetailedBlocks,HullArmoredLargeBlocks,HullCombatFullLarge,HullCombatLargeBlocks,HullFullLarge,HullLargeBlocks,HullLargeDestroyedBlocks,HullThinLarge,LadderBlocks,PassengerSeatMS,PlasticLargeBlocks,StairsBlocks,StairsBlocksConcrete,StairsBlocksWood,SteelRampBlocksL,TrussLargeBlocks,WalkwayLargeBlocks,WindowArmoredLargeBlocks,WindowLargeBlocks,WindowShutterLargeBlocks,WoodBlocks,",
+    "BlockS": ",ArtMassBlocks,CombatRampBlocksS,HardenedRampBlocksS,HeavyWindowBlocksSmall,HullArmoredSmallBlocks,HullCombatSmallBlocks,HullSmallBlocks,HullSmallDestroyedBlocks,ModularWingBlocks,PlasticSmallBlocks,SteelRampBlocksS,TrussSmallBlocks,VentilatorCubeQuarter,WalkwaySmallBlocks,WindowArmoredSmallBlocks,WindowShutterSmallBlocks,WindowSmallBlocks,WingBlocks,",
+    "Medic": ",AdrenalineShot,AlienParts03,AntibioticInjection,AntibioticOintment,AntibioticPills,AntiRadiationOintment,AntiToxicInjection,AntiToxicPills,Bandages,Eden_BandagesT2,Eden_EmergencyLifeSupport,Eden_ImmunityShield,Eden_Implant1,Eden_Implant2,Eden_Implant3,Eden_Implant4,Eden_Implant5,Eden_Implant6,Eden_RadiationRegenKit,Eden_RegenKit,Eden_RegenKitT2,Eden_StaminaRegenKit,Eden_StaminaRegenKitT2,EnergyDrink,Medikit01,Medikit02,Medikit03,Medikit04,Medikit05,RadiationImmunityShot,RadiationPills,StomachPills,EnergyPills,AntiToxicOintment,AntiParasitePills,AntiParasiteInjection,AntiRadiationInjection,AblativeSpray,BugSpray,",
+    "Food": ",AkuaWine,AnniversaryCake,Beer,BerryJuice,Bread,Cheese,EmergencyRations,FruitJuice,FruitPie,HotBeverage,MeatBurger,Milk,Pizza,Sandwich,Steak,Stew,VegetableJuice,VeggieBurger,",
+    "Ingredient": ",5312,AlienParts01,AlienParts02,AlienParts03,AlienThorn,AlienTooth,AloeVera,BerryJuice,Cheese,ConfettiMossScrapings,Egg,ErestrumGel,Fiber,FireMossScrapings,FishMeat,Flour,Fruit,FruitJuice,Ham,HerbalLeaves,Meat,Milk,NCPowder,NutrientSolution,PentaxidElement,PlantProtein,PlasticMaterial,PlatinOunce,PromethiumPellets,RockDust,RottenFood,Spice,TrumpetGreens,VegetableJuice,Vegetables,WaterBottle,XenoSubstrate,Eden_SilverIngot,HWSFish,Ratatouille,Salami,",
+    "Sprout": ",AlienPalmTreeStage1,AlienPlantTube2Stage1,AlienplantWormStage1,BigFlowerStage1,BulbShroomYoungStage1,CobraLeavesPlantStage1,CoffeePlantStage1,CornStage1,DesertPlant20Stage1,DurianRoot,ElderberryStage1,InsanityPepperStage1,MushroomBellBrown01Stage1,PearthingStage1,PumpkinStage1,SnakeweedStage1,TomatoStage1,WheatStage1,",
+    "Tools": ",AutoMiningDeviceT1,AutoMiningDeviceT2,AutoMiningDeviceT3,Chainsaw,ColorTool,ConcreteBlocks,ConstructorSurvival,Drill,DrillEpic,DrillT2,Eden_AutoMiningDeviceT4,Explosives,Flashlight,LightWork,LightWork02,MedicGun,MobileAirCon,MultiTool,MultiToolT2,NightVision,OreScanner,OxygenGenerator,OxygenGeneratorSmall,OxygenHydrogenGenerator,PlayerBike,RadarSuitT1,SurvivalTent,SurvivalTool,TextureColorTool,TextureTool,WaterGenerator,Eden_DrillVoidium,Eden_VoidiumScanner,Eden_VoidiumScannerT2,",
+    "ArmorMod": ",ArmorBoost,ArmorBoostEpic,InsulationBoost,InsulationBoostEpic,JetpackBoost,JetpackBoostEpic,MobilityBoost,MobilityBoostEpic,MultiBoost,MultiBoostEpic,OxygenBoost,RadiationBoost,RadiationBoostEpic,TransportationBoost,Eden_ArmorBoostAbyss,Eden_ArmorBoostAugmented,Eden_ColdBoostAbyss,Eden_ColdBoostAugmented,Eden_HeatBoostAbyss,Eden_HeatBoostAugmented,Eden_JetpackBoostAbyss,Eden_JetpackBoostAugmented,Eden_RadiationBoostAbyss,Eden_RadiationBoostAugmented,Eden_TransportationBoostAugmented,EVABoost,",
+    "DeviceL": ",AlienNPCBlocks,ArmorLocker,ATM,BlastDoorLargeBlocks,BoardingRampBlocks,CloneChamber,CockpitBlocksCV,ConstructorT0,ConstructorT1V2,ConstructorT2,ContainerAmmoControllerLarge,ContainerAmmoLarge,ContainerControllerLarge,ContainerExtensionLarge,ContainerHarvestControllerLarge,ContainerLargeBlocks,ContainerPersonal,Core,CoreNoCPU,CPUExtenderBAT2,CPUExtenderBAT3,CPUExtenderCVT2,CPUExtenderCVT3,Deconstructor,DetectorCV,DetectorCVT2,DoorArmoredBlocks,DoorBlocks,Eden_ExplorationScannerCV,Eden_HydroponicsBerries,Eden_HydroponicsFiber,Eden_HydroponicsFruit,Eden_HydroponicsGrain,Eden_HydroponicsHerbalLeaves,Eden_HydroponicsMushroomBrown,Eden_HydroponicsNaturalStimulant,Eden_HydroponicsNaturalSweetener,Eden_HydroponicsPentaxid,Eden_HydroponicsPlantProtein,Eden_HydroponicsSpice,Eden_HydroponicsVegetables,Eden_LiftLargeBlocks,Eden_ScienceStation,ElevatorMS,ExplosiveBlocks,ExplosiveBlocks2,Flare,FoodProcessorV2,ForcefieldEmitterBlocks,FridgeBlocks,FuelTankMSLarge,FuelTankMSLargeT2,FuelTankMSSmall,Furnace,FusionReactorLarge,GeneratorBA,GeneratorMS,GeneratorMST2,GravityGeneratorMS,HangarDoorBlocks,HumanNPCBlocks,LandClaimDevice,LandinggearBlocksCV,LCDScreenBlocks,LightLargeBlocks,LightPlant01,MedicalStationBlocks,OfflineProtector,OxygenStation,OxygenTankMS,OxygenTankSmallMS,PassengerSeatMS,PentaxidTank,Portal,RampLargeBlocks,RCSBlockMS,RCSBlockMS_T2,RemoteConnection,RepairBayBA,RepairBayBAT2,RepairBayConsole,RepairBayCV,RepairBayCVT2,RepairStation,SensorTriggerBlocks,ShieldGeneratorBA,ShieldGeneratorBAT2,ShieldGeneratorCV,ShieldGeneratorCVT2,ShieldGeneratorPOI,ShieldGeneratorT0,ShutterDoorLargeBlocks,SolarGenerator,SolarPanelBlocks,SolarPanelSmallBlocks,SpotlightBlocks,TeleporterBA,TeleporterCV,ThrusterMSDirectional,ThrusterMSRound2x2Blocks,ThrusterMSRound3x3Blocks,ThrusterMSRoundBlocks,ThrusterMSRoundLarge,VentilatorBlocks,WarpDrive,WarpDriveT2,CPUExtenderBAT4,CPUExtenderLargeT5,CPUExtenderCVT4,ShieldChargerLarge,ShieldCapacitorT2Large,ShieldCapacitorT3Large,ShieldChargerT2Large,ShieldChargerT3Large,Eden_AuxillaryDummy,Eden_ShieldGeneratorAugmentedCV,Eden_AntimatterTank,Eden_WarpDriveAntimatter,Eden_ShieldGeneratorRegenerateCV,Eden_HydroponicsBuds,CVSmallSolarPanelBlocks,CVLargeSolarPanelBlocks,ShieldCapacitorLarge,AsgardPassGen,AsgardThrusterCV,HWSLiftBlocks,AsgardExtensionLarge,AsgardExplosiveBlock,",
+    "DeviceS": ",ArmorLockerSV,CloneChamberHV,CockpitBlocksSV,CockpitBlocksSVT2,ConstructorHV,ConstructorSV,ContainerAmmoControllerSmall,ContainerControllerSmall,ContainerExtensionSmall,ContainerHarvestControllerSmall,ContainerSmallBlocks,Core,CPUExtenderHVT2,CPUExtenderHVT3,CPUExtenderSVT2,CPUExtenderSVT3,DetectorHVT1,DetectorSVT1,DetectorSVT2,DoorBlocksSV,Flare,FoodProcessorSmall,ForcefieldEmitterBlocks,FridgeSV,FuelTankSV,FuelTankSVSmall,GeneratorSV,GeneratorSVSmall,GeneratorSVT2,HoverBooster,HoverEngineLarge,HoverEngineSmall,HoverEngineThruster,LandinggearBlocksHeavySV,LandinggearBlocksSV,LargeCargoContainer,LargeHarvestContainer,LightSS01,MedicStationHV,OxygenStationSV,OxygenTankSV,PassengerSeat2SV,PassengerSeatSV,PentaxidTankSV,RampSmallBlocks,RCSBlockGV,RCSBlockSV,RemoteConnection,SensorTriggerBlocksSV,ShieldGeneratorHV,ShieldGeneratorSV,ShieldGeneratorSVT2,ShutterDoorSmallBlocks,ThrusterGVJetRound1x3x1,ThrusterGVRoundBlocks,ThrusterGVRoundLarge,ThrusterGVRoundLargeT2,ThrusterGVRoundNormalT2,ThrusterJetRound1x3x1,ThrusterJetRound2x5x2,ThrusterJetRound2x5x2V2,ThrusterJetRound3x10x3,ThrusterJetRound3x10x3V2,ThrusterJetRound3x13x3,ThrusterJetRound3x13x3V2,ThrusterJetRound3x7x3,ThrusterSVDirectional,ThrusterSVRoundBlocks,ThrusterSVRoundLarge,ThrusterSVRoundLargeT2,ThrusterSVRoundNormalT2,ThrusterSVRoundT2Blocks,VentilatorBlocks,WarpDriveSV,CPUExtenderHVT4,ShieldGeneratorSVT0,CPUExtenderSmallT5,ShieldCapacitorSmall,ShieldChargerSmall,Eden_AuxillaryCPUSV,Eden_ShieldGeneratorAugmentedSV,Eden_WarpDriveAntimatterSV,AsgardContainerExtensionHVSV,AsgardFuelTankSVHV,AsgardExplosiveBlock,AsgardWarpDriveSV,AsgardGeneratorSVHV,ThrusterGVSuperRound2x4x2,CPUExtenderSVT4,",
+    "WeaponPlayer": ",AssaultRifle,AssaultRifleEpic,AssaultRifleT2,Chainsaw,ColorTool,DrillT2,Explosives,LaserPistol,LaserPistolT2,LaserRifle,LaserRifleEpic,Minigun,MinigunEpic,MultiTool,Pistol,PistolEpic,PistolT2,RocketLauncher,RocketLauncherEpic,RocketLauncherT2,ScifiCannon,ScifiCannonEpic,Shotgun,Shotgun2,Shotgun2Epic,Sniper,Sniper2,Sniper2Epic,SubmachineGunT1,SubmachineGunT2,TextureTool,PulseRifle,PulseRifleT2,SpecOpsRifle,GrenadeLauncher,TalonRepeatingCrossbow,",
+    "WeaponHV": ",DrillAttachment,DrillAttachmentLarge,DrillAttachmentT2,SawAttachment,TurretGVArtilleryBlocks,TurretGVMinigunBlocks,TurretGVPlasmaBlocks,TurretGVRocketBlocks,TurretGVToolBlocks,WeaponSV02,TurretGVRocketBlocksT2,TurretGVArtilleryBlocksT2,WeaponSV09,WeaponSV11,",
+    "WeaponSV": ",DrillAttachmentSVT2,Eden_ModularPulseLaserSVGamma,Eden_ModularPulseLaserSVIR,Eden_ModularPulseLaserSVUV,Eden_TurretVulcanSmall,WeaponSV01,WeaponSV02,WeaponSV03,WeaponSV04,WeaponSV05,WeaponSV05Homing,TurretSVSmall,TurretSVPulseLaserT2,TurretGVProjectileBlocksT2,TurretGVPlasmaBlocksT2,WeaponSV06,WeaponSV07,WeaponSV08,TurretGVBeamLaserBlocksT2,Eden_ShieldBoosterSV,AsgardDrillSV,",
+    "WeaponCV": ",DrillAttachmentCV,Eden_CVTorpedoRapid,Eden_DrillIceCV,Eden_DrillIceTurretCV,Eden_DrillIceTurretCVAlien,Eden_DrillRichCV,Eden_DrillTurretAutoCV,Eden_DrillTurretAutoCVAlien,Eden_DrillTurretAutoCVT2,Eden_TurretAlienVulcan,Eden_TurretBolterCV,Eden_TurretFlakClose,Eden_TurretLaserBeamCV,Eden_TurretLaserBeamCVT2,Eden_TurretLaserBeamCVT3,Eden_TurretMissileCruiseCV,Eden_TurretMissileCruiseEMPCV,Eden_TurretMissileLight,Eden_TurretMissileLightT2,Eden_TurretRailgun,Eden_TurretVulcanCV,SentryGunBlocks,TurretEnemyBallista,TurretMSArtilleryBlocks,TurretMSLaserBlocks,TurretMSLaserBlocksT2,TurretMSProjectileBlocks,TurretMSProjectileBlocksT2,TurretMSRocketBlocks,TurretMSRocketBlocksT2,TurretMSToolBlocks,TurretZiraxMSLaser,TurretZiraxMSPlasma,TurretZiraxMSRocket,WeaponMS01,WeaponMS02,TurretAlien,TurretMSArtilleryBlocksT2,WeaponMS03,TurretZiraxMSPlasmaArtillery,TurretZiraxMSLaserT2,TurretZiraxMSPlasmaT2,TurretZiraxMSRocketT2,Eden_BlasterCV,Eden_RailgunCVSpinal_Kit,Eden_TurretBeamHeavyT1,Eden_TurretMissileSwarmCV,Eden_TurretLaserT4,Eden_TurretRailgunHeavy,AsgardDrillCV,",
+    "WeaponBA": ",SentryGunBlocks,TurretBaseArtilleryBlocks,TurretBaseLaserBlocks,TurretBaseProjectileBlocks,TurretBaseRocketBlocks,TurretBaseProjectileBlocksT2,TurretBaseRocketBlocksT2,TurretBaseLaserBlocksT2,TurretBaseArtilleryBlocksT2,TurretBABeamLaserBlocksT2,",
+    "AmmoPlayer": ",8.3mmBullet,DrillCharge,MultiCharge,PulseLaserChargePistol,PulseLaserChargeRifle,SciFiCannonPlasmaCharge,ShotgunShells,12.7mmBullet,5.8mmBullet,50Caliber,SlowRocket,SlowRocketHoming,",
+    "AmmoHV": ",FastRocket,TurretGVPlasmaCharge,15mmBullet,ArtilleryRocket,",
+    "AmmoSV": ",FastRocket,FastRocketHoming,PlasmaCannonChargeSS,PulseLaserChargeSS,RailgunBullet,15mmBullet,",
+    "AmmoCV": ",30mmBullet,FastRocketMS,FlakRocketMS,LargeRocketMS,PulseLaserChargeMS,TurretMSPlasmaCharge,15mmBullet,5.8mmBullet,PulseLaserChargeMSWeapon,",
+    "AmmoBA": ",30mmBullet,FastRocketBA,FlakRocket,LargeRocket,PulseLaserChargeBA,TurretBAPlasmaCharge,15mmBullet,5.8mmBullet,",
+    "Gardeners": ",ConsoleSmallHuman,",
+    "Components": ",AluminiumCoil,AluminiumOre,AluminiumPowder,AutoMinerCore,CapacitorComponent,Cement,CobaltAlloy,Computer,Electronics,EnergyCell,EnergyMatrix,ErestrumGel,Fiber,FluxCoil,GlassPlate,GoldIngot,HydrogenBottle,IceBlocks,LargeOptronicBridge,LargeOptronicMatrix,MagnesiumPowder,MechanicalComponents,Motor,Nanotubes,NCPowder,OpticalFiber,Oscillator,PentaxidCrystal,PentaxidElement,PentaxidOre,PlasticMaterial,PowerCoil,PromethiumOre,PromethiumPellets,RawDiamond,RockDust,SmallOptronicBridge,SmallOptronicMatrix,SteelPlate,SteelPlateArmored,WaterJug,WoodLogs,WoodPlanks,XenoSubstrate,ZascosiumAlloy,",
+    "EdenComponents": ",AdvancedUpgradeKit,AluminiumCoil,AluminiumOre,AluminiumPowder,AncientRelics,Coolant,Eden_ComputerT2,Eden_Deuterium,Eden_DiamondCut,Eden_DroneSalvageCore,Eden_DroneSalvageProcessor,Eden_Electromagnet,Eden_GaussRail,Eden_MagmaciteIngot,Eden_MagmacitePlate,Eden_ModularPulseLaserLensLarge,Eden_ModularPulseLaserLensSmall,Eden_OreDenseT1Ingot,Eden_OreDenseT2Ingot,Eden_OreDenseT3Ingot,Eden_OreDenseT4Ingot,Eden_OreDenseT5Ingot,Eden_PlasmaCoil,Eden_PowerRegulator,Eden_ProgenitorArtifact,Eden_Semiconductor,Eden_Voidium,Fertilizer,HeatExchanger,HeliumBottle,LargeUpgradeKit,NitrogenBottle,QuantumProcessor,RadiationShielding,ReactorCore,SmallUpgradeKit,SolarCell,Superconductor,ThrusterComponents,XenonBottle,Eden_DarkMatter,Eden_DarkMatterSmall,LJArtifact1,LJArtifact2,LJArtifact3,LJArtifact4,NaqahdahOre,NaqahdahIngot,NaqahdahPlate,Naquadria,LJSandOre,LJEarthOre,Eden_AugmentedMold,",
+    "Armor": ",ArmorHeavy,ArmorHeavyEpic,ArmorLight,ArmorLightEpic,ArmorMedium,ArmorMediumEpic,Eden_ArmorAbyssLight,Eden_ArmorHeavyEpicReinforced,Eden_ArmorHeavyReinforced,Eden_ArmorLightAugmented,Eden_ArmorLightReinforced,Eden_ArmorMediumReinforced,AsgardArmor,AsgardArmorDonat,",
+    "IngredientBasic": ",AlienParts01,AlienParts02,AlienParts03,AlienThorn,AlienTooth,AloeVera,Berries,Bread,Buds,Cheese,ConfettiMossScrapings,Egg,FireMossScrapings,Flour,Fruit,FruitJuice,Grain,Ham,HerbalLeaves,Meat,Milk,MushroomBrown,NaturalStimulant,NaturalSweetener,PlantProtein,RottenFood,Spice,Vegetables,Ratatouille,",
+    "IngredientExtra": ",ErestrumGel,NutrientSolution,PentaxidElement,PlasticMaterial,PlatinOunce,PromethiumPellets,RockDust,WaterBottle,XenoSubstrate,Eden_SilverIngot,",
+    "IngredientExtraMod": ",AdrenalineShot,Bandages,EnergyDrink,Medikit04,RadiationImmunityShot,AntiRadiationInjection,",
+    "OreFurnace": ",CobaltOre,CopperOre,Eden_MagmaciteOre,Eden_TungstenOre,ErestrumOre,GoldOre,IronOre,NeodymiumOre,PlatinOre,SathiumOre,SiliconOre,TitanOre,ZascosiumOre,",
+    "Deconstruct": ",Eden_IceDense,Eden_IceHeavy,Eden_IceRich,Eden_OreDenseT1,Eden_OreDenseT2,Eden_OreDenseT3,Eden_OreDenseT4,Eden_OreDenseT5,Eden_Salvage1,Eden_Salvage2,Eden_Salvage3,Eden_Salvage4,Eden_Salvage5,",
+    "AmmoAllEnergy": ",DrillCharge,Eden_ModularPulseLaserSVIR_Ammo,Eden_PlasmaChargeEntropic,Eden_PlasmaRifleRoyal_Ammo,Eden_PlasmaRifleXCorp_Ammo,MultiCharge,PlasmaCannonAlienCharge,PlasmaCannonChargeSS,PulseLaserChargeBA,PulseLaserChargeBAT2,PulseLaserChargeMS,PulseLaserChargeMST2,PulseLaserChargePistol,PulseLaserChargeRifle,PulseLaserChargeSS,SciFiCannonPlasmaCharge,TurretBAPlasmaCharge,TurretBAPlasmaChargeT2,TurretGVPlasmaCharge,TurretMSPlasmaCharge,TurretMSPlasmaChargeT2,TurretEnemyLaserCharge,PulseLaserChargeMSWeapon,PlasmaCartridge,TurretGVPlasmaChargeT2,PulseLaserChargeSST2,ZiraxMSPlasmaCharge,HeatSinkSmall,HeatSinkLarge,AsgardPlazmerAmmo,LJDrillChargeEpic,Eden_ModularPulseLaserSVUV_Ammo,Eden_ModularPulseLaserSVGamma_Ammo,Eden_BlasterCV_Ammo,Eden_ShieldBoosterSV_Ammo,",
+    "AmmoAllProjectile": ",20mmBullet,30mmBullet,8.3mmBullet,CrossbowBoltPlayer,Eden_TurretBolterBA_Ammo,Eden_TurretBolterCV_Ammo,Eden_TurretRailgun_Ammo,Eden_TurretVulcanCV_Ammo,FlameThrowerCanister,FlamethrowerTank,RailgunBullet,ShotgunShells,50Caliber,5.8mmBullet,12.7mmBullet,15mmBullet,40mmBullet,Eden_TurretRailgunHeavy_Ammo,Eden_VulcanAmmo,",
+    "AmmoAllRocket": ",Eden_CVTorpedoRapid_Ammo,Eden_TurretFlakClose_Ammo,Eden_TurretMissileCruiseCV_Ammo,Eden_TurretMissileCruiseEMPCV_Ammo,Eden_TurretMissileLight_Ammo,Eden_TurretMissileLightT2_Ammo,Eden_TurretMissileSwarmCV_Ammo,FastRocket,FastRocketBA,FastRocketGV,FastRocketHoming,FastRocketMS,FlakRocket,FlakRocketMS,LargeRocket,LargeRocketMS,TorpedoSV,SlowRocket,SlowRocketHoming,ArtilleryRocket,TurretEnemyRocketAmmo,SVBomb,LightRocketCV,HeavyRocketMS,FlakRocketMST2,ArtilleryShellCVT2,FlakRocketBAT2,ArtilleryShellBAT2,SwarmRocketHV,ArtilleryShellHVT2,HeavyRocketBA,Eden_TurretRocketRapid_Ammo,",
+    "WeaponPlayerUpgrades": ",HeavyWeaponKit,LaserKit,PistolKit,RifleKit,ShotgunKit,SniperKit,",
+    "WeaponPlayerEpic": ",Eden_FarrPlasmaCrossbow,Eden_IonRifle,Eden_LaserRifleEntropic,Eden_LightRailgunRifle,Eden_MinigunIncendiary,Eden_PlasmaRifleEntropic,Eden_PlasmaRifleRoyal,Eden_PlasmaRifleXCorp,Eden_RifleLightning,Eden_ScoutRifle,Eden_ShotgunDouble,Eden_ShotgunGauss,Eden_Uzi,HeavyPistol,LaserPistolT3,PlasmaCannonAlien,SubmachineGunT3,TalonCrossbowPlayer,PulseRifleEpic,MinigunT2,FlameThrowerT2,AsgardPlazmer,AssaultRifleT3,ZiraxBeamRifle,",
+    "Deco": ",AntennaBlocks,ChristmasTree,ConsoleBlocks,DecoBlocks,DecoBlocks2,DecoStoneBlocks,DecoTribalBlocks,DecoVesselBlocks,IndoorPlants,PosterARest,PosterBiker,PosterDontHide,PosterForeignWorld,PosterJump,PosterNewWorld,PosterSoleDesert,PosterStranger,PosterSurvivor,PosterTakingABreak,PosterTalon,PosterTrader,PosterZiraxAlienWorld,TurretRadar,",
+    "DataPads": ",Eden_DataChipT1,Eden_DataChipT2,Eden_DataChipT3,Eden_UnlockPoint,Eden_WarpUpgrade,",
+    "RemoveBlocks": ",AlienContainer,AlienContainerRare,AlienContainerUltraRare,AlienContainerVeryRare,AlienDeviceBlocks,ContainerUltraRare,Eden_AlienBlocksPOI,Eden_CoreNPCFake,Eden_CoreNPCSpecial,",
+    "Oxygen": ",OxygenBottleLarge,",
+    "Fuel": ",EnergyCell,EnergyCellLarge,FusionCell,",
+    "Pentaxid": ",PentaxidCrystal,"
+  },
+  "StructureTank": {
+    "Oxygen": [
+      {
+        "ItemName": "OxygenBottleLarge",
+        "Amount": 250,
+        "EcfAmountTag": "O2Value"
+      }
+    ],
+    "Fuel": [
+      {
+        "ItemName": "FusionCell",
+        "Amount": 500,
+        "EcfAmountTag": "FuelValue"
+      },
+      {
+        "ItemName": "EnergyCellLarge",
+        "Amount": 250,
+        "EcfAmountTag": "FuelValue"
+      },
+      {
+        "ItemName": "EnergyCell",
+        "Amount": 50,
+        "EcfAmountTag": "FuelValue"
+      }
+    ],
+    "Pentaxid": [
+      {
+        "ItemName": "PentaxidCrystal",
+        "Amount": 1
+      }
+    ]
+  },
+  "NumberSpaceReplace": " ",
+  "BarStandardValueSign": "█",
+  "BarStandardSpaceSign": "░",
+  "HarvestCores": [
+    {
+      "ItemName": "Core"
+    },
+    {
+      "ItemName": "Eden_CoreSalvage"
+    }
+  ],
+  "ElevatedGroups": [
+    "Admin",
+    "Zirax",
+    "Predator",
+    "Prey",
+    "Talon",
+    "Polaris",
+    "Alien",
+    "Pirates",
+    "Kriel",
+    "UCH",
+    "Trader",
+    "Civilian",
+    "Member",
+    "Player"
+  ],
+  "LootListToSlotCount": {
+    "48": 128,
+    "66": 128,
+    "67": 64,
+    "300": 128
+  },
+  "DBQueries": {
+    "Elevated": {
+      "Entities": {
+        "Description": "Provides the data of the structures",
+        "CacheQueryForSeconds": 300,
+        "Query": "\r\nSELECT * FROM Structures \r\nJOIN Entities ON Structures.entityid = Entities.entityid\r\nJOIN Playfields ON Entities.pfid = Playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE isremoved = 0 {additionalWhereAnd}\r\n"
+      }
+    },
+    "Player": {
+      "Entities": {
+        "Description": "Provides the data of the structures of the player and the faction",
+        "CacheQueryForSeconds": 300,
+        "Query": "\r\nSELECT * FROM Structures \r\nJOIN Entities ON Structures.entityid = Entities.entityid\r\nJOIN Playfields ON Entities.pfid = Playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE (isremoved = 0 AND (facgroup = 0 OR facgroup = 1) AND (facid = @PlayerId OR facid = @FactionId)) {additionalWhereAnd}\r\n"
+      },
+      "DiscoveredPOIs": {
+        "Description": "Provides the data of the DiscoveredPOIs of the player and the faction",
+        "CacheQueryForSeconds": 600,
+        "Query": "\r\nSELECT * FROM DiscoveredPOIs\r\nJOIN Entities ON DiscoveredPOIs.poiid = Entities.entityid\r\nJOIN Playfields ON Entities.pfid = Playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE (Entities.isremoved = 0 AND (DiscoveredPOIs.facgroup = 0 OR DiscoveredPOIs.facgroup = 1) AND (DiscoveredPOIs.facid = @PlayerId OR DiscoveredPOIs.facid = @FactionId)) {additionalWhereAnd}\r\n"
+      },
+      "TerrainPlaceables": {
+        "Description": "Provides the data of the TerrainPlaceables of the player and the faction",
+        "CacheQueryForSeconds": 600,
+        "Query": "\r\nSELECT * FROM TerrainPlaceables \r\nJOIN Entities ON TerrainPlaceables.entityid = Entities.entityid\r\nJOIN Playfields ON TerrainPlaceables.pfid = Playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE (isremoved = 0 AND (facgroup = 0 OR facgroup = 1) AND (facid = @PlayerId OR facid = @FactionId OR TerrainPlaceables.entityid = @PlayerId OR TerrainPlaceables.entityid = @FactionId)) {additionalWhereAnd}\r\n"
+      },
+      "TerrainPlaceablesRes": {
+        "Description": "Provides the data of the TerrainPlaceables of the player and the faction with resource type",
+        "CacheQueryForSeconds": 600,
+        "Query": "\r\nSELECT * FROM TerrainPlaceables\r\nJOIN PlayfieldResources ON (PlayfieldResources.pfid = TerrainPlaceables.pfid AND abs(PlayfieldResources.blockx - TerrainPlaceables.blockx) <= 20 AND abs(TerrainPlaceables.blockz - PlayfieldResources.blockz) <= 20)\r\nJOIN Entities ON TerrainPlaceables.entityid = Entities.entityid\r\nJOIN Playfields ON TerrainPlaceables.pfid = Playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE (isremoved = 0 AND (facgroup = 0 OR facgroup = 1) AND (facid = @PlayerId OR facid = @FactionId OR TerrainPlaceables.entityid = @PlayerId OR TerrainPlaceables.entityid = @FactionId)) {additionalWhereAnd}\r\n"
+      },
+      "Playfields": {
+        "Description": "Provides the data of the discovered Playfields of the player and the faction",
+        "CacheQueryForSeconds": 300,
+        "Query": "\r\nSELECT * FROM Playfields\r\nLEFT JOIN DiscoveredPlayfields ON DiscoveredPlayfields.pfid = playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE playfields.ssid IN (\r\nSELECT ssid FROM Playfields\r\nLEFT JOIN DiscoveredPlayfields ON DiscoveredPlayfields.pfid = playfields.pfid\r\nWHERE (DiscoveredPlayfields.facgroup = 0 OR DiscoveredPlayfields.facgroup = 1) AND (DiscoveredPlayfields.facid = @PlayerId OR DiscoveredPlayfields.facid = @FactionId)\r\nGROUP BY playfields.ssid\r\n) {additionalWhereAnd}\r\n"
+      },
+      "PlayfieldResources": {
+        "Description": "Provides the PlayfieldResources of the discovered Playfields of the player and the faction",
+        "CacheQueryForSeconds": 600,
+        "Query": "\r\nSELECT * FROM Playfields\r\nLEFT JOIN DiscoveredPlayfields ON DiscoveredPlayfields.pfid = playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nJOIN PlayfieldResources ON PlayfieldResources.pfid = Playfields.pfid\r\nWHERE playfields.ssid IN (\r\nSELECT ssid FROM Playfields\r\nLEFT JOIN DiscoveredPlayfields ON DiscoveredPlayfields.pfid = playfields.pfid\r\nWHERE (DiscoveredPlayfields.facgroup = 0 OR DiscoveredPlayfields.facgroup = 1) AND (DiscoveredPlayfields.facid = @PlayerId OR DiscoveredPlayfields.facid = @FactionId)\r\nGROUP BY playfields.ssid\r\n) {additionalWhereAnd}\r\n"
+      },
+      "PlayerData": {
+        "Description": "Provides the PlayerData of the player and the faction",
+        "CacheQueryForSeconds": 30,
+        "Query": "\r\nSELECT * FROM PlayerData \r\nJOIN Entities ON Entities.entityid = PlayerData.entityid\r\nJOIN Playfields ON Playfields.pfid = PlayerData.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE ((Entities.facgroup = 0 OR Entities.facgroup = 1 OR facgroup = 0 OR facgroup = 1) AND (Entities.facid = @PlayerId OR facid = @PlayerId OR Entities.facid = @FactionId OR facid = @FactionId)) {additionalWhereAnd}\r\n"
+      },
+      "Bookmarks": {
+        "Description": "Provides the Bookmarks of the player and the faction",
+        "CacheQueryForSeconds": 60,
+        "Query": "\r\nSELECT * FROM Bookmarks\r\nJOIN Entities ON Bookmarks.entityid = Entities.entityid\r\nJOIN Playfields ON Bookmarks.pfid = Playfields.pfid\r\nJOIN SolarSystems ON SolarSystems.ssid = Playfields.ssid\r\nWHERE ((Bookmarks.facgroup = 0 OR Bookmarks.facgroup = 1) AND (Bookmarks.facid = @PlayerId OR Bookmarks.facid = @FactionId)) {additionalWhereAnd}\r\n"
+      }
+    }
+  }
+}
