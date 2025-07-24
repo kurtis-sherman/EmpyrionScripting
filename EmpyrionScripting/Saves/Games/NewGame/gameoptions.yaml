@@ -1,0 +1,68 @@
+Options:
+- ValidFor:
+  - SP
+  - Survival
+  DecayTime: 0
+  ProtectTime: 0
+  ProtectDelay: 0
+  MaxStructures: 2000
+  AntiGriefDistancePvE: 0
+  AntiGriefDistancePvP: 0
+  AntiGriefOresDistance: 0
+  EnableTrading: Player2System
+  EnableVolumeWeight: true
+  EnableCPUPoints: true
+  AutoMinerDepletion: false
+  GroundedStructureSpawn: false
+  MaxSpawnedEnemies: 60
+  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
+  DiffEscapePodContent: Easy
+  DiffPlayerProgression: Faster
+  DiffDegradationSpeed: Off
+  DiffPlayerBackpackDrop: DropNothing
+  DiffFoodConsumption: Off
+  DiffOxygenConsumption: Off
+  DiffRadiationTemperature: Off
+  DiffAmountOfOre: Rich
+  DiffNumberOfDeposits: Plenty
+  DiffDronePresence: Off
+  DiffDroneBaseAttack: Off
+  DiffBpProdTime: Instant
+- ValidFor:
+  - MP
+  - Survival
+  MaxStructures: 2000
+  AntiGriefDistancePvE: 0
+  AntiGriefDistancePvP: 0
+  AntiGriefOresDistance: 0
+  EnableVolumeWeight: true
+  EnableCPUPoints: true
+  AutoMinerDepletion: false
+  GroundedStructureSpawn: false
+  TurretUndergroundCheck: true
+  MaxSpawnedEnemies: 60
+  DespawnEscapePod: true
+  OriginFactionStart: true
+  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
+  DiffBpProdTime: Instant
+- ValidFor:
+  - SP
+  - Creative
+  DecayTime: 0
+  ProtectTime: 0
+  ProtectDelay: 0
+  MaxStructures: 2000
+  AntiGriefDistancePvE: 0
+  AntiGriefDistancePvP: 0
+  AntiGriefOresDistance: 0
+  EnableTrading: Player2System
+  GroundedStructureSpawn: false
+  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
+- ValidFor:
+  - MP
+  - Creative
+  MaxStructures: 2000
+  AutoMinerDepletion: false
+  TurretUndergroundCheck: true
+  DespawnEscapePod: true
+  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812

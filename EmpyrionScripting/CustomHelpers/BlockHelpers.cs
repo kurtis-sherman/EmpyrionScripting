@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using static EmpyrionScripting.CustomHelpers.ConveyorHelpers;
 
 namespace EmpyrionScripting.CustomHelpers
@@ -46,6 +47,35 @@ namespace EmpyrionScripting.CustomHelpers
                 .SelectMany(N => structure.GetCurrent().GetDevicePositions(N)
                 .Select(V => new BlockData(structure.E, V)))
                 .ToArray();
+        }
+
+        public static List<VectorInt3> GetAllBlockPositions(IStructureData structure)
+        {
+            var returnPositions = new List<VectorInt3>();
+
+            var minPos = structure.GetCurrent().MinPos;
+            var maxPos = structure.GetCurrent().MaxPos;
+            // Empyrion has a "strange" y-offset of 128
+            minPos = new VectorInt3(minPos.x, 128 + minPos.y, minPos.z);
+            maxPos = new VectorInt3(maxPos.x, 128 + maxPos.y, maxPos.z);
+
+            //EmpyrionScripting.Log($"GetAllBlockPositions minPos[{minPos}]", EmpyrionNetAPIDefinitions.LogLevel.Message);
+            //EmpyrionScripting.Log($"GetAllBlockPositions maxPos[{maxPos}]", EmpyrionNetAPIDefinitions.LogLevel.Message);
+
+            for (int y = maxPos.y; y >= minPos.y; y--)
+            {
+                for (int x = minPos.x; x <= maxPos.x; x++)
+                {
+                    for (int z = minPos.z; z <= maxPos.z; z++)
+                    {
+                        var blockPos = new VectorInt3(x, y, z);
+                        //EmpyrionScripting.Log($"  GetAllBlockPositions added vector[{blockPos}]", EmpyrionNetAPIDefinitions.LogLevel.Message);
+                        returnPositions.Add(blockPos);
+                    }
+                }
+            }
+
+            return returnPositions;
         }
 
         [HandlebarTag("devicesoftype")]

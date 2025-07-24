@@ -2,7 +2,11 @@
 using EmpyrionScripting.CustomHelpers;
 using EmpyrionScripting.DataWrapper;
 using EmpyrionScripting.Interface;
+using HandlebarsDotNet;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace EmpyrionScripting.CsHelper
 {
@@ -11,6 +15,7 @@ namespace EmpyrionScripting.CsHelper
         public IBlockData[] Devices(IStructureData structure, string names) => BlockHelpers.Devices(structure, names);
         public IBlockData[] DevicesOfType(IStructureData structure, DeviceTypeName deviceType) => BlockHelpers.DevicesOfType(structure, deviceType);
         public IBlockData Block(IStructureData structure, int x, int y, int z) => new BlockData(structure.E, new Eleon.Modding.VectorInt3(x, y, z));
+        public List<VectorInt3> GetAllBlockPositions(IStructureData structure) => BlockHelpers.GetAllBlockPositions(structure);
         public T[] GetDevices<T>(IStructureData structure, string names) where T : class, IDevice
             => BlockHelpers.Devices(structure, names)
             .OfType<BlockData>()

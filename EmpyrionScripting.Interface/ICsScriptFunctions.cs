@@ -13,6 +13,7 @@ namespace EmpyrionScripting.Interface
         IList<string> Scroll(string content, int lines, int delay, int step = 1);
         string Bar(double data, double min, double max, int length, string barChar = null, string barBgChar = null);
         IBlockData Block(IStructureData structure, int x, int y, int z);
+        List<VectorInt3> GetAllBlockPositions(IStructureData structure);
         IBlockData[] Devices(IStructureData structure, string names);
         IBlockData[] DevicesOfType(IStructureData structure, DeviceTypeName deviceType);
         IEnumerable<IEntityData> EntitiesById(params int[] ids);
