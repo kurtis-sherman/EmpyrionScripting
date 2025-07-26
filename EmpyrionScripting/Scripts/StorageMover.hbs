@@ -31,11 +31,11 @@
 {{move this @root.E.S '1-HarvestDecon'}}
 {{/move}}
 {{/test}}
-{{#test Id in  @Ids.WeaponCV}}
+{{#test Id in @Ids.WeaponCV}}
 {{move this @root.E.S '1-HarvestDecon'}}
 {{/move}}
 {{/test}}
-{{#test Id in '4442'}}
+{{#test Id in @Ids.Food}}
 {{move this @root.E.S '3-[00ffff]Fridge'}}
 {{/move}}
 {{/test}}
@@ -45,6 +45,11 @@
 {{/test}}
 {{#test Id in @Ids.AmmoPlayer}}
 {{move this @root.E.S '1-HarvestDecon'}}
+{{/move}}
+{{/test}}
+{{/test}}
+{{#test Id in @Ids.AmmoAllProjectile}}
+{{move this @root.E.S '2-[ff0000]Ship Magazine'}}
 {{/move}}
 {{/test}}
 {{/items}}

@@ -285,7 +285,7 @@
     CameraShake: 2  
     Automatic: false
     BulletSpread: 0.0, display: false
-	# ShieldDamagePenFac: 0.05, display: false
+	ShieldDamagePenFac: 0.05, display: false
     Recoil: 0.75, display: false
     Damage: 250, display: true
 	Stamina: -60, display: true
@@ -740,7 +740,7 @@
     Tracer: @reforgedcontent/LegacyNeedleShot
     TracerPerBullet: 1
 	TracerSpeed: 80
-	# ShieldDamagePenFac: 0.03, display: false
+	ShieldDamagePenFac: 0.03, display: false
 	
     DamageMultiplier_Group: LaserPistolT3
     DamageMultiplier_4: 2.5, param1: head, display: DmgMultiplierHead
@@ -820,7 +820,7 @@
     PfxMuzzle: SniperMuzzleLaserBlue	
     Tracer: Weapons/Projectiles/TracerLaserShotBlue
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.03, display: false
+	ShieldDamagePenFac: 0.03, display: false
 	
     DamageMultiplier_Group: LaserPistolT1
     DamageMultiplier_5: 2.5, param1: head, display: DmgMultiplierHead
@@ -878,7 +878,7 @@
     ReloadDelay: 2.25, display: true
     SfxBegin: Weapons/Player/LaserPistol/BLASTERLargeFastKickback
     Tracer: @rg_projectiles/RG_ProjectileLaserBlueHand
-	# ShieldDamagePenFac: 0.05, display: false
+	ShieldDamagePenFac: 0.05, display: false
 	
     DamageMultiplier_Group: LaserPistolT2
     DamageMultiplier_5: 2.5, param1: head, display: DmgMultiplierHead
@@ -956,7 +956,7 @@
     PfxMuzzle: SniperMuzzleLaserBlue
     Tracer: @rg_projectiles/RG_ProjectileLaserBlueHand
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.07, display: false
+	ShieldDamagePenFac: 0.07, display: false
 	
     DamageMultiplier_Group: LaserPistolT3
     DamageMultiplier_5: 2.5, param1: head, display: DmgMultiplierHead
@@ -1035,7 +1035,7 @@
     NoiseStrength: 15, display: false 
     CameraShake: 1  
     Automatic: false
-	# ShieldDamagePenFac: 0.15, display: false
+	ShieldDamagePenFac: 0.15, display: false
 
     PfxMuzzle: MuzzleFlash2	
     # Tracer: Weapons/Projectiles/TracerLaserShotRed
@@ -1840,7 +1840,7 @@
     AmmoCapacity: 30, display: true
     AmmoType: PulseLaserChargeRifle, display: true
     UseSingleMagazine: true
-	# ShieldDamagePenFac: 0.07, display: false
+	ShieldDamagePenFac: 0.07, display: false
 	
     PfxMuzzle: SniperMuzzleLaserGreen
     # Tracer: Weapons/Projectiles/TracerLaserShotGreen
@@ -2734,7 +2734,7 @@
     # Tracer: Weapons/Projectiles/TracerLaserShotRed
 	Tracer: @rg_projectiles/RG_ProjectileLaserRedHand
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.08, display: false
+	ShieldDamagePenFac: 0.08, display: false
 	
     DamageMultiplier_Group: LaserRifleT1
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -2814,7 +2814,7 @@
 	Tracer: @rg_projectiles/RG_ProjectileLaserBlueHand3Long
     TracerPerBullet: 1
 	TracerSpeed: 75
-	# ShieldDamagePenFac: 0.08, display: false
+	ShieldDamagePenFac: 0.08, display: false
 	
     DamageMultiplier_Group: LaserRifleT2
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -2891,7 +2891,7 @@
     PfxMuzzle: SniperMuzzleLaserGreen
 	Tracer: @rg_projectiles/RG_ProjectileVulcanGreenNew
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.15, display: false
+	ShieldDamagePenFac: 0.15, display: false
 	
     DamageMultiplier_Group: LaserRiflePolaris
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -2970,7 +2970,7 @@
     # Tracer: Weapons/Projectiles/TracerLaserShotRed
 	Tracer: @rg_projectiles/RG_ProjectileLaserGreenHand
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
 	
     DamageMultiplier_Group: LaserRifleT1
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -3050,7 +3050,7 @@
     PfxMuzzle: SniperMuzzleLaserRed
     Tracer: @rg_projectiles/RG_ProjectileBlasterRed
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
 	
     DamageMultiplier_Group: CrossbowT2
     DamageMultiplier_4: 3.0, param1: head, display: DmgMultiplierHead
@@ -3279,7 +3279,7 @@
     PfxMuzzle: SniperMuzzleLaserBlue
     Tracer: @rg_projectiles/RG_ProjectileLaserBlueHand
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
 	
     DamageMultiplier_Group: SMGT3
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -3507,7 +3507,7 @@
     PfxMuzzle: SniperMuzzleLaserRed
     Tracer: @rg_projectiles/RG_ProjectileLaserRedHand
     TracerPerBullet: 1
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
 	
     DamageMultiplier_Group: MinigunT2
     DamageMultiplier_5: 1.5, param1: head, display: DmgMultiplierHead
@@ -3932,7 +3932,7 @@
     Tracer: @rg_projectiles/RG_ProjectileBeamTriLegacy
     TracerPerBullet: 1
 	TracerIsBeam: true
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
 
     DamageMultiplier_Group: PlasmaBlasterT1
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -4076,7 +4076,7 @@
     Tracer: @reforgeditems/GunLegacyDominatorShot
     TracerPerBullet: 1
 	TracerSpeed: 80
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
 
     DamageMultiplier_Group: PlasmaBlasterT1
     DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
@@ -4157,9 +4157,6 @@
     DamageMultiplier_3: 10.0, param1: metalhard, display: false
     DamageMultiplier_4: 4.0, param1: head, display: DmgMultiplierHead
     
-    ShieldDamagePenFac: 0.25, display: true
-    BlastShieldDamagePenFac: 0.25, display: true
-
     RadialText: rdlDefence # add text
     RadialDesc: rdlDefenceDescST # add text
     RadialIcon: Radial_Defence  
@@ -4391,7 +4388,7 @@
     RunMovement: "0.08"
   }
   UnlockLevel: 1
-  TechTreeNames: Misc
+  TechTreeNames: Tools
 }
 # ========================= End Survival Edit
 { +Item Id: 23, Name: Chainsaw
@@ -5835,7 +5832,7 @@
   StackSize: 1
   Material: Device
   Category: Weapons/Items
-  Info: itmSniperT2, display: false
+  Info: itmSniperT2, display: true
   Mass: 10, type: float, display: true, formatter: Kilogram
   Volume: 9, type: float, display: true, formatter: Liter
   Durability: 0, display: false
@@ -5857,7 +5854,7 @@
     Recoil: 0, display: false
     Damage: 100, display: true
     AmmoCapacity: 10, display: false
-    AmmoType: 7.Eden_RocketLauncherDebug_Ammo, display: false
+    AmmoType: 7.Eden_RocketLauncherDebug_Ammo, display: true
     AmmoUnlimited: true
     ReloadDelay: 1, display: false
 
@@ -5875,8 +5872,6 @@
     DamageMultiplier_3: 10.0, param1: metalhard, display: false
     DamageMultiplier_4: 4.0, param1: head, display: DmgMultiplierHead
 
-    ShieldDamagePenFac: 0.25, display: true
-    BlastShieldDamagePenFac: 0.25, display: true
  
   }
   { Child 1
@@ -5903,7 +5898,7 @@
   }
 
   UnlockLevel: 1
-  TechTreeNames: Misc
+  TechTreeNames: Tools
 }
 
 { +Item Id: 50, Name: DrillDebug, Ref: DrillT2   
@@ -6726,7 +6721,7 @@
   { Child 0
     Class: PlaceTerrainPlaceable
     EntityName: SurvivalConstructor
-    AllowRemote: true
+    AllowRemote: false
     ROF: 1, type: float
     Range: 8
     SfxBegin: UseActions/ExplosivesAttach
@@ -7736,7 +7731,7 @@
     AmmoCapacity: 15, display: true
     AmmoType: RailgunBullet, display: true
     BulletSpread: 0.08, display: false
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
     Automatic: true    
     NoiseStrength: 100, display: false   
     AutoReload: true
@@ -8058,7 +8053,7 @@
     AutoReload: true
     CheckObstructed: true
     ReloadDelay: 7.5, display: true
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
     SfxBegin: Weapons/ProjectileWeapons/weapon_railgun_004
     # SfxBegin: Weapons/SS/Railgun/FuturisticGunSound02
     SfxNoAmmo: Weapons/Misc/weapon_outofammo_003
@@ -8913,7 +8908,7 @@
     AmmoCapacity: 40, display: true
     AmmoType: RailgunSlugCVT1, display: true
     BulletSpread: 0.05, display: false
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
     Automatic: true    
     NoiseStrength: 100, display: false   
     AutoReload: true
@@ -8955,7 +8950,7 @@
     AmmoCapacity: 30, display: true
     AmmoType: RailgunSlugCVT2, display: true
     BulletSpread: 0.025, display: false
-	# ShieldDamagePenFac: 0.1, display: false
+	ShieldDamagePenFac: 0.1, display: false
     Automatic: true    
     NoiseStrength: 100, display: false   
     AutoReload: true
@@ -9046,7 +9041,7 @@
     TracerPerBullet: 1
 	TracerIsBeam: true
     Tracer: @rg_projectiles/RG_ProjectileBeamRedXL2Steady
-	# ShieldDamagePenFac: 0.25, display: true
+	ShieldDamagePenFac: 0.25, display: true
 
     DamageMultiplier_Group: CVPositronT3
 
@@ -9970,7 +9965,7 @@
 	PenetrationDepth: 2, display: true
     UseSingleMagazine: true
     ReloadDelay: 2.5, display: true
-	# ShieldDamagePenFac: 0.5, display: true
+	ShieldDamagePenFac: 0.5, display: true
 	SfxBegin: Enemies/Drone/MAGICSPELLPassingTunnelSci-FiFastRapidEcho
     SfxNoAmmo: Weapons/Misc/weapon_outofammo_005
     SfxReload: Weapons/Player/Misc/Reload/RifleBoltActionCock04_reload
@@ -10008,7 +10003,7 @@
     NoiseStrength: 100, display: false
 	PenetrationDepth: 5, display: true
     ReloadDelay: 15, display: true
-	# ShieldDamagePenFac: 1.0, display: true
+	ShieldDamagePenFac: 1.0, display: true
 	SfxBegin: Enemies/Drone/MAGICSPELLPassingTunnelSci-FiFastRapidEcho
     SfxNoAmmo: Weapons/Misc/weapon_outofammo_005
     SfxReload: Weapons/Player/Misc/Reload/RifleBoltActionCock04_reload
@@ -11256,7 +11251,7 @@
     TracerPerBullet: 1
 	TracerIsBeam: true
     Tracer: @rg_projectiles/RG_ProjectileBeamRedXL2Steady
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
 
     DamageMultiplier_Group: BAPositronTurretT3
   }
@@ -13235,7 +13230,7 @@
     BlastRadius: 3, display: true
     BlastDamage: 500, display: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.1
+    BlastShieldDamagePenFac: 0.1
     Speed: 10
     Range: 160
     SpeedSpace: 0
@@ -13411,7 +13406,7 @@
     RangeSpace: 40
     NoiseStrength: 80, display: false   
     Ballistic: true
-    # BlastShieldDamagePenFac: 0.10, display: true
+    BlastShieldDamagePenFac: 0.10, display: true
     # Buff: "Fire"
     # Buff_chance: 0.75
 
@@ -13450,9 +13445,9 @@
     SpeedSpace: 900
     RangeSpace: 855
     Ballistic: false
-	# ShieldDamagePenFac: 0.1, display: true
+	ShieldDamagePenFac: 0.1, display: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.16, display: true
+    BlastShieldDamagePenFac: 0.16, display: true
 
     DamageMultiplier_Group: SVGatlingGunT3
   }
@@ -13490,7 +13485,7 @@
     Ballistic: true
     HomingSpeed: 0.2
     BlastShieldDamage: 0.1, display: false
-    # BlastShieldDamagePenFac: 0.020, display: true
+    BlastShieldDamagePenFac: 0.020, display: true
 
     DamageMultiplier_Group: SVTorpedoT3
   }
@@ -13598,9 +13593,9 @@
     SpeedSpace: 975
     RangeSpace: 950
     Ballistic: false
-	# ShieldDamagePenFac: 0.1, display: true
+	ShieldDamagePenFac: 0.1, display: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.025
+    BlastShieldDamagePenFac: 0.025
 
 	DamageMultiplier_Group: SVRailgunT3
   }
@@ -13670,7 +13665,7 @@
     RangeSpace: 700
     Ballistic: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.020, display: true
+    BlastShieldDamagePenFac: 0.020, display: true
 
     DamageMultiplier_Group: SVBombT3
   }
@@ -14340,9 +14335,9 @@
     SpeedSpace: 800
     RangeSpace: 1000
     Ballistic: false
-	# ShieldDamagePenFac: 0.1, display: true
+	ShieldDamagePenFac: 0.1, display: true
     BlastShieldDamage: 0.01, display: false
-    # BlastShieldDamagePenFac: 0.034
+    BlastShieldDamagePenFac: 0.034
 
 	DamageMultiplier_Group: CVRailgunT3
   }
@@ -14552,9 +14547,9 @@
     RangeSpace: 835
     Ballistic: false
     HomingSpeed: 0.1
-	# ShieldDamagePenFac: 0.0, display: false
+	ShieldDamagePenFac: 0.0, display: false
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125, display: true
+    BlastShieldDamagePenFac: 0.125, display: true
 
     DamageMultiplier_Group: CVFlakTurretT1
   }
@@ -14726,9 +14721,9 @@
     RangeSpace: 875
     Ballistic: false
     HomingSpeed: 0.1
-	# ShieldDamagePenFac: 0.125, display: true
+	ShieldDamagePenFac: 0.125, display: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125, display: true
+    BlastShieldDamagePenFac: 0.125, display: true
 
     DamageMultiplier_Group: CVFlakTurretT2
   }
@@ -14786,9 +14781,9 @@
     SpeedSpace: 850
     RangeSpace: 950
     Ballistic: false
-	# ShieldDamagePenFac: 0.0, display: true
+	ShieldDamagePenFac: 0.0, display: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125, display: true
+    BlastShieldDamagePenFac: 0.125, display: true
 
     DamageMultiplier_Group: BAFlakTurretT1
   }
@@ -14987,9 +14982,9 @@
     SpeedSpace: 900
     RangeSpace: 1000
     Ballistic: false
-	# ShieldDamagePenFac: 0.125, display: true
+	ShieldDamagePenFac: 0.125, display: true
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125, display: true
+    BlastShieldDamagePenFac: 0.125, display: true
 
     DamageMultiplier_Group: BAFlakTurretT2
   }
@@ -15060,9 +15055,9 @@
     SpeedSpace: 600
     RangeSpace: 1350
     Ballistic: false
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125, display: true
+    BlastShieldDamagePenFac: 0.125, display: true
 
     DamageMultiplier_Group: BAPlasmaTurretT3
   }
@@ -15239,7 +15234,7 @@
     RangeSpace: 1150
     HomingSpeed: 1.25
     Ballistic: false
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
     # BlastShieldDamage: 1, display: false
     # BlastShieldDamagePenFac: 0.05
 
@@ -15276,7 +15271,7 @@
     RangeSpace: 1200
     HomingSpeed: 1.5
     Ballistic: false
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
     # BlastShieldDamage: 1, display: false
     # BlastShieldDamagePenFac: 0.05
 
@@ -15312,9 +15307,9 @@
     SpeedSpace: 750
     RangeSpace: 850
     Ballistic: false
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125
+    BlastShieldDamagePenFac: 0.125
 
     DamageMultiplier_Group: POIFlakTurretT1
   }
@@ -15344,9 +15339,9 @@
     SpeedSpace: 600
     RangeSpace: 1250 
     Ballistic: true
-	# ShieldDamagePenFac: 0.20, display: false
+	ShieldDamagePenFac: 0.20, display: false
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.05
+    BlastShieldDamagePenFac: 0.05
 
     DamageMultiplier_Group: POICannonTurretT1
   }
@@ -15377,9 +15372,9 @@
     SpeedSpace: 750
     RangeSpace: 1500 
     Ballistic: true
-	# ShieldDamagePenFac: 0.20, display: false
+	ShieldDamagePenFac: 0.20, display: false
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.05
+    BlastShieldDamagePenFac: 0.05
 
     DamageMultiplier_Group: POICannonTurretT2
   }
@@ -15450,7 +15445,7 @@
     Buff: "Stunned,DermalBurn,IncreaseRadiation,RadiationBurn"
     Buff_chance: "0.7,0.6,0.5,0.3"
     BlastShieldDamage: 333, display: false
-    # BlastShieldDamagePenFac: 1.0
+    BlastShieldDamagePenFac: 1.0
 
     DamageMultiplier_Group: POIEMPTurretT1
   }
@@ -15488,7 +15483,7 @@
     Buff: "DermalBurn,RadiationBurn,IncreaseRadiation"
     Buff_chance: "0.2,0.2,0.2"
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.5
+    BlastShieldDamagePenFac: 0.5
 	
     DamageMultiplier_Group: POIDisruptorTurret
   }
@@ -15575,7 +15570,7 @@
     RangeSpace: 1100
     Ballistic: false
 	HomingSpeed: 0.20
-	# ShieldDamagePenFac: 0.01, display: false
+	ShieldDamagePenFac: 0.01, display: false
     Buff: "Stunned,RadiationBurn,IncreaseRadiation"
     Buff_chance: "0.25,0.1,0.2"
 	
@@ -15616,8 +15611,8 @@
     Ballistic: true
 	HomingSpeed: 1.5
     BlastShieldDamage: 1, display: false
-	# ShieldDamagePenFac: 0.01, display: false
-    # BlastShieldDamagePenFac: 0.125, display: true
+	ShieldDamagePenFac: 0.01, display: false
+    BlastShieldDamagePenFac: 0.125, display: true
     Buff: "Stunned,RadiationBurn,IncreaseRadiation"
     Buff_chance: "0.25,0.1,0.2"
 	
@@ -15951,9 +15946,9 @@
     SpeedSpace: 750
     RangeSpace: 850
     Ballistic: false
-	# ShieldDamagePenFac: 0.0, display: false
+	ShieldDamagePenFac: 0.0, display: false
     BlastShieldDamage: 1, display: false
-    # BlastShieldDamagePenFac: 0.125
+    BlastShieldDamagePenFac: 0.125
 
     DamageMultiplier_Group: PlanetFlakTurretT1
   }
@@ -15982,7 +15977,7 @@
     SpeedSpace: 450
     RangeSpace: 1250 
     Ballistic: true
-	# ShieldDamagePenFac: 0.10, display: false
+	ShieldDamagePenFac: 0.10, display: false
     BlastShieldDamage: 1, display: false
     # BlastShieldDamagePenFac: 0.05
 
@@ -16014,7 +16009,7 @@
     SpeedSpace: 450
     RangeSpace: 1250 
     Ballistic: true
-	# ShieldDamagePenFac: 0.10, display: false
+	ShieldDamagePenFac: 0.10, display: false
     BlastShieldDamage: 1, display: false
     # BlastShieldDamagePenFac: 0.05
 
@@ -20294,7 +20289,7 @@
     Automatic: true  
     NoiseStrength: 100, display: false   
     ReloadDelay: 0.6, display: true
-	# ShieldDamagePenFac: 0.125, display: false
+	ShieldDamagePenFac: 0.125, display: false
     AmmoUnlimited: true
 	SfxBegin: Enemies/Drone/MAGICSPELLPassingTunnelSci-FiFastRapidEcho
     SfxNoAmmo: Weapons/DryFireFromManuallyCockedHammer
@@ -20882,7 +20877,7 @@
     MaxFireAngle: 720  #(default is 5) 
     Buff: "DermalBurn"
     Buff_chance: "0.05"
-	# ShieldDamagePenFac: 0.065, display: false
+	ShieldDamagePenFac: 0.065, display: false
 	
     DamageMultiplier_Group: EnemyLaserWeapon
   }
@@ -20921,7 +20916,7 @@
     # MaxFireAngle: 20  #(default is 5) 
     Buff: "IncreaseRadiation,Stunned"
     Buff_chance: "0.066,0.05"
-	# ShieldDamagePenFac: 0.08, display: false
+	ShieldDamagePenFac: 0.08, display: false
 	
     DamageMultiplier_Group: EnemyLaserWeapon
   }
@@ -21047,7 +21042,7 @@
     Damage: 85
     Sphere: 0.5
     SfxBegin: Enemies/TalonGuardian/WhooshWideSlow
-	# ShieldDamagePenFac: 0.25, display: false
+	ShieldDamagePenFac: 0.25, display: false
   }
 }
 { Item Id: 811, Name: ZiraxAssaultRifleStarterWeapon
@@ -21151,7 +21146,7 @@
     MaxFireAngle: 720  #(default is 5) 
     Buff: "DermalBurn,RadiationBurn"
     Buff_chance: "0.05,0.025"
-	# ShieldDamagePenFac: 0.5, display: false
+	ShieldDamagePenFac: 0.5, display: false
 	
     DamageMultiplier_Group: EnemyLaserWeapon
   }
@@ -23283,7 +23278,7 @@
     
     # ShieldDamagePenFac: 1, display: true
     # BlastShieldDamagePenFac, float: 1       = how much % of blast damage goes through the shield; range 0.0-1.0
-    # BlastShieldDamagePenFac: 0.01
+    BlastShieldDamagePenFac: 0.01
     
     Speed: 750
     Range: 400
@@ -23412,7 +23407,7 @@
     # DamageMultiplier_3: 2, param1: metallight|metal|metalhard
     # DamageMultiplier_4: 2, param1: hull|hullarmored|hullcombat
     # DamageMultiplier_5: 0.02,   param1: shield # Relatively low shield damage per shot.
-    # ShieldDamagePenFac: 0.05, display: true
+    ShieldDamagePenFac: 0.05, display: true
     
     DamageMultiplier_Group: CVRailgunT2
     
@@ -23909,7 +23904,7 @@
     BlastParticleIndex: 0
     BlastRadius: 4, display: true #4
     BlastDamage: 3000, display: true #5400
-    # ShieldDamagePenFac: 0.10, display: true
+    ShieldDamagePenFac: 0.10, display: true
     Speed: 150
     Range: 600
     # SpeedSpace: 150
@@ -24279,7 +24274,7 @@
     RangeSpace: 1500
     HomingSpeed: 10
     Ballistic: false
-	# ShieldDamagePenFac: 0.10, display: false
+	ShieldDamagePenFac: 0.10, display: false
     BlastShieldDamage: 1, display: false
 
     # DamageMultiplier_1: 0.05, param1: head|body
@@ -24512,7 +24507,7 @@
     # TracerSpeed: 750
     TracerIsBeam: true
     
-    # ShieldDamagePenFac: 0.1, display: false
+    ShieldDamagePenFac: 0.1, display: false
     # DamageMultiplier_1: 0.5, param1: head|body|
     # DamageMultiplier_2: 0.01, param1: wood|rock
     # DamageMultiplier_3: 0, param1: stone|dirt
@@ -24688,7 +24683,7 @@
     
     TracerIsBeam: true
     
-    # ShieldDamagePenFac: 0.05, display: true
+    ShieldDamagePenFac: 0.05, display: true
 
     # DamageMultiplier_1: 0.2, param1: head|body
     # DamageMultiplier_2: 0.01, param1: stone|dirt
@@ -27905,7 +27900,7 @@
     BlastRadius: 1, display: false
     BlastDamage: 1, display: false
     BlastShieldDamage: 1
-    # BlastShieldDamagePenFac: 1
+    BlastShieldDamagePenFac: 1
     Speed: 145
     Range: 600
     SpeedSpace: 275
@@ -28439,7 +28434,7 @@
     RangeSpace: 965
     HomingSpeed: 25
     Ballistic: false
-    # BlastShieldDamagePenFac: 0.01
+    BlastShieldDamagePenFac: 0.01
 
     # DamageMultiplier_1: 0.25, param1: head|body
     # DamageMultiplier_2: 0.01, param1: stone|dirt

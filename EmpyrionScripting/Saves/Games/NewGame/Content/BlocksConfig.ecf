@@ -2212,6 +2212,7 @@
   SizeInBlocks: "1,1,1", display: true
   Mass: 48, type: float, display: true, formatter: Kilogram
   Volume: 31.25, type: float, display: true, formatter: Liter
+  # ForceNoPvEDamage: true
   HitPoints: 250, type: int, display: true
   IsActivateable: true
   IsOxygenTight: false, display: true
@@ -3572,20 +3573,20 @@
   Class: Sleeping
   Material: CarbonSmall
   Shape: Invisible
-  MarketPrice: 35, display: true
+  MarketPrice: 0, display: true
   # Model: @models/Blocks/Terrain/SurvivalTent01Prefab
   DropMeshfile: Entities/Misc/DropContainerNewPrefab
-  SizeInBlocks: "4,2,4", display: false 
+  SizeInBlocks: "1,1,1", display: false 
   Mass: 1.3, type: float, display: true, formatter: Kilogram
   Volume: 1.5, type: float, display: true, formatter: Liter  
   AllowPlacingAt: Terrain, display: true
   Category: Devices
   PickupToToolbar: true
   CanPickup: true
-  
+
   BuffNamesActivate: "Rested", display: StatusEffect
   DebuffNamesActivate: "Hangover", display: EffectiveAgainst
-  
+
   ChildBlocks: "SurvivalTent01, SurvivalTent02, SurvivalTent03"
 }
 
@@ -5284,7 +5285,7 @@
   CPUIn: 1000, type: int, display: true
   HitPoints: 4000, type: int, display: true
   OccupySizeInBlocks: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 
   UnlockCost: 25, display: true
   UnlockLevel: 10, display: true
@@ -5778,6 +5779,7 @@
   IsOxygenTight: true, display: true
   IsIgnoreLC: true
   Info: bkiIonThruster, display: true
+  # ForceNoPvEDamage: true
   HitPoints: 500, type: int, display: true
   ThrusterForce: 60, type: int, display: true, formatter: Newton
   EnergyIn: 60, type: int, display: true, formatter: Watt
@@ -6221,6 +6223,7 @@
   Volume: 8, type: float, display: true, formatter: Liter  
   Mass: 50, type: float, display: true, formatter: Kilogram
   Info: bkiFuelTank, display: true
+  # ForceNoPvEDamage: true
   HitPoints: 250, type: int, display: true
   StackSize: 2000
   RepFac: 20 # RepFacFuelTank
@@ -6265,6 +6268,7 @@
   IsOxygenTight: true, display: true
   IsActivateable: true
   IsIgnoreLC: true
+  # ForceNoPvEDamage: true
   HitPoints: 500, type: int, display: true
   EnergyOut: 875, type: int, display: true, formatter: Watt
   CPUIn: 500, type: int, display: true
@@ -7952,6 +7956,7 @@
   BlockColor: "0,40,0"
   EnergyIn: 10, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
+  # ForceNoPvEDamage: true
   HitPoints: 1250, type: int, display: true
   AllowWander: true
 
@@ -10940,7 +10945,7 @@
   RotSpeed: 120, type: int, display: true
   Zoom: 5, type: float
   RepFac: 20 # RepFacTurret
-  BlastShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
   UpgradeTo: TurretBAFlakT2, display: true
 }
 # Plasma Turret
@@ -11235,7 +11240,7 @@
   MapIcon: map_SurvConstructor
   MapName: ConstructorSurvival
   
-  UnlockCost: 1, display: true
+  UnlockCost: 0, display: true
   UnlockLevel: 1, display: true
   TechTreeNames: Misc
 }
@@ -16736,6 +16741,7 @@
   EnergyIn: 10, type: int, display: true, formatter: Watt
   Mass: 240, type: float, display: true, formatter: Kilogram
   CPUIn: 25, type: int, display: true
+  # ForceNoPvEDamage: true
   HitPoints: 1100, type: int, display: true
   AllowPlacingAt: "SS,GV", display: true
   OccupySizeInBlocks: true     # Problem with placing hull blocks on top (see Mantis 05555)
@@ -17423,7 +17429,7 @@
   DropInventoryEntity: DropContainer
   Place: Free
   Info: bkiFurnace, display: true
-  AllowPlacingAt: Base, display: true
+  AllowPlacingAt: "Base,MS", display: true
   SizeInBlocks: "3,3,3", display: true
   SizeInBlocksLocked: "Base,MS"
   IsActivateable: true
@@ -17434,10 +17440,10 @@
   StackSize: 250
   BlockColor: "110,110,110"
   Category: Devices
-  Mass: 12000, type: float, display: true, formatter: Kilogram
-  Volume: 4320, type: float, display: true, formatter: Liter
+  Mass: 1000, type: float, display: true, formatter: Kilogram
+  Volume: 1, type: float, display: true, formatter: Liter
   EnergyIn: 5000, type: int, display: true, formatter: Watt
-  CPUIn: 20000, type: int, display: true
+  CPUIn: 1, type: int, display: true
   EnergyInIdle: 100, type: int, display: true, formatter: Watt
   EnergyDynamicGroup: Constructor
   HitPoints: 7500, type: int, display: true  
@@ -17855,7 +17861,7 @@
   RotSpeed: 120, type: int, display: true
   Zoom: 5, type: float
   RepFac: 20 # RepFacTurret
-  BlastShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
   UpgradeTo: TurretMSFlakT2, display: true
 }
 { +Block Id: 1147, Name: TurretBaseMinigun         #TurretPlayer BA Minigun
@@ -21979,12 +21985,8 @@
   Temperature: 25, display: false       # Target temperature that device tries to attain 
   TemperatureGain: 30, display: true   # Max temperature that device is able to cool down or heat up
   
-  # MapIcon: map_SurvConstructor
-  # MapName: ConstructorSurvival
-  
-  UnlockCost: 5, display: true
-  UnlockLevel: 3, display: true
-  TechTreeParent: OxygenGeneratorSmall
+
+  UnlockLevel: 1, display: true
   TechTreeNames: Misc
 }
 { +Block Id: 1486, Name: RepairBayCVT2, Ref: RepairBayCV
@@ -22791,7 +22793,7 @@
   SizeInBlocks: "1,1,1", display: true
   SizeInBlocksLocked: "Base,MS"
   HitPoints: 15000, type: int, display: true
-  Mass: 3000, type: float, display: true, formatter: Kilogram
+  Mass: 1000, type: float, display: true, formatter: Kilogram
   CPUIn: 0, type: int, display: false
   ShowUser: NoButCSV             # inverted versions should not be display in H menu but should show up in EAH tool 
 }
@@ -23192,6 +23194,7 @@
   Mass: 890, type: float, display: true, formatter: Kilogram
   Volume: 375, type: float, display: true, formatter: Liter
   EnergyIn: 20, type: int, display: true, formatter: Watt
+  # ForceNoPvEDamage: true
   HitPoints: 750, type: int, display: true
   CPUIn: 100, type: int, display: true
   BlastParticleIndex: 4
@@ -23725,12 +23728,13 @@
   MaxCount: 10, type: int, display: true
   ForceMaxCount: true  
   EnergyIn: 25, type: int, display: true, formatter: Watt
+  # ForceNoPvEDamage: true
   HitPoints: 500, type: int, display: false
   Mass: 160, type: float, display: true, formatter: Kilogram
   Volume: 31.25, type: float, display: true, formatter: Liter
   CPUIn: 100, type: int, display: true
   StackSize: 2000
-  Range: 75, type: int, display: true
+  Range: 1000, type: int, display: true
   Category: Devices
   BlastParticleIndex: 10
   BlastRadius: 4
@@ -24610,7 +24614,8 @@
   SizeInBlocksLocked: "Base,MS"      
   Mass: 600, type: float, display: true, formatter: Kilogram
   Volume: 43, type: float, display: true, formatter: Liter
-  VolumeCapacity: 8000, type: float, display: true, formatter: Liter      
+  # ForceNoPvEDamage: true
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter      
   BlockColor: "110,110,110"
   Info: bkiContainer, display: true
   StackSize: 1000
@@ -24690,7 +24695,7 @@
   CPUIn: 25000, type: int, display: true
   XpFactor: 2
   RepFac: 20 # RepFacTurret
-  ShieldDamagePenFac: 0.50, display: true
+  # ShieldDamagePenFac: 0.50, display: true
   AboveTerrainCheck: false
   MarketPrice: 25000, display: false
   # ShowUser: No
@@ -24858,11 +24863,12 @@
   BlockColor: "62,30,10"
   Info: bkiContainerHarvest, display: true                                      # adapt 
   Mass: 24, type: float, display: true, formatter: Kilogram
-  HitPoints: 500, type: int, display: true
+  HitPoints: 500, type: int, display: false
   Volume: 8, type: float, display: true, formatter: Liter
-  VolumeCapacity: 125, type: float, display: true, formatter: Liter
+  # ForceNoPvEDamage: true
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 25, type: int, display: true  
-  MaxVolumeCapacity: 32000, type: float, display: true, formatter: Liter        # 256 Containers
+  MaxVolumeCapacity: 640000, type: float, display: true, formatter: Liter        # 256 Containers
   EnergyIn: 5, type: int, display: true, formatter: Watt
   AllowPlacingAt: "SS,GV", display: true
   LootList: 54
@@ -24902,9 +24908,10 @@
   Mass: 24, type: float, display: true, formatter: Kilogram
   HitPoints: 500, type: int, display: true
   Volume: 8, type: float, display: true, formatter: Liter
-  VolumeCapacity: 125, type: float, display: true, formatter: Liter
+  # ForceNoPvEDamage: true
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 25, type: int, display: true  
-  MaxVolumeCapacity: 32000, type: float, display: true, formatter: Liter        # 256 Containers
+  MaxVolumeCapacity: 640000, type: float, display: true, formatter: Liter        # 256 Containers
   EnergyIn: 5, type: int, display: true, formatter: Watt
   AllowPlacingAt: "SS,GV", display: true
   BlastParticleIndex: 1
@@ -25837,7 +25844,7 @@
 # # Container Blocks
 { +Block Id: 1769, Name: ContainerMS01Small, Ref: ContainerMS01
   TemplateRoot: ContainerSmallBlocks
-  LootList: 67 # 64 slots
+  LootList: 900 # 64 slots
   AllowPlacingAt: "SS,GV", display: true
   Mass: 8, type: float, display: true, formatter: Kilogram
   VolumeCapacity: 125, type: float, display: true, formatter: Liter 
@@ -28602,8 +28609,8 @@
   Model: @models/Blocks/Turrets/TurretEnemyGreenPrefab
   WeaponItem: TurretEnemyLaserWeaponGreen
   Info: bkiLegacyCorruptor, display: true
-  ShieldDamagePenFac: 0.0, display: false
-  BlastShieldDamagePenFac: 0.125, display: true
+  # ShieldDamagePenFac: 0.0, display: false
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { +Block Name: TurretEnemyOrange            #Tesch Blaster Turret
   Model: @models/Blocks/Turrets/TurretEnemyOrangePrefab
@@ -36019,7 +36026,7 @@
   HitPoints: 6000, type: int, display: true
   OccupySizeInBlocks: true
   Voxelize: false
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 
   UnlockCost: 25, display: true
   UnlockLevel: 15, display: true
@@ -36173,7 +36180,7 @@
   HitPoints: 8000, type: int, display: true
   OccupySizeInBlocks: true
   Voxelize: false
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 
   UnlockCost: 15, display: true
   UnlockLevel: 25, display: true
@@ -36373,7 +36380,7 @@
   HitPoints: 8000, type: int, display: true
   OccupySizeInBlocks: true
   Voxelize: false
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 
   UnlockCost: 25, display: true
   UnlockLevel: 25, display: true
@@ -37408,8 +37415,8 @@
   RotSpeed: 120, type: int, display: true
   Zoom: 5, type: float
   RepFac: 20 # RepFacTurret
-  ShieldDamagePenFac: 0.125, display: true
-  BlastShieldDamagePenFac: 0.125, display: true
+  # ShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretMSFlakRetractT2, Ref: TurretMSFlakT2
   Model: @models/Blocks/Turrets/TurretMSFlakRetractPrefab
@@ -37962,8 +37969,8 @@
   RotSpeed: 120, type: int, display: true
   Zoom: 5, type: float
   RepFac: 20 # RepFacTurret
-  ShieldDamagePenFac: 0.125, display: true
-  BlastShieldDamagePenFac: 0.125, display: true
+  # ShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretBAFlakRetractT2, Ref: TurretBAFlakT2
   Model: @models/Blocks/Turrets/TurretMSFlakRetractPrefab
@@ -38114,7 +38121,7 @@
   RotSpeed: 60, type: int, display: true
   Zoom: 5, type: float
   RepFac: 20 # RepFacTurret
-  ShieldDamagePenFac: 0.25, display: true
+  # ShieldDamagePenFac: 0.25, display: true
 }
 { Block Name: TurretBAPlasmaT3, Ref: TurretBAPositronT3
   Model: @models/Blocks/Turrets/TurretsEnemy/turretIONcannonPrefab
@@ -38126,8 +38133,8 @@
   BlastParticleName: @rg_projectiles/RG_BlastNuke
   BlastRadius: 8
   BlastDamage: 10000
-  ShieldDamagePenFac: 0.0, display: false
-  BlastShieldDamagePenFac: 0.125, display: true
+  # ShieldDamagePenFac: 0.0, display: false
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretBAHeavyBlocks
   Class: TurretManual
@@ -40324,7 +40331,7 @@
   EnergyIn: 400, type: int, display: true, formatter: Watt
   CPUIn: 10000, type: int, display: true
   HitPoints: 20000, type: int, display: true
-  ShieldDamagePenFac: 0.10, display: true
+  # ShieldDamagePenFac: 0.10, display: true
 
   UnlockCost: 20, display: true
   UnlockLevel: 15, display: true
@@ -40661,7 +40668,7 @@
   EnergyIn: 800, type: int, display: true, formatter: Watt
   CPUIn: 17500, type: int, display: true
   HitPoints: 40000, type: int, display: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 }
 { Block Name: WeaponCVRailgunT2V2
   Class: Weapon
@@ -40708,7 +40715,7 @@
   EnergyIn: 800, type: int, display: true, formatter: Watt
   CPUIn: 17500, type: int, display: true
   HitPoints: 30000, type: int, display: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 }
 { Block Name: WeaponCVRocketLauncherT2
   Class: Weapon
@@ -40999,7 +41006,7 @@
   EnergyIn: 1600, type: int, display: true, formatter: Watt
   CPUIn: 32500, type: int, display: true
   HitPoints: 60000, type: int, display: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 }
 { Block Name: WeaponCVRailgunT3V2
   Class: Weapon
@@ -41047,7 +41054,7 @@
   EnergyIn: 1600, type: int, display: true, formatter: Watt
   CPUIn: 32500, type: int, display: true
   HitPoints: 45000, type: int, display: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 }
 { Block Name: WeaponCVPlasmaT3
   Class: Weapon
@@ -41237,7 +41244,7 @@
   EnergyIn: 1600, type: int, display: true, formatter: Watt
   CPUIn: 32500, type: int, display: true
   HitPoints: 45000, type: int, display: true
-  ShieldDamagePenFac: 0.25, display: true
+  # ShieldDamagePenFac: 0.25, display: true
 
   UnlockCost: 30, display: true
   UnlockLevel: 25, display: true
@@ -41294,7 +41301,7 @@
   AmmoType: RailgunSlugCVT2, display: true
   AmmoCapacity: 30, display: true
   ReloadDelay: 7.5, display: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 
   UnlockCost: 20, display: true
   UnlockLevel: 20, display: true
@@ -41386,7 +41393,7 @@
   AmmoCapacity: 10, display: true
   AmmoType: RailgunSlugCVT3, display: true
   ReloadDelay: 10, display: true
-  ShieldDamagePenFac: 0.1, display: true
+  # ShieldDamagePenFac: 0.1, display: true
 
   UnlockCost: 30, display: true
   UnlockLevel: 25, display: true
@@ -45315,7 +45322,7 @@
   BlastParticleName: @reforgedcontent/TurretExplosionLargeRocketRG
   BlastRadius: 7
   BlastDamage: 1750
-  BlastShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretPOIFlakT2, Ref: TurretPOIGatlingT1
   Model: @models/Blocks/Turrets/TurretZiraxSpherical_LaserPrefab
@@ -45333,7 +45340,7 @@
   BlastParticleName: @reforgedcontent/TurretExplosionLargeRocketRG
   BlastRadius: 7
   BlastDamage: 3000
-  BlastShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretPOIArtilleryT2, Ref: TurretPOIGatlingT1
   Model: @models/Blocks/Turrets/TurretZiraxSpherical_PlasmaPrefab
@@ -45482,7 +45489,7 @@
   BlastParticleName: @reforgedcontent/TurretExplosionLargeRocketRG
   BlastRadius: 6
   BlastDamage: 1750
-  BlastShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretPlanetFlakT2, Ref: TurretPlanetGatlingT1
   Model: @models/Blocks/Turrets/TurretZiraxSpherical_LaserPrefab
@@ -45500,7 +45507,7 @@
   BlastParticleName: @reforgedcontent/TurretExplosionLargeRocketRG
   BlastRadius: 7
   BlastDamage: 3000
-  BlastShieldDamagePenFac: 0.125, display: true
+  # BlastShieldDamagePenFac: 0.125, display: true
 }
 { Block Name: TurretPlanetArtilleryT1, Ref: TurretPlanetGatlingT1
   BlockColor: "110,110,110"
@@ -45509,7 +45516,7 @@
   BlastParticleName: @reforgedcontent/TurretExplosionLargeRocketRG
   BlastRadius: 7
   BlastDamage: 3500
-  ShieldDamagePenFac: 0.20, display: true
+  # ShieldDamagePenFac: 0.20, display: true
 }
 { Block Name: TurretPlanetArtilleryT2, Ref: TurretPlanetGatlingT1
   Model: @models/Blocks/Turrets/TurretZiraxSpherical_PlasmaPrefab
@@ -49146,11 +49153,10 @@
   AllowWander: true
   CanPickup: true
   PickupToToolbar: true
+  RemoveOnSI: False
 
-  UnlockCost: 15, display: true
-  UnlockLevel: 5, display: true
+  UnlockLevel: 1, display: true
   TechTreeNames: Misc
-  TechTreeParent: SpawnNewBase
 }
 
 # Small Prototype Micro Jump Drive

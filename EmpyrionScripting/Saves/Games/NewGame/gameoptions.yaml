@@ -1,68 +1,59 @@
-Options:
-- ValidFor:
-  - SP
-  - Survival
-  DecayTime: 0
-  ProtectTime: 0
-  ProtectDelay: 0
-  MaxStructures: 2000
-  AntiGriefDistancePvE: 0
-  AntiGriefDistancePvP: 0
-  AntiGriefOresDistance: 0
-  EnableTrading: Player2System
-  EnableVolumeWeight: true
-  EnableCPUPoints: true
-  AutoMinerDepletion: false
-  GroundedStructureSpawn: false
-  MaxSpawnedEnemies: 60
-  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
-  DiffEscapePodContent: Easy
-  DiffPlayerProgression: Faster
-  DiffDegradationSpeed: Off
-  DiffPlayerBackpackDrop: DropNothing
-  DiffFoodConsumption: Off
-  DiffOxygenConsumption: Off
-  DiffRadiationTemperature: Off
-  DiffAmountOfOre: Rich
-  DiffNumberOfDeposits: Plenty
-  DiffDronePresence: Off
-  DiffDroneBaseAttack: Off
-  DiffBpProdTime: Instant
-- ValidFor:
-  - MP
-  - Survival
-  MaxStructures: 2000
-  AntiGriefDistancePvE: 0
-  AntiGriefDistancePvP: 0
-  AntiGriefOresDistance: 0
-  EnableVolumeWeight: true
-  EnableCPUPoints: true
-  AutoMinerDepletion: false
-  GroundedStructureSpawn: false
-  TurretUndergroundCheck: true
-  MaxSpawnedEnemies: 60
-  DespawnEscapePod: true
-  OriginFactionStart: true
-  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
-  DiffBpProdTime: Instant
-- ValidFor:
-  - SP
-  - Creative
-  DecayTime: 0
-  ProtectTime: 0
-  ProtectDelay: 0
-  MaxStructures: 2000
-  AntiGriefDistancePvE: 0
-  AntiGriefDistancePvP: 0
-  AntiGriefOresDistance: 0
-  EnableTrading: Player2System
-  GroundedStructureSpawn: false
-  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
-- ValidFor:
-  - MP
-  - Creative
-  MaxStructures: 2000
-  AutoMinerDepletion: false
-  TurretUndergroundCheck: true
-  DespawnEscapePod: true
-  CustomPlayerTab: Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812
+# Upload this file to Content/Scenarios/Reforged Eden 2 Beta//gameoptions.yaml
+# If you already have a saved game you need to edit the Saves/Games[Game Name]/gameoptions.yaml as well
+
+Options:   
+  - ValidFor: [ MP, Survival ]
+    DecayTime: 24                     # default value
+    WipeTime: 0                       # default value
+    ProtectTime: 48                   # default value
+    ProtectDelay: 300                 # default value
+    MaxStructures: 2000                # default value
+    AntiGriefDistancePvE: 0
+    AntiGriefDistancePvP: 0
+    AntiGriefOresDistance: 0             
+    AntiGriefOresZone: PvE            # default value  
+    EnableTrading: All                # default value
+    EnableMaxBlockCount: False
+    EnableCPUPoints: True            # default value
+    EnableVolumeWeight: True         # default value
+    AutoMinerDepletion: False
+    EnableUnlockCheckInBPF: True
+    GroundedStructureSpawn: False
+    TurretUndergroundCheck: True   
+    OriginDefault: Neutral            # default value
+    OriginAccessOthers: True          # default value
+    OriginAutoAlliance: True          # default value
+    MaxSpawnedEnemies: 60             # default value
+    DespawnEscapePod: True 
+    RegeneratePOIs: True               
+    FOWTransparency: 0                # default value
+    DSLDistancePlanet: 1200           # default value
+    DSLDistanceSpace: 3000            # default value
+    ForcePvP: False
+    OriginFactionStart: True   
+    CustomPlayerTab: "Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812"
+    RegeneratePOIs: False
+    
+    FriendlyFireInPvP: True           # default value
+    DiffConstrCraftTime: Normal       # default value
+    DiffBpProdTime: Instant            # default value
+### - PLAYER -----------------------------------------------------------------------------------
+    DiffEscapePodContent: Easy                  # Determines the content of your equipment when you start a new game [Easy, Medium, Hard]
+    DiffPlayerProgression: Faster               # Influences the overall player progression speed by earning more or less XP [Faster, Normal, Slower]
+    DiffDegradationSpeed: Off                   # Influences the speed of degradation when using weapons and tools [Off, Low, Normal, High]
+    DiffPlayerBackpackDrop: DropNothing      # To allow switching off the dropping of backpacks on death [DropEverything, DropNothing, DropBagOnly]
+    DiffSpawnLocal: Always                      # To allow switching off the Local Spawn Option on death [Always, PvP, PvE, Never ]
+
+### - LIFE STATS ------------------------------------------------------------------------------- 
+    DiffRadiationTemperature: Normal            # Influences the impact of temperature and radiation on the player [Off, Low, Normal, High]
+    DiffFoodConsumption: Off                    # Influences the speed of oxygen consumption [Off, Low, Normal, High]
+    DiffOxygenConsumption: Low                  # Influences the speed of food consumption [Off, Low, Normal, High]
+
+### - RESOURCES --------------------------------------------------------------------------------        
+    DiffAmountOfOre: Rich                       # Influences the average amount of ore that a deposit contains [Rich, Normal, Poor]
+    DiffNumberOfDeposits: Plenty                # Influences the average number of deposits per planet [Plenty, Normal, Few]
+
+### - ENEMIES ----------------------------------------------------------------------------------    
+    DiffDroneBaseAttack: Normal                 # Influences the frequency of the drone base attacks [Off, Low, Normal, High]
+    DiffDronePresence: Normal                   # Influences the overall number of drones that are present on a planet [Off, Low, Normal, High]
+    DiffAttackStrength: Medium                  # Influences the overall difficulty when attacking enemies [Easy, Medium, Hard]

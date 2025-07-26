@@ -3082,11 +3082,10 @@
     IronOre: 3
   }
 }
-{ +Template Name: MobileAirCon
-  CraftTime: 30
+{ +Template Name: MobileAirCon # @note MobileAirCon-Child Inputs removed,CraftTime: 5
+  CraftTime: 5
   Target: "SuitC,SurvC"
   { Child Inputs
-    IronOre: 2
   }
 }
 { +Template Name: WaterGenerator

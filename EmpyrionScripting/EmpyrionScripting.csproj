@@ -232,8 +232,23 @@
     <Content Include="DefaultCsCompilerConfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="ItemsConfig.ecf" />
     <None Include="packages.config" />
+    <None Include="Saves\Games\NewGame\Content\BlocksConfig.ecf" />
+    <None Include="Saves\Games\NewGame\Content\ItemsConfig.ecf" />
+    <None Include="Saves\Games\NewGame\Content\LootGroups.ecf" />
+    <None Include="Saves\Games\NewGame\Content\Templates.ecf" />
+    <None Include="Saves\Games\NewGame\gameoptions.yaml" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Configuration.json" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\CsCompilerConfiguration.json" />
+    <None Include="Scripts\displayitems.hbs" />
+    <None Include="Scripts\loadammo.hbs" />
+    <None Include="Scripts\poi_deconstruct.hbs" />
+    <None Include="Scripts\poi_recycle.hbs" />
+    <None Include="Scripts\README.md" />
+    <None Include="Scripts\refuel.hbs" />
     <None Include="Scripts\StorageMover.hbs" />
+    <None Include="Scripts\trash.hbs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsCompiler\CsCompiler.csproj">
@@ -249,6 +264,7 @@
       <Name>EmpyrionScripting.Interface</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.dll" "C:\steamcmd\empyrion\Content\Mods\EmpyrionScripting" /Y
