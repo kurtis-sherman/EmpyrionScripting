@@ -2253,7 +2253,7 @@
   SizeInBlocksLocked: "Base,MS"      # scaled small on SV, GV
   Mass: 8, type: float, display: true, formatter: Kilogram
   Volume: 8, type: float, display: true, formatter: Liter
-  VolumeCapacity: 125, type: float, display: true, formatter: Liter       # low value since placed on Base,MS,SS,GV
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter       # low value since placed on Base,MS,SS,GV
   BlockColor: "110,110,110"
   Info: bkiContainer, display: true
   StackSize: 1000  
@@ -3511,8 +3511,8 @@
   SizeInBlocks: "1,2,1", display: true
   SizeInBlocksLocked: "Base,MS"
   Mass: 2500, type: float, display: true, formatter: Kilogram
-  Volume: 2250, type: float, display: true, formatter: Liter    
-  VolumeCapacity: 1200, type: float, display: true, formatter: Liter
+  Volume: 2500, type: float, display: true, formatter: Liter    
+  VolumeCapacity: 2500, type: float, display: true, formatter: Liter
   HitPoints: 1000, type: int, display: true
   StackSize: 500
   Category: Devices
@@ -5094,7 +5094,7 @@
   SizeInBlocks: "1,1,1", display: true
   Volume: 31.25, type: float, display: true, formatter: Liter
   Mass: 24, type: float, display: true, formatter: Kilogram
-  VolumeCapacity: 125, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 5, type: int, display: true  
   IsActivateable: true
   IsActivateableInCP: true
@@ -21332,9 +21332,9 @@
   SizeInBlocks: "1,1,2", display: true
   Category: Devices
   Mass: 150, type: float, display: true, formatter: Kilogram
-  Volume: 62.5, type: float, display: true, formatter: Liter
+  Volume: 2500, type: float, display: true, formatter: Liter
   StackSize: 1000
-  VolumeCapacity: 400, type: float, display: true, formatter: Liter
+  VolumeCapacity: 2500, type: float, display: true, formatter: Liter
   HitPoints: 500, type: int, display: true
   CPUIn: 200, type: int, display: true
   BlastParticleName: @rg_projectiles/RG_BlastPlasmaRedL1
@@ -24751,7 +24751,7 @@
   Volume: 40, type: float, display: true, formatter: Liter
   StackSize: 1000
   RepFac: 22 # RepFacContainer
-  VolumeCapacity: 8000, type: float, display: true, formatter: Liter  
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter  
   MaxVolumeCapacity: 640000, type: float, display: true, formatter: Liter     # 40 Containers
   Info: bkiContainerController, display: true                                      # adapt 
   ShowBlockName: true
@@ -24823,9 +24823,9 @@
   MarketPrice: 265, display: true
   HitPoints: 500, type: int, display: true
   StackSize: 2000
-  VolumeCapacity: 125, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 25, type: int, display: true  
-  MaxVolumeCapacity: 64000, type: float, display: true, formatter: Liter        # 256 Containers
+  MaxVolumeCapacity: 640000, type: float, display: true, formatter: Liter        # 256 Containers
   EnergyIn: 5, type: int, display: true, formatter: Watt
   AllowPlacingAt: "SS,GV", display: true
   
@@ -24888,7 +24888,7 @@
   Info: bkiContainerHarvest, display: true                                      # adapt 
   EnergyIn: 40, type: int, display: true, formatter: Watt
   AllowPlacingAt: "MS", display: true
-  MaxVolumeCapacity: 320000, type: float, display: true, formatter: Liter
+  MaxVolumeCapacity: 640000, type: float, display: true, formatter: Liter
   LootList: 48
   
   UnlockCost: 20, display: true
@@ -24936,7 +24936,7 @@
   BlastParticleIndex: 1
   BlastRadius: 5
   BlastDamage: 3300
-  MaxVolumeCapacity: 320000, type: float, display: true, formatter: Liter
+  MaxVolumeCapacity: 640000, type: float, display: true, formatter: Liter
   LootList: 70
   
   UnlockCost: 7, display: true
@@ -25346,7 +25346,7 @@
   Model: @models/Blocks/Mothership/CargoBoxPrefab
   Mass: 125, type: float, display: true, formatter: Kilogram
   HitPoints: 750, type: int, display: true
-  VolumeCapacity: 8000, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 10, type: int, display: true  
   TemplateRoot: ContainerLargeBlocks   
   AllowPlacingAt: "Base,MS", display: true
@@ -53742,7 +53742,7 @@
   HitPoints: 24000, type: int, display: true 
   Mass: 40000, type: float, display: true, formatter: Kilogram  #recalculate
   Volume: 1500000, type: float, display: true, formatter: Liter
-  VolumeCapacity: 10000, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 20000, type: int, display: true
   
   EnergyIn: 250, type: int, display: true, formatter: Watt  
@@ -55810,7 +55810,7 @@
   SizeInBlocksLocked: "Base,MS"      
   Mass: 1000, type: float, display: true, formatter: Kilogram
   Volume: 1500000, type: float, display: true, formatter: Liter
-  VolumeCapacity: 320000, type: float, display: true, formatter: Liter      
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter      
   BlockColor: "110,110,110"
   Info: Eden_CargoContainerReinforcedSinfo, display: true
   StackSize: 1000
