@@ -15970,7 +15970,7 @@
   CPUIn: 100, type: int, display: true
   Mass: 6000, type: float, display: true, formatter: Kilogram
   HitPoints: 1625, type: int, display: true
-  FuelCapacity: 20000, type: int, display: true
+  FuelCapacity: 40000, type: int, display: true
   BlastParticleName: @rg_projectiles/RG_BlastPlasmaCloud
   BlastParticleIndex: 0
   BlastRadius: 5
@@ -19616,8 +19616,8 @@
   HitPoints: 1500, type: int, display: true
   Mass: 3520, type: float, display: true, formatter: Kilogram
   Volume: 800, type: float, display: true, formatter: Liter
-  Range: 4000, type: int, display: true
-  RangeSpace: 12000, type: int, display: true
+  Range: 50000, type: int, display: true
+  RangeSpace: 50000, type: int, display: true
   CPUIn: 5000, type: int, display: true
   TurretTargetIgnore: true
   Category: Devices
@@ -23023,8 +23023,8 @@
   HitPoints: 600, type: int, display: true
   Mass: 100, type: float, display: true, formatter: Kilogram
   Volume: 93.75, type: float, display: true, formatter: Liter
-  Range: 2000, type: int, display: true
-  RangeSpace: 8000, type: int, display: true
+  Range: 50000, type: int, display: true
+  RangeSpace: 50000, type: int, display: true
   CPUIn: 100, type: int, display: true
   Category: Devices
   
@@ -23734,7 +23734,7 @@
   Volume: 31.25, type: float, display: true, formatter: Liter
   CPUIn: 100, type: int, display: true
   StackSize: 2000
-  Range: 1000, type: int, display: true
+  Range: 500, type: int, display: true
   Category: Devices
   BlastParticleIndex: 10
   BlastRadius: 4
@@ -42644,8 +42644,8 @@
   HitPoints: 4000, type: int, display: true
   Mass: 3000, type: float, display: true, formatter: Kilogram
   Volume: 2880, type: float, display: true, formatter: Liter
-  Range: 8000, type: int, display: true
-  RangeSpace: 25000, type: int, display: true
+  Range: 75000, type: int, display: true
+  RangeSpace: 75000, type: int, display: true
   CPUIn: 7500, type: int, display: true
   Category: Devices
   
@@ -42684,8 +42684,8 @@
   HitPoints: 15000, type: int, display: true
   Mass: 6000, type: float, display: true, formatter: Kilogram
   Volume: 8000, type: float, display: true, formatter: Liter
-  Range: 16000, type: int, display: true
-  RangeSpace: 50000, type: int, display: true
+  Range: 100000, type: int, display: true
+  RangeSpace: 100000, type: int, display: true
   CPUIn: 12500, type: int, display: true
   Category: Devices
   # RepairToTemplate: false, display: true
@@ -43318,7 +43318,7 @@
   Volume: 31.25, type: float, display: true, formatter: Liter
   CPUIn: 150, type: int, display: true
   StackSize: 2000
-  Range: 100, type: int, display: true
+  Range: 750, type: int, display: true
   Category: Devices
   BlastParticleIndex: 10
   BlastRadius: 4
@@ -43357,7 +43357,7 @@
   Volume: 31.25, type: float, display: true, formatter: Liter
   CPUIn: 225, type: int, display: true
   StackSize: 2000
-  Range: 150, type: int, display: true
+  Range: 1000, type: int, display: true
   Category: Devices
   BlastParticleIndex: 10
   BlastRadius: 4
