@@ -42482,7 +42482,7 @@
   Mass: 250, type: float, display: true, formatter: Kilogram
   HitPoints: 12500, type: int, display: true
   ExplosionHardness: 2
-  IsAccessible: false, type: bool
+  IsAccessible: true, type: bool
   IsLockable: true
   Category: Devices
   VolumeCapacity: 800, type: float, display: true, formatter: Liter
