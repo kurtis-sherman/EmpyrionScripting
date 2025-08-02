@@ -14,17 +14,23 @@
 {{~#devices @root.E.S (concat @root.Data.DN '_Display')}}
 {{~#each .}}
 {{~settextblock .}}
+<line-height=5.0>
+<size=6>
+<size=6>
+<size=6>
 <align=left>
-<line-height=2.5><br><br>
-<size=6>CARGO  {{@root.Data.Vol}} k {{datetime}}<br><br>
-<size=16>━━━━━━<br>
-
-<color=yellow><size=4><i><b>{{@root.Data.DN}}</b></i>
-<line-height=1><color=white><size=5>
+<size=6><pos=30>CARGO  {{@root.Data.Vol}} k {{datetime}}
+<size=6>
+<line-height=1>
+<size=16><pos=30>━━━━━━━━━━━━━━━━
+<line-height=1>
+<size=0.5>
+<pos=30><color=yellow><size=4><i><b>{{@root.Data.DN}}</b></i>
+<line-height=5>
+<color=white><size=5><pos=20>
 {{#items @root.E.S @root.Data.CN}}
-  <line-height=5>{{Count}}x {{Name}}
+<pos=30><line-height=5>{{Count}}x {{Name}}
 {{/items}}
-</color>
 {{~/settextblock}}
 {{~/each}}
 {{~/devices}}
