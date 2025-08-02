@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/EmpyrionScripting/Saves/Games/NewGame/Mods/IdIconMapping.json
+/EmpyrionScripting/Saves/Games/NewGame/Mods/NameIdMapping.json

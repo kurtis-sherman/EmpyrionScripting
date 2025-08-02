@@ -1,0 +1,32 @@
+﻿{{~#devices E.S. '*Box-*'}}
+{{~#each .}}
+{{~set 'CN' CustomName}}
+{{~set 'Vol' 0}}
+
+{{~#split CustomName '-'}}
+{{~set 'DN' .1}}
+{{~/split}}
+
+{{~#math @root.Data.Vol '+' (calc ./Device.VolumeCapacity '/' 1000)}}
+{{~set 'Vol' .}}
+{{~/math}}
+
+{{~#devices @root.E.S (concat @root.Data.DN '_Display')}}
+{{~#each .}}
+{{~settextblock .}}
+<align=left>
+<line-height=2.5><br><br>
+<size=6>CARGO  {{@root.Data.Vol}} k {{datetime}}<br><br>
+<size=16>━━━━━━<br>
+
+<color=yellow><size=4><i><b>{{@root.Data.DN}}</b></i>
+<line-height=1><color=white><size=5>
+{{#items @root.E.S @root.Data.CN}}
+  <line-height=5>{{Count}}x {{Name}}
+{{/items}}
+</color>
+{{~/settextblock}}
+{{~/each}}
+{{~/devices}}
+{{~/each}}
+{{~/devices}}
