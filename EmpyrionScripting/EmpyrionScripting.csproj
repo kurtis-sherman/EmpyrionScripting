@@ -211,6 +211,8 @@
     <Compile Include="DataWrapper\StructureData.cs" />
     <Compile Include="DataWrapper\StructureTank.cs" />
     <Compile Include="SaveGamesScripts.cs" />
+    <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CargoTeleporter.cs" />
+    <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Examples.cs" />
     <Compile Include="ScriptExecQueue.cs" />
     <Compile Include="ScriptInfo.cs" />
     <Compile Include="Scripts\EntityLooter.cs" />
@@ -234,10 +236,11 @@
     </Content>
     <None Include="ItemsConfig.ecf" />
     <None Include="packages.config" />
-    <None Include="Saves\Games\NewGame\Content\BlocksConfig.ecf" />
-    <None Include="Saves\Games\NewGame\Content\ItemsConfig.ecf" />
-    <None Include="Saves\Games\NewGame\Content\LootGroups.ecf" />
-    <None Include="Saves\Games\NewGame\Content\Templates.ecf" />
+    <None Include="Saves\Games\NewGame\Content\Configuration\BlocksConfig.ecf" />
+    <None Include="Saves\Games\NewGame\Content\Configuration\Containers.ecf" />
+    <None Include="Saves\Games\NewGame\Content\Configuration\ItemsConfig.ecf" />
+    <None Include="Saves\Games\NewGame\Content\Configuration\LootGroups.ecf" />
+    <None Include="Saves\Games\NewGame\Content\Configuration\Templates.ecf" />
     <None Include="Saves\Games\NewGame\gameoptions.yaml" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Configuration.json" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\CsCompilerConfiguration.json" />
@@ -247,6 +250,7 @@
     <None Include="Scripts\poi_recycle.hbs" />
     <None Include="Scripts\README.md" />
     <None Include="Scripts\refuel.hbs" />
+    <None Include="Scripts\shipdamage.hbs" />
     <None Include="Scripts\StorageMover.hbs" />
     <None Include="Scripts\trash.hbs" />
   </ItemGroup>

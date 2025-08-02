@@ -10,6 +10,50 @@ namespace EcfParser.UnitTests
     public class ParseTests
     {
         [TestMethod]
+        public void ATestReadAllEcfFilesWithContainersAndLootGroups()
+        {
+
+            var configDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\EmpyrionScripting\Saves\Games\NewGame\Content\Configuration"
+);
+
+            if (!Directory.Exists(configDir)) return;
+
+            EcfFile mergeAll = null;
+
+            Directory.GetFiles(configDir, "*.ecf")
+                .ToList()
+                .ForEach(F =>
+                {
+                    if (F.IndexOf("Containers.ecf") > 0)
+                    {
+                        var test = 1;
+                    }
+
+                    try
+                    {
+                        var ecf = EcfParser.Parse.Deserialize(File.ReadAllLines(F));
+                        // The ecf file has parsed the container.ecf file correctly at this point
+
+                        if (mergeAll == null) mergeAll = ecf;
+                        else mergeAll.MergeWith(ecf);
+                    }
+                    catch (Exception error)
+                    {
+                        throw new Exception(F, error);
+                    }
+                });
+
+            var blockById = mergeAll.Blocks.
+                EcfBlocksToDictionary(
+                    B => (B.Name == "Block" || B.Name == "Item") && B.Attr.Any(A => A.Name == "Id"),
+                    B => B.Attr.FirstOrDefault(a => a.Name == "Id")?.Value);
+
+            var b1367 = blockById[1367];
+            var b541 = blockById[541];
+            // get the attribute 
+        }
+
+        [TestMethod]
         public void ReadBlockMapping()
         {
             var result = EcfParser.Parse.ReadBlockMapping(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Data\blocksmap.dat"));

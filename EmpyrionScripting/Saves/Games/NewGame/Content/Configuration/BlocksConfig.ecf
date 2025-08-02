@@ -8598,7 +8598,7 @@
   Info: bkiFridge, display: true
   Category: Devices
   TemplateRoot: FridgeBlocks
-  VolumeCapacity: 4500, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   CPUIn: 25, type: int, display: true  
   EnergyIn: 15, type: int, display: true, formatter: Watt
   RepFac: 22 # RepFacContainer
@@ -8609,7 +8609,7 @@
 }
 { +Block Id: 584, Name: FridgeMS, Ref: FridgeMS02
   Model: @models/Blocks/Mothership/FridgeT1Prefab
-  VolumeCapacity: 2250, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   EnergyIn: 10, type: int, display: true, formatter: Watt
 }
 { Block Id: 585, Name: RockGreySmall01
@@ -19378,7 +19378,7 @@
 # no damage states yet 
 { +Block Id: 1284, Name: Freezer, Ref: FridgeMS02
   Model: @models2/Entities/Decorations/LaboratoryPack/FreezerPrefab
-  VolumeCapacity: 1750, type: float, display: true, formatter: Liter
+  VolumeCapacity: 640000, type: float, display: true, formatter: Liter
   EnergyIn: 5, type: int, display: true, formatter: Watt
 }
 { +Block Id: 1285, Name: Level5FreezerOpened, Ref: DecoTemplate

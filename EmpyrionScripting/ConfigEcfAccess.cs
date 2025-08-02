@@ -22,6 +22,8 @@ namespace EmpyrionScripting
         public EcfFile TokenConfig_Ecf { get; set; } = new EcfFile();
         public EcfFile Configuration_Ecf { get; set; } = new EcfFile();
         public EcfFile Flat_Config_Ecf { get; set; } = new EcfFile();
+        public EcfFile Containers_Ecf { get; set; } = new EcfFile();
+        public EcfFile LootGroups_Ecf { get; set; } = new EcfFile();
         public IReadOnlyDictionary<int, EcfBlock> ConfigBlockById { get; set; } = new Dictionary<int, EcfBlock>();
         public IReadOnlyDictionary<string, EcfBlock> ConfigBlockByName { get; set; } = new Dictionary<string, EcfBlock>();
         public IReadOnlyDictionary<int, EcfBlock> TokenById { get; set; } = new Dictionary<int, EcfBlock>();
@@ -239,6 +241,12 @@ namespace EmpyrionScripting
 
             try { Configuration_Ecf.MergeWith(ItemsConfig_Ecf); }
             catch (Exception error) { Log($"EmpyrionScripting MergeWith: {error}", LogLevel.Error); }
+
+            try { Configuration_Ecf.MergeWith(Containers_Ecf); }
+            catch (Exception error) { Log($"EmpyrionScripting MergeWith: {error}", LogLevel.Error); }
+
+            try { Configuration_Ecf.MergeWith(LootGroups_Ecf); }
+            catch (Exception error) { Log($"EmpyrionScripting MergeWith: {error}", LogLevel.Error); }
         }
 
         public void ReadEcfFiles()
@@ -247,6 +255,8 @@ namespace EmpyrionScripting
             BlocksConfig_Ecf    = ReadEcf("BlocksConfig.ecf", true,  B => { });
             ItemsConfig_Ecf     = ReadEcf("ItemsConfig.ecf",  true,  B => { });
             TokenConfig_Ecf     = ReadEcf("TokenConfig.ecf",  false, B => { });
+            Containers_Ecf      = ReadEcf("Containers.ecf", false, B => { });
+            LootGroups_Ecf = ReadEcf("LootGroups.ecf", false, B => { });
         }
 
         public void ReadBlockMappingFile(string blockMappingFile, IModApi modApi)

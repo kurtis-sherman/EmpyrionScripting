@@ -6,7 +6,7 @@ namespace EcfParser
     {
         public string Name { get; set; }
         public List<EcfAttribute> Attr { get; set; }
-        public IDictionary<string, EcfBlock> Childs { get; set; }
+        public IDictionary<string, EcfBlock> Childs { get; set; } = new Dictionary<string, EcfBlock>();
 
         /// <summary>
         /// Flache Liste der gefunden Attribute und deren primären Werte
