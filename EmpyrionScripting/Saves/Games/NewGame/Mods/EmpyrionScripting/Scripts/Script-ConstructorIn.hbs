@@ -1,0 +1,15 @@
+{{! Name this LCD "Script:ConstructorIn@5" }}
+{{! Name the projector "ConstructorIn@5" }}
+{{~set 'CN' 'A[c][66ff99] Constructor in'}}
+{{~set 'Vol' 0}}
+{{~#items E.S @root.Data.CN}}{{! No items ids to change in this script }}
+{{~#math @root.Data.Vol '+' (calc (configattr Id 'Volume') '*' Count)}}
+{{~set 'Vol' .}}
+{{~/math}}
+{{~/items}}
+{{fontsize 5}}
+<color=yellow>Container: {{@root.Data.CN}}
+<color=white>Total Volume: {{@root.Data.Vol}}
+{{#items E.S @root.Data.CN}}
+    - [{{format Id '{0,4}'}}]:{{format Count '{0,5}'}} {{i18n Id}}
+{{/items}}

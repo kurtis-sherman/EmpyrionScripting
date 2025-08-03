@@ -1,0 +1,28 @@
+{{! Name this LCD "Script:Puller_Raw1@5" }}
+{{! Name the projector "Puller_Raw1@5" }}
+{{~set 'CN1' 'A [c][ff6600]RAW MATS 1'}}
+{{~set 'CNA' 'A [c][ff6600]RAW MATS*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{#test Id in '4321,4323,4326-4329,4333,4360,4661,4324,4322,5105,5109,5103,7514,7515,4445,4428,4418,4385,4384,4383'}}
+{{move this @root.E.S @root.Data.CNA}}
+{{/move}}
+{{/test}}
+{{#test Id in  @Ids.EdenComponents}}
+{{move this @root.E.S @root.Data.CNA}}
+{{/move}}
+{{/test}}
+{{/items}}
+{{~#items E.S @root.Data.CN1}}{{! This is the display output portion for CN1 }}
+{{~#math @root.Data.Vol '+' (calc (configattr Id 'Volume') '*' Count)}}
+{{~set 'Vol' .}}
+{{~/math}}
+{{~/items}}
+{{fontsize 5}}
+<color=yellow>
+Container: {{@root.Data.CN1}}
+<color=white>
+Total Volume: {{@root.Data.Vol}}
+{{#items E.S @root.Data.CN1}}
+- [{{format Id '{0,4}'}}]:{{format Count '{0,5}'}} {{i18n Id}}
+{{/items}}

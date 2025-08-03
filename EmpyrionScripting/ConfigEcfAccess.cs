@@ -13,7 +13,7 @@ namespace EmpyrionScripting
 {
     public class ConfigEcfAccess : IConfigEcfAccess
     {
-        public IReadOnlyDictionary<string, int> BlockIdMapping { get; set; }
+        public IReadOnlyDictionary<string, int> BlockIdMapping { get; set; } = new Dictionary<string, int>();
         public IReadOnlyDictionary<int, string> IdBlockMapping { get; set; }
 
         public EcfFile Templates_Ecf { get; private set; }
@@ -76,7 +76,7 @@ namespace EmpyrionScripting
             {
                 if (!File.Exists(nameIdMappingFile) || (DateTime.Now - File.GetLastWriteTime(nameIdMappingFile)) > new TimeSpan(1, 0, 0))
                 {
-                    var map = BlockIdMapping.ToDictionary(b => b.Key, b => b.Value);
+                    var map = BlockIdMapping?.ToDictionary(b => b.Key, b => b.Value);
 
                     TokenById
                         .ForEach(block => {
@@ -137,16 +137,19 @@ namespace EmpyrionScripting
                       try
                       {
                           int pickupTargetId = 0;
-                          var withPickupTarget = B.Value.Values.TryGetValue("PickupTarget", out var pickupTarget) && BlockIdMapping.TryGetValue(pickupTarget.ToString(), out pickupTargetId);
+                          var withPickupTarget = B.Value.Values.TryGetValue("PickupTarget", out var pickupTarget) && BlockIdMapping?.TryGetValue(pickupTarget.ToString(), out pickupTargetId) == true;
 
                           var childDropOnHarvest = B.Value.Childs?.FirstOrDefault(c => c.Key == "Child DropOnHarvest");
                           var dropOnHarvestItem  = childDropOnHarvest?.Value?.Attr.FirstOrDefault(a => a.Name == "Item").Value?.ToString() ?? string.Empty;
+                          var dropOnHarvestId = BlockIdMapping?.TryGetValue(dropOnHarvestItem, out int harvestItemId) == true ? harvestItemId : 0;
                           var dropOnHarvestCount = int.TryParse(childDropOnHarvest?.Value?.Attr.FirstOrDefault(a => a.Name == "Count")?.Value?.ToString(), out var count) ? count : 0;
 
                           var childCropsGrown   = B.Value.Childs?.FirstOrDefault(c => c.Key == "Child CropsGrown").Value?.Attr;
                           var childOnHarvest    = childCropsGrown?.FirstOrDefault(a => a.Name == "OnHarvest")?.Value?.ToString() ?? string.Empty;
                           var childOnDead       = childCropsGrown?.FirstOrDefault(a => a.Name == "OnDeath"  )?.Value?.ToString() ?? string.Empty;
-                          if (BlockIdMapping.TryGetValue(childOnDead, out int childOnDeadId) && !deadPlants.ContainsKey(childOnDeadId)) deadPlants.Add(childOnDeadId, new HarvestInfo { Id = childOnDeadId });
+                          var childOnHarvestId = BlockIdMapping?.TryGetValue(childOnHarvest, out int harvestItemChildId) == true ? harvestItemChildId : 0;
+
+                          if (BlockIdMapping != null && deadPlants != null && BlockIdMapping.TryGetValue(childOnDead, out int childOnDeadId) && !deadPlants.ContainsKey(childOnDeadId)) deadPlants.Add(childOnDeadId, new HarvestInfo { Id = childOnDeadId });
 
                           logLevel = LogLevel.Error;
 
@@ -154,10 +157,10 @@ namespace EmpyrionScripting
                           {
                               Id                    = B.Key,
                               Name                  = B.Value.Values.TryGetValue("Name", out var name) ? name.ToString() : null,
-                              DropOnHarvestId       = BlockIdMapping.TryGetValue(dropOnHarvestItem, out int harvestItemId) ? harvestItemId : 0,
+                              DropOnHarvestId       = dropOnHarvestId,
                               DropOnHarvestItem     = dropOnHarvestItem,
                               DropOnHarvestCount    = dropOnHarvestCount,
-                              ChildOnHarvestId      = BlockIdMapping.TryGetValue(childOnHarvest, out int harvestItemChildId) ? harvestItemChildId : 0,
+                              ChildOnHarvestId      = childOnHarvestId,
                               ChildOnHarvestItem    = childOnHarvest,
                               PickupTargetId        = withPickupTarget ? pickupTargetId : 0,
                           };

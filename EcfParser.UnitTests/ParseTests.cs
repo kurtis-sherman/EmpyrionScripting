@@ -13,27 +13,21 @@ namespace EcfParser.UnitTests
         public void ATestReadAllEcfFilesWithContainersAndLootGroups()
         {
 
-            var configDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\EmpyrionScripting\Saves\Games\NewGame\Content\Configuration"
-);
-
+            var configDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\EmpyrionScripting\Saves\Games\NewGame\Content\Configuration");
             if (!Directory.Exists(configDir)) return;
-
             EcfFile mergeAll = null;
-
             Directory.GetFiles(configDir, "*.ecf")
                 .ToList()
                 .ForEach(F =>
                 {
-                    if (F.IndexOf("Containers.ecf") > 0)
-                    {
-                        var test = 1;
-                    }
+                    //if (F.IndexOf("Containers.ecf") > 0)
+                    //{
+                    //    var test = 1;
+                    //}
 
                     try
                     {
                         var ecf = EcfParser.Parse.Deserialize(File.ReadAllLines(F));
-                        // The ecf file has parsed the container.ecf file correctly at this point
-
                         if (mergeAll == null) mergeAll = ecf;
                         else mergeAll.MergeWith(ecf);
                     }

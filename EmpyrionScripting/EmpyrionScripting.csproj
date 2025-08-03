@@ -215,8 +215,8 @@
     <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Examples.cs" />
     <Compile Include="ScriptExecQueue.cs" />
     <Compile Include="ScriptInfo.cs" />
-    <Compile Include="Scripts\EntityLooter.cs" />
-    <Compile Include="Scripts\WIP.cs" />
+    <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\EntityLooter.cs" />
+    <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\WIP.cs" />
     <Compile Include="SerializeHelper.cs" />
     <Compile Include="SqlDbAccess.cs" />
     <Compile Include="WeakDeviceLock.cs" />
@@ -244,15 +244,26 @@
     <None Include="Saves\Games\NewGame\gameoptions.yaml" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Configuration.json" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\CsCompilerConfiguration.json" />
-    <None Include="Scripts\displayitems.hbs" />
-    <None Include="Scripts\loadammo.hbs" />
-    <None Include="Scripts\poi_deconstruct.hbs" />
-    <None Include="Scripts\poi_recycle.hbs" />
-    <None Include="Scripts\README.md" />
-    <None Include="Scripts\refuel.hbs" />
-    <None Include="Scripts\shipdamage.hbs" />
-    <None Include="Scripts\StorageMover.hbs" />
-    <None Include="Scripts\trash.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-ConstructorIn.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_Raw1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates5.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates4.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates3.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates2.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Dump2.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Dump1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-CargoIn.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\boxdisplaylcd.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\displayitems.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\loadammo.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\poi_deconstruct.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\poi_recycle.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\README.md" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\refuel.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\shipdamage.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\StorageMover.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\trash.hbs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsCompiler\CsCompiler.csproj">
@@ -268,7 +279,9 @@
       <Name>EmpyrionScripting.Interface</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.dll" "C:\steamcmd\empyrion\Content\Mods\EmpyrionScripting" /Y

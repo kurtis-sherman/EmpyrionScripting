@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using EcfParser;
 using Eleon.Modding;
 using EmpyrionScripting.CustomHelpers;
 using EmpyrionScripting.DataWrapper;
@@ -13,6 +7,15 @@ using EmpyrionScripting.Internal.Interface;
 using HandlebarsDotNet;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using NSubstitute.Core;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace EmpyrionScripting.UnitTests
 {
@@ -24,6 +27,112 @@ namespace EmpyrionScripting.UnitTests
             public int Id { get; set; }
             public int Count { get; set; }
             public string Name { get; set; }
+        }
+
+        [TestMethod]
+        public void ATestMethodRecycle()
+        {
+            // Load config files as in ATestReadAllEcfFilesWithContainersAndLootGroups
+            var scenarioDirUnitTests = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\EmpyrionScripting\Saves\Games\NewGame\Content");
+            var configDirWithUnitTestFiles = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\EmpyrionScripting\Saves\Games\NewGame\Content\Configuration");
+            var modDirWithUnitTestFiles = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\EmpyrionScripting\Saves\Games\NewGame\Mods");
+
+            var config = new ConfigEcfAccess();
+            config.ContentPath = configDirWithUnitTestFiles; // Set config.ContentPath to our test dir so it can locate files
+            EmpyrionScripting.SaveGameModPath = modDirWithUnitTestFiles; // Set the SaveGameModPath to parent of config directory
+
+            config.ReadConfigEcf($"{scenarioDirUnitTests}", null, null, null);
+
+            // Setup entity and structure mocks
+            var storeToEntityCV = Substitute.For<IEntityData>();
+            storeToEntityCV.Id.Returns(123456);
+            storeToEntityCV.Name.Returns("StoreToCVName");
+            storeToEntityCV.EntityType.Returns(EntityType.CV);
+
+            var storeToStructure = Substitute.For<IStructureData>();
+            storeToStructure.E.Returns(storeToEntityCV);
+            storeToStructure.AllCustomDeviceNames.Returns(new[] { "LootBoxA", "LootBoxB", "LootBoxC" });// Mock AllCustomDeviceNames to return a known set of device names
+
+            var storeToiStructure = Substitute.For<IStructure>();
+            storeToiStructure.MinPos.Returns(new VectorInt3(0, 0, 0));
+            storeToiStructure.MaxPos.Returns(new VectorInt3(0, 0, 0));
+            storeToiStructure.GetBlock(Arg.Any<VectorInt3>()).Returns(Substitute.For<IBlock>());
+            storeToStructure.GetCurrent().Returns(storeToiStructure);
+            storeToEntityCV.S.Returns(storeToStructure);
+
+            // Target recycle entity and structure mocks
+            var recycleEntityCV = Substitute.For<IEntityData>();
+            recycleEntityCV.Id.Returns(654321);
+            recycleEntityCV.Name.Returns("StoreToCVName");
+            recycleEntityCV.EntityType.Returns(EntityType.CV);
+
+            var recycleStructure = Substitute.For<IStructureData>();
+            recycleStructure.E.Returns(recycleEntityCV);
+
+            var recycleiStructure = Substitute.For<IStructure>();
+            recycleiStructure.MinPos.Returns(new VectorInt3(0, 0, 0));
+            recycleiStructure.MaxPos.Returns(new VectorInt3(0, 0, 0));
+            recycleStructure.GetCurrent().Returns(recycleiStructure);
+            recycleEntityCV.S.Returns(recycleStructure);
+            var corePositions = new List<VectorInt3> { new VectorInt3(1, 1, 1) };
+            recycleEntityCV.S.GetCurrent().GetDevicePositions(Arg.Any<string>()).Returns(corePositions);
+
+
+
+            // The method convert blocks calls like this:
+            //var corePos = corePosList.First();
+            //var core = E.S.GetCurrent().GetBlock(corePos);
+            //core.Get(out int coreBlockType, out _, out _, out _);
+            // Setup the core.Get method to set the first out parameter to 588 to allow the core type to be recycled
+            var mockCoreBlock = Substitute.For<IBlock>();
+            mockCoreBlock
+                .When(x => x.Get(out Arg.Any<int>(), out _, out _, out _))
+                .Do(callInfo => {
+                    callInfo[0] = 558; // Set the first out parameter
+                    callInfo[1] = 0;
+                    callInfo[2] = 0;
+                    callInfo[3] = true;
+                });
+            recycleiStructure.GetBlock(corePositions.First()).Returns(mockCoreBlock);
+            recycleEntityCV.S.GetCurrent().GetBlock(corePositions.First()).Returns(mockCoreBlock);
+
+            // Setup root data
+            var rootRecycleCV = Substitute.For<IScriptRootData>();
+            rootRecycleCV.E.Returns(recycleEntityCV); // Return a mocked target CV/Base to recycle
+            rootRecycleCV.DeviceLockAllowed.Returns(true);
+            rootRecycleCV.ScriptWithinMainThread = true;
+            rootRecycleCV.ScriptId = "5555";
+            rootRecycleCV.GetPersistendData().Returns(new ConcurrentDictionary<string, object>()); // Ensure GetPersistendData returns a new ConcurrentDictionary<string, object>
+
+            var rootStoreToCV = Substitute.For<IScriptRootData>();
+            rootStoreToCV.E.Returns(storeToEntityCV); // Return a mocked target CV/Base to recycle
+            rootStoreToCV.DeviceLockAllowed.Returns(true);
+            rootStoreToCV.ScriptWithinMainThread = true;
+            rootStoreToCV.ScriptId = "7777";
+            rootStoreToCV.GetPersistendData().Returns(new ConcurrentDictionary<string, object>()); // Ensure GetPersistendData returns a new ConcurrentDictionary<string, object>
+
+            // Setup playfield
+            var lcdMod = new EmpyrionScripting();
+            var pf = new PlayfieldScriptData(lcdMod) { Playfield = Substitute.For<IPlayfield>() };
+            pf.Playfield.IsStructureDeviceLocked(Arg.Any<int>(), Arg.Any<VectorInt3>()).ReturnsForAnyArgs(false);
+
+            var playfieldScriptDataMock = Substitute.For<PlayfieldScriptData>(lcdMod); // Setup PlayfieldScriptData mock
+            playfieldScriptDataMock.EntityExclusiveAccess = new ConcurrentDictionary<int, IExclusiveAccess>();
+            rootStoreToCV.GetPlayfieldScriptData().Returns(playfieldScriptDataMock); // Setup rootRecycleCV to return the mock
+
+            var output = new StringWriter();
+            var options = Activator.CreateInstance(typeof(HelperOptions), System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, new object[] {
+                new Action<TextWriter, object>((w, o) => { output.Write("T"); }),
+                new Action<TextWriter, object>((w, o) => { output.Write("I"); })
+            }, null) as HelperOptions;
+
+
+            // Execute the recycle helper
+            ConveyorHelpers.RecycleHelper(output, rootStoreToCV, options, rootStoreToCV, new object[] { recycleEntityCV, "LootBox*" });
+
+
+            // Assert output or state as needed
+            //Assert.IsTrue(output.ToString().Contains("QuantumComputer"));
         }
 
         [TestMethod]

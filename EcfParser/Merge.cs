@@ -81,11 +81,11 @@ namespace EcfParser
                     var LootGroupName = B.Values != null && B.Values.ContainsKey("Name") ? B.Values["Name"] : null; // Working e.g. EscapePodEasy
                     var blocksWithContainersWithLootGroupMatching = new List<EcfBlock>();
 
-                    if (LootGroupName.Equals("ZiraxComputer"))
-                    {
-                        // Example +LootGroup Name: ZiraxComputer belongs to Container Id: 251
-                        var pause = 1;
-                    }
+                    //if (LootGroupName.Equals("ZiraxComputer"))
+                    //{
+                    //    // Example +LootGroup Name: ZiraxComputer belongs to Container Id: 251
+                    //    var pause = 1;
+                    //}
 
                     //foreach (var block in ecf.Blocks)
                     //{

@@ -1,4 +1,5 @@
-﻿using Eleon.Modding;
+﻿using EcfParser;
+using Eleon.Modding;
 using EmpyrionNetAPIDefinitions;
 using EmpyrionScripting.CsHelper;
 using EmpyrionScripting.DataWrapper;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using static UnityEngine.GraphicsBuffer;
 
 namespace EmpyrionScripting.CustomHelpers
 {
@@ -1019,8 +1021,8 @@ namespace EmpyrionScripting.CustomHelpers
         public static bool ConvertBlocks(string operationDescription,TextWriter output, IScriptRootData root, HelperOptions options, object context, object[] arguments, string coreName,
             Tuple<int, int>[] list, AllowedItem salary, Func<IEntityData, Dictionary<int, double>, int, bool> processBlock)
         { 
-            var E    = arguments[0] as IEntityData;
-            var N    = arguments[1]?.ToString();
+            var E    = arguments[0] as IEntityData; // The Core on E is checked for valid core types so E is the TargetRecycleEntity
+            var N    = arguments[1]?.ToString(); // N = storeToContainer name with wildcard support
 
             var minPos      = E.S.GetCurrent().MinPos;
             var maxPos      = E.S.GetCurrent().MaxPos;
@@ -1044,7 +1046,7 @@ namespace EmpyrionScripting.CustomHelpers
 
             if (directId != E.Id)
             {
-                if (corePosList.Count == 0)
+                if (corePosList == null || corePosList.Count == 0)
                 {
                     root.GetPersistendData().TryRemove(root.ScriptId, out _);
                     options.Inverse(output, context);
@@ -1054,7 +1056,7 @@ namespace EmpyrionScripting.CustomHelpers
 
                 var corePos = corePosList.First();
                 var core = E.S.GetCurrent().GetBlock(corePos);
-                core.Get(out var coreBlockType, out _, out _, out _);
+                core.Get(out int coreBlockType, out _, out _, out _);
 
                 if (!EmpyrionScripting.Configuration.Current.HarvestCoreTypes.Contains(coreBlockType))
                 {
@@ -1307,6 +1309,66 @@ namespace EmpyrionScripting.CustomHelpers
         }
 
 
+        private static void MoveContainerItems(
+            IScriptRootData root,
+            IStructure S,
+            IBlock? sourceContainerBlock,
+            int? sourceContainerBlockId,
+            string destContainerName,
+            TextWriter textWriter)
+        {
+            var logPrefix = $"- MoveContainerItems";
+
+
+            IContainer destContainer = null;
+            VectorInt3 destContainerPos = VectorInt3.Undef;
+            var uniqueDestNames = root.E.S.GetCurrent().GetAllCustomDeviceNames().GetUniqueNames(destContainerName).ToList();
+            if (!uniqueDestNames.Any())
+            {
+                textWriter.WriteLine($"{logPrefix} no destContainerName found: {destContainerName}");
+                return;
+            }
+
+            var firstDest = GetNextContainer(root, uniqueDestNames, ref destContainer,ref destContainerPos);
+            if (string.IsNullOrEmpty(firstDest))
+            {
+                if (firstDest == null) textWriter.WriteLine($"{logPrefix} Containers '{destContainerName}' are locked");
+                return;
+            }
+
+            //var items = // TODO we need to lookup the ecf block config for block id = sourceContainerBlockId
+            // then if the block has a container child, we loop through all the ContainerChild attributes with a for each loop to output the item and params.
+            var items = Enumerable.Empty<dynamic>();
+            // root.ConfigEcfAccess.FlatConfigBlockById.TryGetValue(blockId, out var blockConfig))
+            if (sourceContainerBlockId.HasValue && root.ConfigEcfAccess.FlatConfigBlockById.TryGetValue(sourceContainerBlockId.Value, out var blockConfig))
+            {
+                // ContainerChild can be a list or a single entry, depending on ECF parsing
+                if (blockConfig.Values.TryGetValue("ContainerChild", out var containerChildObj))
+                {
+                    // If it's a list, enumerate; if not, wrap in a list
+                    var containerChildren = containerChildObj as IEnumerable<object> ?? new[] { containerChildObj };
+                    items = containerChildren.Select(child =>
+                    {
+                        // child is usually a dictionary of parameters
+                        if (child is IDictionary<string, object> dict)
+                            return dict;
+                        return new Dictionary<string, object> { { "Value", child } };
+                    });
+                }
+            }
+
+            //EmpyrionScripting.Log($"{logPrefix} Container [{firstDest}] has [{items.Count()}] items in it", LogLevel.Message);
+
+            foreach (var item in items.ToList())
+            {
+                EmpyrionScripting.Log($"{logPrefix} Moving [{item.count}]xItemId[{item.id}]", LogLevel.Message);
+                var remaining = destContainer.AddItems(item.id, item.count);
+                var message = $"{logPrefix} Moved:{item.count} of item {item.id} from container to {destContainerName}";
+                EmpyrionScripting.Log(message, LogLevel.Message);
+                textWriter.WriteLine(message);
+            }
+        }
+
         public static int ProcessBlockPart(TextWriter output, IScriptRootData root, IStructure S, ProcessBlockData processBlockData,
             IContainer target, VectorInt3 targetPos, string N, int replaceId, int maxProcessedBlocks, Tuple<int, int>[] list,
             Func<IContainer, int, bool> processBlock)
@@ -1329,8 +1391,12 @@ namespace EmpyrionScripting.CustomHelpers
                             if (block != null)
                             {
                                 block.Get(out var blockType, out _, out _, out _);
+                                VectorInt3 blockPos = new VectorInt3(processBlockData.X, processBlockData.Y, processBlockData.Z);
 
-                                if(list != null     && 
+                                MoveContainerItems(root, S, block, blockType, N, output);
+
+                                // Logic after this will destroy and or recycle blocks
+                                if (list != null     && 
                                    list.Length > 0  && 
                                   !list.Any(L => L.Item1 <= blockType && L.Item2 >= blockType)) blockType = 0;
 
