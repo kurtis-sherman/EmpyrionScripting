@@ -1,16 +1,38 @@
 ﻿{{~#devices E.S. '*Box-*'}}
 {{~#each .}}
-{{~set 'CN' CustomName}}
-{{~set 'Vol' 0}}
+  {{~set 'CN' CustomName}}
+  {{~set 'Vol' ./Device.VolumeCapacity}}
+  {{~set 'T' 0}}
+  {{~#split CustomName '-'}}
+    {{~set 'DN' .1}}
+  {{~/split}}
 
-{{~#split CustomName '-'}}
-{{~set 'DN' .1}}
-{{~/split}}
 
-{{~#math @root.Data.Vol '+' (calc ./Device.VolumeCapacity '/' 1000)}}
-{{~set 'Vol' .}}
-{{~/math}}
+	{{~#items @root.E.S @root.Data.CN}}
+		{{~#math @root.Data.T '+' (calc (configattr Id 'Volume') '*' Count)}}{{~set 'T' .}}{{~/math}}
+	{{~/items}}
 
+
+  {{~#math (calc @root.Data.T '/' @root.Data.Vol) '*' 100}}
+    {{~set 'P' .}}
+  {{/math}}
+  {{~#test @root.Data.P leq '50'}}
+    {{set 'c1' '1D1'}}
+    {{set 'c2' '030'}}
+  {{/test}}
+  {{~#test @root.Data.P in '50-75'}}
+    {{set 'c1' 'DA1'}}
+    {{set 'c2' '220'}}
+  {{/test}}
+  {{~#test @root.Data.P in '75-90'}}
+    {{set 'c1' 'B40'}}
+    {{set 'c2' '310'}}
+  {{/test}}
+  {{~#test @root.Data.P geq '90'}}
+    {{set 'c1' 'D11'}}
+    {{set 'c2' '300'}}
+  {{/test}}
+{{@root.Data.T}}
 {{~#devices @root.E.S (concat @root.Data.DN '_Display')}}
 {{~#each .}}
 {{~settextblock .}}
@@ -18,18 +40,17 @@
 <size=6>
 <size=6>
 <size=6>
+<pos=35><size=6>CARGO  {{@root.Data.Vol}} k {{datetime}}
+<line-height=3>
+<align=center><color=#{{@root.Data.c1}}>{{bar @root.Data.T 0 @root.Data.Vol 20 '█' (concat '<color=#' @root.Data.c2 '>░</color>')}}
 <align=left>
-<size=6><pos=30>CARGO  {{@root.Data.Vol}} k {{datetime}}
-<size=6>
-<line-height=1>
-<size=16><pos=30>━━━━━━━━━━━━━━━━
 <line-height=1>
 <size=0.5>
-<pos=30><color=yellow><size=4><i><b>{{@root.Data.DN}}</b></i>
+<pos=35><color=yellow><size=4><i><b>{{@root.Data.DN}}</b></i>
 <line-height=5>
 <color=white><size=5><pos=20>
 {{#items @root.E.S @root.Data.CN}}
-<pos=30><line-height=5>{{Count}}x {{Name}}
+<pos=35><line-height=5>{{Count}}x {{Name}}
 {{/items}}
 {{~/settextblock}}
 {{~/each}}
