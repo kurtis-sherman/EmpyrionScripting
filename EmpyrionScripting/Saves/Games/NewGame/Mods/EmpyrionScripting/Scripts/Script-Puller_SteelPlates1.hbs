@@ -1,0 +1,24 @@
+{{! Name this LCD "Script:Puller_SteelPlates1@5" }}
+{{! Name the projector "Script:Puller_SteelPlates1@5" }}
+{{~set 'CN1' '66 [c] Steel Plates 1'}}
+{{~set 'CNA' '66 [c] Steel Plates *'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{#test Id in '4313'}}{{! Change the numbers below on line 8 to move new items into the container }}
+{{move this @root.E.S @root.Data.CNA}}
+{{/move}}
+{{/test}}
+{{/items}}
+{{~#items E.S @root.Data.CN1}}{{! This is the display output portion for CN1 }}
+{{~#math @root.Data.Vol '+' (calc (configattr Id 'Volume') '*' Count)}}
+{{~set 'Vol' .}}
+{{~/math}}
+{{~/items}}
+{{fontsize 5}}
+<color=yellow>
+Container: {{@root.Data.CN1}}
+<color=white>
+Total Volume: {{@root.Data.Vol}}
+{{#items E.S @root.Data.CN1}}
+- [{{format Id '{0,4}'}}]:{{format Count '{0,5}'}} {{i18n Id}}
+{{/items}}
