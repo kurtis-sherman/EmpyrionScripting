@@ -1,0 +1,11 @@
+{{! Name the container "A [c][0000ff]-FUEL_O2" }}
+{{! Name this LCD "Script:FUEL_O2@5" }}
+{{! Name the projector "FUEL_O2_P" }}
+{{~set 'CNA' 'A [c][0000ff]-FUEL_O2*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{! Change the numbers to move new items into the container }}
+{{#test Id in '4155,4177,4159,4186'}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{#test Id in  @Ids.Oxygen}}{{move this @root.E.S  @root.Data.CNA}}{{/move}}{{/test}}
+{{#test Id in  @Ids.Fuel}}{{move this @root.E.S  @root.Data.CNA}}{{/move}}{{/test}}
+{{/items}}

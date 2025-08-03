@@ -1,0 +1,13 @@
+{{! create a switch Signal/Sendor named TrashOn}}
+{{! On the Trash LCD panel Signal Logic, On/Off TrashOn Follow}}
+{{trashcontainer E.S '1[c]-Trash'}}
+{{! Name the container no spaces after c] and use underscores in name "1[c]-Trash" }}
+{{! Name this LCD "Script:Trash@5" }}
+{{! Name the projector "Trash_P" }}
+{{~set 'CNA' '1[c]-Trash*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{! Change these numbers to move new items into the container }}
+{{#test Id in '554,2822,3148,3326,4411,4429,4431,4447,4453,4455,4459,4460,4471,4412,4473,2087,2088,2129,3054,4316,4292,4347'}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{#test Id in @Ids.Food}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{/items}}

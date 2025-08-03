@@ -1,0 +1,11 @@
+{{! Name the container no spaces after c] and use underscores in name "[c]-MEDICAL_1" }}
+{{! Name this LCD "Script:MEDICAL_1@5" }}
+{{! Name the projector "MEDICAL_1_P" }}
+{{~set 'CNA' '[c]-MEDICAL_*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+
+{{! Change these numbers to move new items into the container }}
+{{#test Id in @Ids.Medic}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+
+{{/items}}

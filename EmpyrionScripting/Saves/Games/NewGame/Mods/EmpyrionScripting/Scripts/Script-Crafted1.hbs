@@ -1,0 +1,11 @@
+{{! Name the container no spaces after c] and use underscores in name "A [c][00cc00]-CRAFTED_1" }}
+{{! Name this LCD "Script:CRAFTED_1@5" }}
+{{! Name the projector "CRAFTED_1_P" }}
+{{~set 'CNA' 'A [c][00cc00]-CRAFTED_*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+
+{{! Change these numbers to move new items into the container }}
+{{#test Id in '1451,2816,2823,2824,2825,2825,2828,3030,3159'}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+
+{{/items}}

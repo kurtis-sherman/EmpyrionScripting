@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using YamlDotNet.Core.Tokens;
 using static UnityEngine.GraphicsBuffer;
 
 namespace EmpyrionScripting.CustomHelpers
@@ -1119,6 +1120,8 @@ namespace EmpyrionScripting.CustomHelpers
                 var ressources = new Dictionary<int, double>();
                 var processedBlocks = 0;
 
+                output.WriteLine($"Trying to call ProcessBlockPart");
+
                 lock (processBlockData) processedBlocks = ProcessBlockPart(
                     output, root, S, processBlockData, target, targetPos, N, 0, 
                     salary.ItemId == 0 || salary.Amount == 0 ? int.MaxValue : (salaryCount / salary.Amount) * EmpyrionScripting.Configuration.Current.AmountPerNumberOfBlocks, 
@@ -1311,24 +1314,28 @@ namespace EmpyrionScripting.CustomHelpers
 
         private static void MoveContainerItems(
             IScriptRootData root,
-            IStructure S,
-            IBlock? sourceContainerBlock,
-            int? sourceContainerBlockId,
+            int sourceContainerBlockId,
             string destContainerName,
-            TextWriter textWriter)
+            ref TextWriter textWriter)
         {
             var logPrefix = $"- MoveContainerItems";
 
-
-            IContainer destContainer = null;
-            VectorInt3 destContainerPos = VectorInt3.Undef;
+            textWriter.WriteLine($"{logPrefix} calling GetAllCustomDeviceNames");
+            //EmpyrionScripting.Log($"{logPrefix} calling GetAllCustomDeviceNames", LogLevel.Message);
             var uniqueDestNames = root.E.S.GetCurrent().GetAllCustomDeviceNames().GetUniqueNames(destContainerName).ToList();
             if (!uniqueDestNames.Any())
             {
                 textWriter.WriteLine($"{logPrefix} no destContainerName found: {destContainerName}");
+                //EmpyrionScripting.Log($"{logPrefix} no destContainerName found: {destContainerName}", LogLevel.Message);
+
                 return;
             }
 
+            textWriter.WriteLine($"{logPrefix} calling GetNextContainer");
+            IContainer destContainer = null;
+            VectorInt3 destContainerPos = VectorInt3.Undef;
+
+            //EmpyrionScripting.Log($"{logPrefix} calling GetNextContainer", LogLevel.Message);
             var firstDest = GetNextContainer(root, uniqueDestNames, ref destContainer,ref destContainerPos);
             if (string.IsNullOrEmpty(firstDest))
             {
@@ -1340,7 +1347,7 @@ namespace EmpyrionScripting.CustomHelpers
             // then if the block has a container child, we loop through all the ContainerChild attributes with a for each loop to output the item and params.
             var items = Enumerable.Empty<dynamic>();
             // root.ConfigEcfAccess.FlatConfigBlockById.TryGetValue(blockId, out var blockConfig))
-            if (sourceContainerBlockId.HasValue && root.ConfigEcfAccess.FlatConfigBlockById.TryGetValue(sourceContainerBlockId.Value, out var blockConfig))
+            if (root.ConfigEcfAccess.FlatConfigBlockById.TryGetValue(sourceContainerBlockId, out var blockConfig))
             {
                 // ContainerChild can be a list or a single entry, depending on ECF parsing
                 if (blockConfig.Values.TryGetValue("ContainerChild", out var containerChildObj))
@@ -1391,9 +1398,14 @@ namespace EmpyrionScripting.CustomHelpers
                             if (block != null)
                             {
                                 block.Get(out var blockType, out _, out _, out _);
-                                VectorInt3 blockPos = new VectorInt3(processBlockData.X, processBlockData.Y, processBlockData.Z);
 
-                                MoveContainerItems(root, S, block, blockType, N, output);
+                                if (blockType > 0)
+                                {
+                                    output.WriteLine($"Trying to call MoveContainerItems on blocktype[{blockType}]");
+                                    MoveContainerItems(root, blockType, N, ref output);
+                                    output.WriteLine($"Completed MoveContainerItems call");
+                                }
+                                    
 
                                 // Logic after this will destroy and or recycle blocks
                                 if (list != null     && 

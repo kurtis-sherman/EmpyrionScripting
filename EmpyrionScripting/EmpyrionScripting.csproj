@@ -244,14 +244,19 @@
     <None Include="Saves\Games\NewGame\gameoptions.yaml" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Configuration.json" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\CsCompilerConfiguration.json" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Ammo_Personal.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Ammo_CV_1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Medical.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Crafted1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Decon1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-FuelO2.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Raw_Mats_1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-INGOTS.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-ConstructorIn.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_Raw1.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates5.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates4.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates3.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates2.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Puller_SteelPlates1.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Dump2.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Titanium_Plates_1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Sathium_Plates_1.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-SteelPlates5.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Steel_Plates_1.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Dump1.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-CargoIn.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\boxdisplaylcd.hbs" />
@@ -263,7 +268,7 @@
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\refuel.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\shipdamage.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\StorageMover.hbs" />
-    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\trash.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Trash.hbs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsCompiler\CsCompiler.csproj">

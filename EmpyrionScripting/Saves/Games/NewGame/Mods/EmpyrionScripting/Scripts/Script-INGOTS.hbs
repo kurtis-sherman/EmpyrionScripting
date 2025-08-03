@@ -1,0 +1,12 @@
+{{! Name the container "[c]-INGOTS" }}
+{{! Name this LCD "Script:INGOTS@5" }}
+{{! Name the projector "INGOTS_P" }}
+{{~set 'CNA' '[c]-INGOTS*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{! Change the numbers to move new items into the container }}
+{{#test Id in ''}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{#test Id in  @Ids.Ingots}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+
+{{/items}}
+

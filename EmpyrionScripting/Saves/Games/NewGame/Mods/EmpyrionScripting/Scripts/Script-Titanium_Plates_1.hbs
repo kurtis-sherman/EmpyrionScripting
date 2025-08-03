@@ -1,0 +1,12 @@
+{{! Name the container no spaces after c] and use underscores in name "76 [c]-Titanium_Plates_1" }}
+{{! Name this LCD "Script:Titanium_Plates_1@5" }}
+{{! Name the projector "Titanium_Plates_1_P" }}
+{{~set 'CNA' '76 [c]-Titanium_Plates_*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{#test Id in '4361'}}{{! Change the numbers below on line 8 to move new items into the container }}
+{{move this @root.E.S @root.Data.CNA}}
+{{/move}}
+{{/test}}
+{{/items}}
+
