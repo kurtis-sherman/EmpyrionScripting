@@ -33,30 +33,6 @@
   },
   "AmountPerNumberOfBlocks": 1,
   "DeconstructBlockSubstitutions": [
-    {
-      "ItemName": "ContainerUltraRare",
-      "Amount": 0
-    },
-    {
-      "ItemName": "AlienContainer",
-      "Amount": 0
-    },
-    {
-      "ItemName": "AlienContainerRare",
-      "Amount": 0
-    },
-    {
-      "ItemName": "AlienContainerVeryRare",
-      "Amount": 0
-    },
-    {
-      "ItemName": "AlienContainerUltraRare",
-      "Amount": 0
-    },
-    {
-      "ItemName": "AlienDeviceBlocks",
-      "Amount": 0
-    }
   ],
   "Ids": {
     "Ore": ",AluminiumOre,CobaltOre,CopperOre,ErestrumOre,GoldOre,IronOre,MagnesiumOre,NeodymiumOre,PentaxidOre,PromethiumOre,SathiumOre,SiliconOre,TitanOre,ZascosiumOre,",
@@ -97,7 +73,7 @@
     "WeaponPlayerEpic": ",Eden_FarrPlasmaCrossbow,Eden_IonRifle,Eden_LaserRifleEntropic,Eden_LightRailgunRifle,Eden_MinigunIncendiary,Eden_PlasmaRifleEntropic,Eden_PlasmaRifleRoyal,Eden_PlasmaRifleXCorp,Eden_RifleLightning,Eden_ScoutRifle,Eden_ShotgunDouble,Eden_ShotgunGauss,Eden_Uzi,HeavyPistol,LaserPistolT3,PlasmaCannonAlien,SubmachineGunT3,TalonCrossbowPlayer,PulseRifleEpic,MinigunT2,FlameThrowerT2,AsgardPlazmer,AssaultRifleT3,ZiraxBeamRifle,",
     "Deco": ",AntennaBlocks,ChristmasTree,ConsoleBlocks,DecoBlocks,DecoBlocks2,DecoStoneBlocks,DecoTribalBlocks,DecoVesselBlocks,IndoorPlants,PosterARest,PosterBiker,PosterDontHide,PosterForeignWorld,PosterJump,PosterNewWorld,PosterSoleDesert,PosterStranger,PosterSurvivor,PosterTakingABreak,PosterTalon,PosterTrader,PosterZiraxAlienWorld,TurretRadar,",
     "DataPads": ",Eden_DataChipT1,Eden_DataChipT2,Eden_DataChipT3,Eden_UnlockPoint,Eden_WarpUpgrade,",
-    "RemoveBlocks": ",AlienContainer,AlienContainerRare,AlienContainerUltraRare,AlienContainerVeryRare,AlienDeviceBlocks,ContainerUltraRare,Eden_AlienBlocksPOI,Eden_CoreNPCFake,Eden_CoreNPCSpecial,",
+    "RemoveBlocks": ",Eden_CoreNPCFake,Eden_CoreNPCSpecial,",
     "Oxygen": ",OxygenBottleLarge,",
     "Fuel": ",EnergyCell,EnergyCellLarge,FusionCell,",
     "Pentaxid": ",PentaxidCrystal,"
@@ -143,6 +119,21 @@
     },
     {
       "ItemName": "Eden_CoreSalvage"
+    },
+    {
+      "ItemName": "AlienContainer"
+    },
+    {
+      "ItemName": "AlienContainerRare"
+    },
+    {
+      "ItemName": "AlienContainerUltraRare"
+    },
+    {
+      "ItemName": "AlienContainerVeryRare"
+    },
+    {
+      "ItemName": "QuantumComputer"
     }
   ],
   "ElevatedGroups": [

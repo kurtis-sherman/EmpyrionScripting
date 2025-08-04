@@ -6,7 +6,7 @@
 {{#items E.S 'CargoIn'}}
 
 {{! Change these numbers to move new items into the container }}
-{{#test Id in '1049,1556,1630,1632,1640,1673,1907,1915,2108,2777,646,4119,4147,4148,2496,2566,2654,2659,2663,2667,2755,2848,2879,2880,2882,3033,647,1638,1641,2633,2881,5801,5808,4100,4099-4103,4111,4128,4796,4250'}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{#test Id in '646,1049,1556,1630,1632,1640,1673,1907,1915,2108,2777,2496,2566,2654,2659,2663,2667,2755,2848,2879,2880,2882,3033,647,1638,1641,2633,2881,5801,5808,4100,4099-4103,4119,4128,4147,4148,4111,4796,4250'}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
 {{#test Id in  @Ids.Components}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
 {{#test Id in  @Ids.Deconstruct}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
 {{#test Id in  @Ids.Deco}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}

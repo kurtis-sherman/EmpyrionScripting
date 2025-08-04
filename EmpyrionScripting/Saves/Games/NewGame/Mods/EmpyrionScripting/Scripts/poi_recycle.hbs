@@ -1,9 +1,9 @@
-{{! POI-deconstruct blocks no looting}}
+{{! POI-recycle blocks no looting}}
 {{~scroll 35 10}}{{#entitiesbyname '*'}}
 {{#each .}}
 {{#test @root.E.Id 'neq' Id}}
 <size=3><color=orange>{{Name}}:</color></size>
-<size=2>{{#recycle . '1-Dump*'}}
+<size=2>{{#recycle . 'CargoOut@283002'}}
   min: {{MinPos}}
   max: {{MaxPos}}
   current X: {{X}}

@@ -1,15 +1,23 @@
 {{! Name this LCD "Script:ConstructorIn@5" }}
 {{! Name the projector "ConstructorIn@5" }}
-{{~set 'CN' 'A[c][66ff99] Constructor in'}}
+{{~set 'CN' 'A[c][66ff99]-Constructor_IN'}}
+{{#items E.S 'CargoIn'}}
+{{! Change the numbers to move new items into the container }}
+{{#test Id in '5596,5597'}}{{move this @root.E.S @root.Data.CN}}{{/move}}{{/test}}
+{{#test Id in  @Ids.WeaponPlayerUpgrades}}{{move this @root.E.S @root.Data.CN}}{{/move}}{{/test}}
+{{/items}}
+
 {{~set 'Vol' 0}}
-{{~#items E.S @root.Data.CN}}{{! No items ids to change in this script }}
+{{~#items E.S @root.Data.CN}}
 {{~#math @root.Data.Vol '+' (calc (configattr Id 'Volume') '*' Count)}}
 {{~set 'Vol' .}}
 {{~/math}}
 {{~/items}}
 {{fontsize 5}}
-<color=yellow>Container: {{@root.Data.CN}}
-<color=white>Total Volume: {{@root.Data.Vol}}
+<color =yellow>
+Container: {{@root.Data.CN}}
+<color =white>
+Total Volume: {{@root.Data.Vol}}
 {{#items E.S @root.Data.CN}}
-    - [{{format Id '{0,4}'}}]:{{format Count '{0,5}'}} {{i18n Id}}
+- [{{format Id '{0,4}'}}]:{{format Count '{0,5}'}} {{i18n Id}}
 {{/items}}
