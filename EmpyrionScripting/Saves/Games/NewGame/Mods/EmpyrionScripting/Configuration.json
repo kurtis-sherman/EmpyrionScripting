@@ -134,6 +134,81 @@
     },
     {
       "ItemName": "QuantumComputer"
+    },
+    {
+      "ItemName": "ContainerUltraRare"
+    },
+    {
+      "ItemName": "ContainerMS01"
+    },
+    {
+      "ItemName": "ContainerPersonal"
+    },
+    {
+      "ItemName": "ContainerAmmoLarge"
+    },
+    {
+      "ItemName": "ContainerAmmoSmall"
+    },
+    {
+      "ItemName": "ScifiNightstand"
+    },
+    {
+      "ItemName": "ScifiStorage"
+    },
+    {
+      "ItemName": "ContainerHarvest"
+    },
+    {
+      "ItemName": "ScifiContainer1"
+    },
+    {
+      "ItemName": "ScifiContainer2"
+    },
+    {
+      "ItemName": "DecoBlocks2"
+    },
+    {
+      "ItemName": "ScifiContainerPower"
+    },
+    {
+      "ItemName": "Closet"
+    },
+    {
+      "ItemName": "ScifiContainerEnergy"
+    },
+    {
+      "ItemName": "Level4Prop2"
+    },
+    {
+      "ItemName": "Level4Prop3"
+    },
+    {
+      "ItemName": "LabTable1"
+    },
+    {
+      "ItemName": "LabTable2"
+    },
+    {
+      "ItemName": "LabTable3"
+    },
+    {
+      "ItemName": "LockerWShelves"
+    },
+    {
+      "ItemName": "WarpDriveTankSV"
+    },
+    {
+      "ItemName": "FuelTankMSSmall"
+    },
+    {
+      "ItemName": "FuelTankMSLarge"
+    },
+    {
+      "ItemName": "OxygenTankMS"
+    },
+    {
+      "ItemName": "PentaxidTank"
     }
   ],
   "ElevatedGroups": [

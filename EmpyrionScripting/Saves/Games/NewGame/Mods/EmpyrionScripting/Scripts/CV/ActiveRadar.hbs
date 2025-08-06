@@ -1,0 +1,51 @@
+{{set 'RadarIds' '289;2144;1304'}}
+
+{{#devices @root.E.S 'Scan=*'}}
+{{#each .}}
+{{#split CustomName '='}}
+{{set 'RadarPos' .1}}
+{{#if .2}}
+{{set 'Size' .2}}
+{{else}}
+{{set 'Size' '100%'}}
+{{/if}}
+{{#if .3}}
+{{set 'ScrollLines' .3}}
+{{else}}
+{{set 'ScrollLines' '100'}}
+{{/if}}
+{{/split}}
+{{#settextblock .}}
+<size={{@root.Data.Size}}>Asteroid scan:
+{{#split @root.Data.RadarPos ','}}
+{{#block @root.E.S .0 .1 .2}}
+{{#test Id in @root.Data.RadarIds}}
+{{#scroll @root.Data.ScrollLines 1 5}}
+{{#entitiesbyname '*' 50000 'Ast*'}}
+{{#sortedeach . 'Distance'}}
+{{format (i18n Name) '<color=green>{0,-20}</color> '}}<indent=40%>
+{{~format Pos.X 'X:<color=red>{0,-5:0}</color> '}}</indent><indent=55%>
+{{~format Pos.Y 'Y:<color=red>{0,-5:0}</color> '}}</indent><indent=70%>
+{{~format Pos.Z 'Z:<color=red>{0,-5:0}</color> '}}</indent><indent=85%>
+{{~format Distance '<color=yellow>△={0:0}</color>'}}</indent>
+{{/sortedeach}}
+{{/entitiesbyname}}
+{{/scroll}}
+{{else}}
+No radar found at {{@root.Data.RadarPos}}
+  
+{{#split @root.Data.RadarIds ','}}
+{{#each .}}
+({{.}}) {{i18n . 'English'}} / {{i18n . 'Deutsch'}}
+{{/each}}
+{{/split}}
+{{/test}}
+{{/block}}
+{{/split}}
+<color=#33888890>Current Position: {{@root.E.Pos}}
+<color=#88888840>Time on board: {{datetime}}
+{{@root.Version}}</color>
+</size>
+{{/settextblock}}
+{{/each}}
+{{/devices}}
