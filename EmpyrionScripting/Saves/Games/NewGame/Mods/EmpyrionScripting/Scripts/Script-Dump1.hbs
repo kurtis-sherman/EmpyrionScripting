@@ -4,12 +4,7 @@
 {{~set 'CNA' '001[c][cc9966]-DUMP*'}}
 {{~set 'Vol' 0}}
 {{#items E.S 'CargoIn'}}
-{{#test Id in '4316,4292,4347'}}{{! Change these numbers to move new items into the container }}
-{{move this @root.E.S @root.Data.CNA}}
-{{/move}}
-{{/test}}
-{{#test Id in  @Ids.Ore}}
-{{move this @root.E.S @root.Data.CNA}}
-{{/move}}
-{{/test}}
+{{! Change these numbers to move new items into the container }}
+{{#test Id in '4316,4292,4347,4365'}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{#test Id in  @Ids.Ore}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
 {{/items}}

@@ -1,0 +1,9 @@
+{{! Name the container no spaces after c] and use underscores in name "[c][ffff00]-ARMOR_BOOSTS" }}
+{{! Name this LCD "Script:ARMOR_BOOSTS@5" }}
+{{! Name the projector "ARMOR_BOOSTS_P" }}
+{{~set 'CNA' '[c][ffff00]-ARMOR_BOOSTS*'}}
+{{~set 'Vol' 0}}
+{{#items E.S 'CargoIn'}}
+{{! Change these numbers to move new items into the container }}
+{{#test Id in @Ids.ArmorMod}}{{move this @root.E.S @root.Data.CNA}}{{/move}}{{/test}}
+{{/items}}

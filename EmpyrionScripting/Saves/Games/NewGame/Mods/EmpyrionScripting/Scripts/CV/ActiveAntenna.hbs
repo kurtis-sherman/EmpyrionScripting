@@ -26,10 +26,7 @@
 {{#test Faction.Group in 'Alien,Zirax,Talon,Polaris,Kriel,Pirates,Admin,NoFaction,UCH'}}
 {{format (i18n Name) '<color=green>{0,-20}</color> '}}<indent=25%>[
 {{~Faction.Group}}]<indent=40%></indent>
-{{~format Pos.X 'X:<color=red>{0,-5:0}</color> '}}</indent><indent=55%>
-{{~format Pos.Y 'Y:<color=red>{0,-5:0}</color> '}}</indent><indent=70%>
-{{~format Pos.Z 'Z:<color=red>{0,-5:0}</color> '}}</indent><indent=85%>
-{{~format Distance '<color=yellow>△={0:0}</color>'}}</indent>
+{{~format Distance '<color=yellow>△={0:0}</color>'}}</indent=55%>
 {{/test}}
 {{/sortedeach}}
 {{/entitiesbyname}}
