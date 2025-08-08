@@ -212,6 +212,7 @@
     <Compile Include="DataWrapper\StructureTank.cs" />
     <Compile Include="SaveGamesScripts.cs" />
     <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CargoTeleporter.cs" />
+    <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CoreFinder.cs" />
     <Compile Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Examples.cs" />
     <Compile Include="ScriptExecQueue.cs" />
     <Compile Include="ScriptInfo.cs" />
@@ -244,6 +245,14 @@
     <None Include="Saves\Games\NewGame\gameoptions.yaml" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Configuration.json" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\CsCompilerConfiguration.json" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\NameIdMapping.json" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveCoreScan.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveAntenna-ReadMe.md" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveAntenna.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveNearAntenna-ReadMe.md" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveNearAntenna.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveRadar-ReadMe.md" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\CV\ActiveRadar.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Ammo_Personal.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Ammo_CV_1.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Medical.hbs" />
@@ -267,6 +276,7 @@
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\poi_recycle.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\README.md" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\refuel.hbs" />
+    <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\shipdamage - Copy.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\shipdamage.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\StorageMover.hbs" />
     <None Include="Saves\Games\NewGame\Mods\EmpyrionScripting\Scripts\Script-Trash.hbs" />

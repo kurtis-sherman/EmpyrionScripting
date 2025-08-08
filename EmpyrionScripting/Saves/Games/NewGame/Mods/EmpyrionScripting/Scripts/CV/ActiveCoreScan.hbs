@@ -1,6 +1,6 @@
 {{set 'AntennaIds' '1365,1877,1878,1879,1880,1880,1881,1882,1883,1884,262'}}
  
-{{#devices @root.E.S 'EnemyScan=*'}}
+{{#devices @root.E.S 'CoreScan=*'}}
 {{#each .}}
 {{#split CustomName '='}}
 {{set 'RadarPos' .1}}
@@ -16,14 +16,28 @@
 {{/if}}
 {{/split}}
 {{#settextblock .}}
-<size={{@root.Data.Size}}>Enemy scan:
+<size={{@root.Data.Size}}>Core scan:
 {{#split @root.Data.RadarPos ','}}
 {{#block @root.E.S .0 .1 .2}}
 {{#test Id in @root.Data.AntennaIds}}
 {{#scroll @root.Data.ScrollLines 1 5}}
-{{#entitiesbyname '*' 100000 'BA,CV,SV,HV,EnemyDrone,TroopTransport,Proxy'}}
+{{#entitiesbyname '*' 2000 'BA,CV,SV,HV,EnemyDrone,TroopTransport,Proxy'}}
 {{#sortedeach . 'Distance'}}
 {{#test Faction.Group in 'Alien,Zirax,Talon,Polaris,Kriel,Pirates,Admin,NoFaction,UCH'}}
+Entity: {{Name}} [{{EntityType}}]
+
+{{#blocks S S.GetCurrent.MinPos.x S.GetCurrent.MinPos.y S.GetCurrent.MinPos.z S.GetCurrent.MaxPos.x S.GetCurrent.MaxPos.y S.GetCurrent.MaxPos.z}}
+{{#each .}}
+      - "{{.}}"
+
+{{#test BlockType eq 588}}
+Core Found: {{#if CustomName}}{{CustomName}} {{/if}}(ID: {{BlockType}}) at {{Position}}
+{{/test}}
+{{/each}}
+{{else}}
+No blocks2 found for processing...
+{{/blocks}}
+
 {{#test Faction.Group eq 'Zirax'}}{{format (i18n Name) '<color=red>{0,-20}</color> '}}<indent=25%>[{{else}}{{format (i18n Name) '<color=green>{0,-20}</color> '}}<indent=25%>[{{/test}}{{~Faction.Group}}]<indent=40%></indent>
 {{~format Distance '<color=yellow>△={0:0}</color>'}}</indent=55%>
 {{/test}}
