@@ -5,6 +5,7 @@ using EmpyrionScripting.DataWrapper;
 using EmpyrionScripting.Interface;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,36 @@ public class ModMain
 
 
     }
+
+    // Helper method to show scan progress during waiting periods
+    private static void ShowScanProgress(ICsScriptFunctions CsRoot, ILcd[] coreScanLcds)
+    {
+        var persistentData = CsRoot.Root.GetPersistendData();
+        var activeScans = 0;
+
+        foreach (var kvp in persistentData)
+        {
+            if (kvp.Key.StartsWith("CoreScan_Progress_") && kvp.Value is EntityScanProgress progress)
+            {
+                if (!progress.IsComplete)
+                {
+                    activeScans++;
+                    WriteTo(coreScanLcds, $"📊 Entity {kvp.Key.Split('_').Last()}: {progress.TotalBlocksProcessed} blocks scanned");
+                }
+            }
+        }
+
+        if (activeScans == 0)
+        {
+            WriteTo(coreScanLcds, "✅ All entities fully scanned");
+        }
+        else
+        {
+            WriteTo(coreScanLcds, $"⏳ {activeScans} entities still scanning...");
+        }
+    }
+
+    // Update the Script2 method to include periodic cleanup:
     private static void Script2(IScriptModData rootObject)
     {
         if (!(rootObject is IScriptSaveGameRootData root)) return;
@@ -32,176 +63,446 @@ public class ModMain
         // Find all CoreScan LCD devices
         var coreScanLcds = CsRoot.GetDevices<ILcd>(CsRoot.Devices(E.S, "CoreScan"));
 
-        ClearLcds(coreScanLcds);
-        WriteTo(coreScanLcds, $"{DateTime.Now:HH:mm:ss} Core Scan Results:");
-
         if (coreScanLcds == null || coreScanLcds.Length == 0)
         {
-            //Console.WriteLine("No CoreScan LCD devices found");
             return;
         }
 
-        var allEntities = CsRoot.Root.GetEntities();
-        if (allEntities == null || allEntities.Count() == 0)
+        // Perform periodic cleanup of stale entity data every 5 minutes
+        var cleanupKey = "CoreScan_LastCleanup";
+        var persistentData = CsRoot.Root.GetPersistendData();
+        var now = DateTime.Now;
+
+        if (persistentData.TryGetValue(cleanupKey, out var lastCleanupObj) && lastCleanupObj is DateTime lastCleanup)
         {
-            WriteTo(coreScanLcds, "No entities found");
-            return;
-        }
-
-        //WriteTo(coreScanLcds, $"Scanning found [{allEntities.Count()}] entities...");
-
-        var maxDistance = 2000f;
-        var nearbyEntities = allEntities
-            .Where(entity => UnityEngine.Vector3.Distance(E.Pos, entity.Position) <= maxDistance)
-            .OrderBy(entity => UnityEngine.Vector3.Distance(E.Pos, entity.Position));
-
-
-        var coreName = "*ore*";
-        var coresFound = 0;
-        var processedEntities = 0;
-
-        foreach (var entity in nearbyEntities)
-        {
-            processedEntities++;
-            var distance = UnityEngine.Vector3.Distance(E.Pos, entity.Position);
-
-            WriteTo(coreScanLcds, $"[{processedEntities}] {entity.Name} [{entity.Type}] - Δ{distance:F0}m");
-
-            try
+            var timeSinceLastCleanup = now - lastCleanup;
+            if (timeSinceLastCleanup.TotalMinutes >= 5) // Cleanup every 5 minutes
             {
-                // Get the structure's min and max bounds
-                var structure = entity.Structure;
-                var minPos = structure.MinPos;
-                var maxPos = structure.MaxPos;
+                CleanupStaleEntityData(CsRoot);
+                persistentData.AddOrUpdate(cleanupKey, now, (k, v) => now);
+                WriteTo(coreScanLcds, "🧹 Cleaned up stale entity data");
+            }
+        }
+        else
+        {
+            // First run - perform cleanup and set timestamp
+            CleanupStaleEntityData(CsRoot);
+            persistentData.AddOrUpdate(cleanupKey, now, (k, v) => now);
+        }
 
-                // Apply Empyrion's strange Y-offset of 128 for block coordinates
-                var adjustedMinPos = new VectorInt3(minPos.x, 128 + minPos.y, minPos.z);
-                var adjustedMaxPos = new VectorInt3(maxPos.x, 128 + maxPos.y, maxPos.z);
+        // Check if we should perform a core scan based on timing
+        var cacheKey = $"CoreScan_LastScan_{E.Id}";
 
-                //WriteTo(coreScanLcds, $"  Scanning blocks from {minPos} to {maxPos}");
+        // Check when last scan was performed
+        var shouldScan = true;
+        if (persistentData.TryGetValue(cacheKey, out var lastScanObj) && lastScanObj is DateTime lastScan)
+        {
+            var timeSinceLastScan = now - lastScan;
+            shouldScan = timeSinceLastScan.TotalSeconds >= 20; // 20 second interval
 
-                var blocksChecked = 0;
-                var coreBlocksFound = 0;
+            if (!shouldScan)
+            {
+                // Update LCD with time remaining until next scan
+                var timeRemaining = 20 - (int)timeSinceLastScan.TotalSeconds;
+                ClearLcds(coreScanLcds);
+                WriteTo(coreScanLcds, $"{DateTime.Now:HH:mm:ss} Core Scan Results:");
+                WriteTo(coreScanLcds, $"Next scan cycle in {timeRemaining} seconds...");
 
-                // Iterate through all block positions (be careful with large structures)
-                var maxBlocksToCheck = 50000; // Limit to prevent timeouts
+                // Show any ongoing scan progress
+                ShowScanProgress(CsRoot, coreScanLcds);
 
-                for (int x = adjustedMinPos.x; x <= adjustedMaxPos.x && blocksChecked < maxBlocksToCheck; x++)
+                // Still update existing projectors without scanning for new cores
+                UpdateExistingProjectors(CsRoot, coreScanLcds);
+                return;
+            }
+        }
+
+        // Perform the actual core scan cycle
+        if (shouldScan)
+        {
+            // Update last scan time
+            persistentData.AddOrUpdate(cacheKey, now, (k, v) => now);
+
+            // Clear LCD and show scan start
+            ClearLcds(coreScanLcds);
+            WriteTo(coreScanLcds, $"{DateTime.Now:HH:mm:ss} Core Scan Cycle:");
+            WriteTo(coreScanLcds, "🔍 Processing 5000 blocks...");
+
+            var allEntities = CsRoot.Root.GetEntities();
+            if (allEntities == null || allEntities.Count() == 0)
+            {
+                WriteTo(coreScanLcds, "No entities found");
+                return;
+            }
+
+            var maxDistance = 2000f;
+            var nearbyEntities = allEntities
+                .Where(entity => UnityEngine.Vector3.Distance(E.Pos, entity.Position) <= maxDistance)
+                .OrderBy(entity => UnityEngine.Vector3.Distance(E.Pos, entity.Position));
+
+            var coresFound = 0;
+            var processedEntities = 0;
+
+            foreach (var entity in nearbyEntities)
+            {
+                processedEntities++;
+                var distance = UnityEngine.Vector3.Distance(E.Pos, entity.Position);
+
+                WriteTo(coreScanLcds, $"[{processedEntities}] {entity.Name} [{entity.Type}] - Δ{distance:F0}m");
+
+                try
                 {
-                    for (int y = adjustedMinPos.y; y <= adjustedMaxPos.y && blocksChecked < maxBlocksToCheck; y++)
+                    var coreBlocksFound = ScanEntityForCores(CsRoot, entity, coreScanLcds);
+                    coresFound += coreBlocksFound;
+
+                    if (coreBlocksFound > 0)
                     {
-                        for (int z = adjustedMinPos.z; z <= adjustedMaxPos.z && blocksChecked < maxBlocksToCheck; z++)
+                        WriteTo(coreScanLcds, $"  → Found {coreBlocksFound} core(s) this cycle");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    WriteTo(coreScanLcds, $"  Error scanning entity: {ex.Message}");
+                }
+
+                WriteTo(coreScanLcds, ""); // Empty line between entities
+            }
+
+            WriteTo(coreScanLcds, $"Cycle complete: {coresFound} cores found");
+            WriteTo(coreScanLcds, $"Time: {DateTime.Now:HH:mm:ss}");
+            WriteTo(coreScanLcds, "Next cycle in 20 seconds...");
+        }
+    }
+
+    // Update the ScanEntityForCores method to track entities with cores:
+    private static int ScanEntityForCores(ICsScriptFunctions CsRoot, IEntity entity, ILcd[] coreScanLcds)
+    {
+        var structure = entity.Structure;
+        var minPos = structure.MinPos;
+        var maxPos = structure.MaxPos;
+
+        // Apply Empyrion's strange Y-offset of 128 for block coordinates
+        var adjustedMinPos = new VectorInt3(minPos.x, 128 + minPos.y, minPos.z);
+        var adjustedMaxPos = new VectorInt3(maxPos.x, 128 + maxPos.y, maxPos.z);
+
+        // Get or create scan progress data for this entity
+        var scanProgressKey = $"CoreScan_Progress_{entity.Id}";
+        var persistentData = CsRoot.Root.GetPersistendData();
+
+        var scanProgress = GetOrCreateScanProgress(persistentData, scanProgressKey, adjustedMinPos, adjustedMaxPos);
+
+        var blocksToProcess = 5000; // Process 5000 blocks per cycle
+        var blocksProcessed = 0;
+        var coreBlocksFound = 0;
+
+        // Continue scanning from where we left off
+        for (int x = scanProgress.CurrentX; x <= adjustedMaxPos.x && blocksProcessed < blocksToProcess; x++)
+        {
+            var startY = (x == scanProgress.CurrentX) ? scanProgress.CurrentY : adjustedMinPos.y;
+            for (int y = startY; y <= adjustedMaxPos.y && blocksProcessed < blocksToProcess; y++)
+            {
+                var startZ = (x == scanProgress.CurrentX && y == scanProgress.CurrentY) ? scanProgress.CurrentZ : adjustedMinPos.z;
+                for (int z = startZ; z <= adjustedMaxPos.z && blocksProcessed < blocksToProcess; z++)
+                {
+                    blocksProcessed++;
+                    scanProgress.TotalBlocksProcessed++;
+
+                    var blockPos = new VectorInt3(x, y, z);
+
+                    try
+                    {
+                        var block = structure.GetBlock(blockPos);
+                        if (block != null)
                         {
-                            blocksChecked++;
-                            var blockPos = new VectorInt3(x, y, z);
+                            block.Get(out int blockType, out int blockShape, out int blockRotation, out bool isActive);
 
-                            try
+                            // Check if this is a core block
+                            if (IsCoreBlock(blockType))
                             {
-                                var block = structure.GetBlock(blockPos);
-                                if (block != null)
-                                {
-                                    block.Get(out int blockType, out int blockShape, out int blockRotation, out bool isActive);
+                                coreBlocksFound++;
 
-                                    // Check if this is a core block
-                                    if (IsCoreBlock(blockType))
-                                    {
-                                        coreBlocksFound++;
-                                        coresFound++;
+                                // Track that this entity has cores
+                                TrackEntityWithCores(persistentData, entity.Id);
 
-                                        var result = PlaceLcdProjector(CsRoot, entity, structure, blockPos, coreScanLcds);
-                                        WriteTo(coreScanLcds, result);
-                                    }
-                                    // now we have the core block, add +1 to the Y value of the block and change the block type to a lcd projector block type 1400
-                                    // and we want to set the height of projector to maximum height so it can project far
-                                    // and display a red line of pipes going up from the core block to the sky so we can see it
-
-
-                                    //var customName = string.IsNullOrEmpty(block.CustomName) ? "Unnamed" : block.CustomName;
-                                    //WriteTo(coreScanLcds, $"  CORE: {customName} Type:{blockType} Pos:{blockPos}");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                // Skip invalid block positions
-                                continue;
+                                var result = PlaceLcdProjector(CsRoot, entity, structure, blockPos, coreScanLcds);
+                                WriteTo(coreScanLcds, result);
                             }
                         }
                     }
-                }
+                    catch (Exception ex)
+                    {
+                        // Skip invalid block positions
+                        continue;
+                    }
 
-                if (coreBlocksFound > 0)
-                {
-                    WriteTo(coreScanLcds, $"  → Found {coreBlocksFound} core(s) in {blocksChecked} blocks");
+                    // Update current position
+                    scanProgress.CurrentX = x;
+                    scanProgress.CurrentY = y;
+                    scanProgress.CurrentZ = z;
                 }
-                else
-                {
-                    //WriteTo(coreScanLcds, $"  → No cores found in {blocksChecked} blocks checked");
-                }
+                // Reset Z for next Y iteration
+                scanProgress.CurrentZ = adjustedMinPos.z;
             }
-            catch (Exception ex)
-            {
-                WriteTo(coreScanLcds, $"  Error scanning entity: {ex.Message}");
-            }
-
-            WriteTo(coreScanLcds, ""); // Empty line between entities
+            // Reset Y for next X iteration  
+            scanProgress.CurrentY = adjustedMinPos.y;
         }
 
-        WriteTo(coreScanLcds, $"Scan complete: {coresFound} cores found in {processedEntities} entities");
-        WriteTo(coreScanLcds, $"Time: {DateTime.Now:HH:mm:ss}");
+        // Check if scanning is complete
+        if (scanProgress.CurrentX > adjustedMaxPos.x)
+        {
+            // Scanning complete - reset for next full scan
+            scanProgress.IsComplete = true;
+            scanProgress.CompletedAt = DateTime.Now;
+            WriteTo(coreScanLcds, $"  ✓ Scan complete: {scanProgress.TotalBlocksProcessed} blocks processed");
 
-        //foreach (var entity in nearbyEntities)
-        //{
-        //    var distance = UnityEngine.Vector3.Distance(E.Pos, entity.Position);
-        //    WriteTo(coreScanLcds, $" {entity.Name} [{entity.Type}]-Δ{distance:F0}m");
+            // If no cores found in this entity, remove it from the cores list
+            if (coreBlocksFound == 0)
+            {
+                RemoveEntityFromCoresList(persistentData, entity.Id);
+            }
 
-        //    var corePosList = entity.Structure.GetDevicePositions(coreName);
-        //    if (corePosList != null || corePosList.Count() > 0)
-        //    {
-        //        WriteTo(coreScanLcds, $"   corePosList Count[{corePosList.Count()}]");
-        //    }
+            // Remove progress data to start fresh next time
+            persistentData.TryRemove(scanProgressKey, out _);
+        }
+        else
+        {
+            // Scanning in progress
+            var totalBlocks = (adjustedMaxPos.x - adjustedMinPos.x + 1) *
+                             (adjustedMaxPos.y - adjustedMinPos.y + 1) *
+                             (adjustedMaxPos.z - adjustedMinPos.z + 1);
+            var progressPercent = (scanProgress.TotalBlocksProcessed * 100) / totalBlocks;
+
+            WriteTo(coreScanLcds, $"  ⏳ Scanning: {scanProgress.TotalBlocksProcessed}/{totalBlocks} blocks ({progressPercent}%)");
+
+            // Update persistent data
+            persistentData.AddOrUpdate(scanProgressKey, scanProgress, (k, v) => scanProgress);
+        }
+
+        return coreBlocksFound;
+    }
+
+    // Helper method to track entities that have cores
+    private static void TrackEntityWithCores(ConcurrentDictionary<string, object> persistentData, int entityId)
+    {
+        var entitiesWithCores = GetEntitiesWithCores(persistentData);
+        entitiesWithCores.Add(entityId);
+        persistentData.AddOrUpdate("EntitiesWithCores", entitiesWithCores, (k, v) => entitiesWithCores);
+    }
+
+    // Helper method to remove entity from cores list if no cores found
+    private static void RemoveEntityFromCoresList(ConcurrentDictionary<string, object> persistentData, int entityId)
+    {
+        var entitiesWithCores = GetEntitiesWithCores(persistentData);
+        if (entitiesWithCores.Remove(entityId))
+        {
+            persistentData.AddOrUpdate("EntitiesWithCores", entitiesWithCores, (k, v) => entitiesWithCores);
+        }
+    }
 
 
-        //    var allDevices = entity.Structure.GetDevices(DeviceTypeName.All_NOT_USED_YET);
-        //    if (allDevices != null || allDevices.Count > 0)
-        //    {
-        //        WriteTo(coreScanLcds, $"   allDevices Count[{allDevices.Count}]");
-        //    }
+    // Also enhance the CleanupStaleEntityData method to provide feedback:
+    private static void CleanupStaleEntityData(ICsScriptFunctions CsRoot)
+    {
+        try
+        {
+            var persistentData = CsRoot.Root.GetPersistendData();
+            var entitiesWithCores = GetEntitiesWithCores(persistentData);
+            var allEntities = CsRoot.Root.GetEntities();
 
-        //    var allDevices1 = entity.Structure.GetDevicePositions("*");
-        //    if (allDevices1 != null || allDevices1.Count() > 0)
-        //    {
-        //        WriteTo(coreScanLcds, $"   allDevices1 Count[{allDevices1.Count()}]");
-        //    }
+            if (allEntities == null) return;
+
+            var currentEntityIds = new HashSet<int>(allEntities.Select(e => e.Id));
+            var toRemove = entitiesWithCores.Where(id => !currentEntityIds.Contains(id)).ToList();
+
+            var progressToRemove = new List<string>();
+
+            // Clean up both core tracking and progress data
+            foreach (var entityId in toRemove)
+            {
+                entitiesWithCores.Remove(entityId);
+
+                // Also clean up any progress data for removed entities
+                var progressKey = $"CoreScan_Progress_{entityId}";
+                if (persistentData.TryRemove(progressKey, out _))
+                {
+                    progressToRemove.Add(progressKey);
+                }
+            }
+
+            // Update the entities with cores list if we removed any
+            if (toRemove.Count > 0)
+            {
+                persistentData.AddOrUpdate("EntitiesWithCores", entitiesWithCores, (k, v) => entitiesWithCores);
+            }
+
+            // Log cleanup activity for debugging (optional)
+            if (toRemove.Count > 0 || progressToRemove.Count > 0)
+            {
+                // You could add logging here if needed:
+                // Console.WriteLine($"Cleaned up {toRemove.Count} stale entities and {progressToRemove.Count} progress entries");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log cleanup errors if needed:
+            // Console.WriteLine($"Error during cleanup: {ex.Message}");
+        }
+    }
+
+    // Helper method to get or create scan progress
+    private static EntityScanProgress GetOrCreateScanProgress(ConcurrentDictionary<string, object> persistentData, string key, VectorInt3 minPos, VectorInt3 maxPos)
+    {
+        if (persistentData.TryGetValue(key, out var existingProgress) && existingProgress is EntityScanProgress progress)
+        {
+            // Check if the entity bounds have changed (structure modified)
+            if (progress.MinPos.x != minPos.x || progress.MinPos.y != minPos.y || progress.MinPos.z != minPos.z ||
+                progress.MaxPos.x != maxPos.x || progress.MaxPos.y != maxPos.y || progress.MaxPos.z != maxPos.z)
+            {
+                // Bounds changed, start over
+                return CreateNewScanProgress(minPos, maxPos);
+            }
+
+            return progress;
+        }
+
+        // Create new progress
+        return CreateNewScanProgress(minPos, maxPos);
+    }
+
+    private static EntityScanProgress CreateNewScanProgress(VectorInt3 minPos, VectorInt3 maxPos)
+    {
+        return new EntityScanProgress
+        {
+            CurrentX = minPos.x,
+            CurrentY = minPos.y,
+            CurrentZ = minPos.z,
+            TotalBlocksProcessed = 0,
+            IsComplete = false,
+            StartedAt = DateTime.Now,
+            MinPos = minPos,
+            MaxPos = maxPos
+        };
+    }
+
+    // Helper class to track scanning progress
+    public class EntityScanProgress
+    {
+        public int CurrentX { get; set; }
+        public int CurrentY { get; set; }
+        public int CurrentZ { get; set; }
+        public int TotalBlocksProcessed { get; set; }
+        public bool IsComplete { get; set; }
+        public DateTime StartedAt { get; set; }
+        public DateTime CompletedAt { get; set; }
+        public VectorInt3 MinPos { get; set; }
+        public VectorInt3 MaxPos { get; set; }
+    }
 
 
-        //    // I need to get all blocks for the entity and find their block type
+    // Replace the UpdateExistingProjectors method with this optimized version:
+    private static void UpdateExistingProjectors(ICsScriptFunctions CsRoot, ILcd[] coreScanLcds)
+    {
+        try
+        {
+            var persistentData = CsRoot.Root.GetPersistendData();
+            var entitiesWithCores = GetEntitiesWithCores(persistentData);
 
-        //    //if (corePosList == null || corePosList.Count == 0)
-        //    //{
-        //    //    // Try alternative core names
-        //    //    var allDevices = entity.Structure.GetDevices(DeviceTypeName.All_NOT_USED_YET);
-        //    //    WriteTo(coreScanLcds, $"   allDevices Count[{allDevices.Count}]");
+            if (entitiesWithCores.Count == 0)
+            {
+                WriteTo(coreScanLcds, "No entities with cores found for projector updates");
+                return;
+            }
 
-        //    //}
+            var allEntities = CsRoot.Root.GetEntities();
+            if (allEntities == null) return;
 
-        //    if (corePosList != null && corePosList.Count > 0)
-        //    {
-        //        coresFound++;
-        //        WriteTo(coreScanLcds, $" CORE FOUND: ");
+            var maxDistance = 2000f;
+            var nearbyEntities = allEntities
+                .Where(entity => UnityEngine.Vector3.Distance(CsRoot.Root.E.Pos, entity.Position) <= maxDistance)
+                .Where(entity => entitiesWithCores.Contains(entity.Id)); // Only entities with cores
 
-        //        //foreach (var corePos in corePosList)
-        //        //{
-        //        //    var core = entity.Structure.GetBlock(corePos);
-        //        //    if (core != null)
-        //        //    {
-        //        //        core.Get(out int coreBlockType, out _, out _, out _);
-        //        //        var coreName_display = string.IsNullOrEmpty(core.CustomName) ? "Unnamed Core" : core.CustomName;
-        //        //        WriteTo(coreScanLcds, $"  Core: {coreName_display} (Type: {coreBlockType})");
-        //        //    }
-        //        //}
-        //    }
-        //}
-        //WriteTo(coreScanLcds, $"{DateTime.Now:HH:mm:ss} Core Scan Results:");
+            var updatedProjectors = 0;
+
+            foreach (var entity in nearbyEntities)
+            {
+                try
+                {
+                    updatedProjectors += UpdateProjectorsOnEntity(entity);
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+
+            if (updatedProjectors > 0)
+            {
+                WriteTo(coreScanLcds, $"Updated {updatedProjectors} projectors on {nearbyEntities.Count()} entities with cores");
+            }
+        }
+        catch (Exception ex)
+        {
+            WriteTo(coreScanLcds, $"Error updating projectors: {ex.Message}");
+        }
+    }
+
+
+    // Helper method to get list of entities that have cores
+    private static HashSet<int> GetEntitiesWithCores(ConcurrentDictionary<string, object> persistentData)
+    {
+        var entitiesWithCores = new HashSet<int>();
+
+        // Check if we have cached information about entities with cores
+        if (persistentData.TryGetValue("EntitiesWithCores", out var cacheObj) && cacheObj is HashSet<int> cachedEntities)
+        {
+            return cachedEntities;
+        }
+
+        return entitiesWithCores;
+    }
+
+    // Helper method to update projectors on a specific entity
+    private static int UpdateProjectorsOnEntity(IEntity entity)
+    {
+        var updatedProjectors = 0;
+        var structure = entity.Structure;
+        var minPos = structure.MinPos;
+        var maxPos = structure.MaxPos;
+
+        // Apply Y-offset
+        var adjustedMinPos = new VectorInt3(minPos.x, 128 + minPos.y, minPos.z);
+        var adjustedMaxPos = new VectorInt3(maxPos.x, 128 + maxPos.y, maxPos.z);
+
+        // Efficient scan for existing projectors only
+        for (int x = adjustedMinPos.x; x <= adjustedMaxPos.x; x++)
+        {
+            for (int y = adjustedMinPos.y; y <= adjustedMaxPos.y; y++)
+            {
+                for (int z = adjustedMinPos.z; z <= adjustedMaxPos.z; z++)
+                {
+                    var blockPos = new VectorInt3(x, y, z);
+                    try
+                    {
+                        var block = structure.GetBlock(blockPos);
+                        if (block != null)
+                        {
+                            block.Get(out int blockType, out _, out _, out _);
+                            if (blockType == 1400) // LCD projector
+                            {
+                                UpdateExistingProjector(structure, blockPos);
+                                updatedProjectors++;
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                }
+            }
+        }
+
+        return updatedProjectors;
     }
 
     private static void Script1(IScriptModData rootObject)
@@ -319,13 +620,13 @@ public class ModMain
         //558,  // player core
         1360,
         1361,
-        1401, // 1400 is 
+        1401,
         1402,
         2768,
         2769,
         2770,
         2771,
-        3148,
+        //3148, // salvage core
         3299,
         3300,
         3302,
@@ -343,27 +644,6 @@ public class ModMain
     private static void ClearLcds(ILcd[] lcds)
     {
         lcds.ForEach(L => L.SetText($""));
-    }
-
-
-    // Add this method at the end of the class
-    private static string CreateVerticalRedLinePattern()
-    {
-        // Create a pattern of red vertical lines using LCD text formatting
-        var lines = new List<string>();
-
-        // Add multiple lines of red pipe symbols to create a vertical line effect
-        for (int i = 0; i < 20; i++) // Adjust line count as needed
-        {
-            lines.Add("<color=red>||||||||||||||||||||||||||||||||||||||||</color>");
-        }
-
-        // Add core identification text
-        lines.Insert(0, "<color=red>CORE DETECTED</color>");
-        lines.Insert(1, "<color=red>↑ BEACON ↑</color>");
-        lines.Add("<color=red>↓ CORE BELOW ↓</color>");
-
-        return string.Join("\n", lines);
     }
 
     // Replace the PlaceLcdProjector method with this updated version:
