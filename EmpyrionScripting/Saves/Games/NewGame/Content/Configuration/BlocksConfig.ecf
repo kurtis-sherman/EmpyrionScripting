@@ -2293,7 +2293,7 @@
   Mass: 30, type: float, display: true, formatter: Kilogram
   HitPoints: 1875, type: int, display: true
   IsOxygenTight: true, display: true
-  #  RemoveOnSI: true  
+  #  RemoveOnSI: false  
   Category: BuildingBlocks
   Collide: Transparent
   ShowUser: NoButCSV
@@ -2315,7 +2315,7 @@
   SizeInBlocksLocked: "Base,MS"
   Mass: 30, type: float, display: true, formatter: Kilogram
   HitPoints: 1875, type: int, display: true
-  # RemoveOnSI: true  
+  # RemoveOnSI: false  
   IsOxygenTight: true, display: true
   Category: BuildingBlocks
   Collide: Transparent
@@ -2338,7 +2338,7 @@
   SizeInBlocksLocked: "Base,MS"
   Mass: 30, type: float, display: true, formatter: Kilogram
   HitPoints: 1875, type: int, display: true
-  #  RemoveOnSI: true 
+  #  RemoveOnSI: false 
   IsOxygenTight: true, display: true
   Category: BuildingBlocks
   Collide: Transparent
@@ -2414,7 +2414,7 @@
   IsActivateable: true
   Category: Devices
   EnergyIn: 1, type: int, display: true, formatter: Watt
-  RemoveOnSI: true
+  RemoveOnSI: false
   StabilitySupport: false
   CPUIn: 0, type: int, display: false
 }
@@ -2443,7 +2443,7 @@
   Category: Devices
   EnergyIn: 1, type: int, display: true, formatter: Watt
   Mass: 0.4, type: float, display: true, formatter: Kilogram
-  RemoveOnSI: true
+  RemoveOnSI: false
   StabilitySupport: false  
 }
 { +Block Id: 281, Name: DoorMS01
@@ -2583,7 +2583,7 @@
   SizeInBlocksLocked: "Base,MS"
   Mass: 30, type: float, display: true, formatter: Kilogram
   CPUIn: 0, type: int, display: false
-  # RemoveOnSI: true  
+  # RemoveOnSI: false  
   HitPoints: 1125, type: int, display: false
   IsOxygenTight: false, display: true
   ShowUser: No
@@ -2605,7 +2605,7 @@
   SizeInBlocksLocked: "Base,MS"
   Mass: 30, type: float, display: true, formatter: Kilogram
   CPUIn: 0, type: int, display: false
-  # RemoveOnSI: true  
+  # RemoveOnSI: false  
   HitPoints: 1125, type: int, display: false
   IsOxygenTight: false, display: true
   ShowUser: No
@@ -6143,7 +6143,7 @@
   EnergyIn: 1, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
   StackSize: 2000
-  # RemoveOnSI: true  
+  # RemoveOnSI: false  
   Category: Devices
   AllowWander: true   # this has to be set to true as Elevators are excluded from wandering per default but AI uses them nevertheless. w/o that AI gets stuck in elev.
 
@@ -7456,7 +7456,7 @@
   SizeInBlocksLocked: "Base,MS"    
   Volume: 800, type: float, display: true, formatter: Liter
   Mass: 250, type: float, display: true, formatter: Kilogram
-
+  RemoveOnSI: false
   IsAccessible: true, type: bool # modified
   IsActivateableInCP: true # modified
 
@@ -10295,7 +10295,7 @@
   RepFac: 20 # RepFacSpawner
   Info: bkiEntitySpawner, display: true
   AllowWander: true
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 }
 
 # obsolete - do not remove
@@ -10387,7 +10387,7 @@
   IsTextureable: true   # !!!
   IsGPUInstance: false  # !!!
   AllowWander: true
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 }
 { +Block Id: 669, Name: SawAttachment
   IndexName: WeaponShip
@@ -20508,7 +20508,7 @@
   Category: Devices
   Mass: 0, type: float, display: true, formatter: Kilogram
   EnergyIn: 0, type: int, display: true, formatter: Watt
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
   
   BlastParticleIndex: 14
   BlastRadius: 0
@@ -46035,7 +46035,7 @@
   EnergyIn: 1, type: int, display: true, formatter: Watt
   Mass: 0.4, type: float, display: true, formatter: Kilogram
   CPUIn: 0, type: int, display: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   StabilitySupport: false  
 }
 
@@ -46112,7 +46112,7 @@
   EnergyIn: 1, type: int, display: true, formatter: Watt
   Mass: 60, type: float, display: true, formatter: Kilogram
   CPUIn: 0, type: int, display: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   StabilitySupport: false  
 }
 { Block Name: ConstructionLamp02b, Ref: ConstructionLamp02
@@ -46248,7 +46248,7 @@
   EnergyIn: 1, type: int, display: true, formatter: Watt
   Mass: 2, type: float, display: true, formatter: Kilogram
   CPUIn: 0, type: int, display: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   StabilitySupport: false  
 }
 { Block Name: ConstructionLamp01Corner, Ref: ConstructionLamp01        
@@ -46500,7 +46500,7 @@
  
   Place: Free
   AllowPlacingAt: Base, display: true  
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse  
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse  
   
   TemplateRoot: ConsoleBlocks
   PickupTarget: ConsoleBlocks
@@ -48101,7 +48101,7 @@
   CPUIn: 0, type: int, display: false
   TemplateRoot: ForcefieldEmitterBlocks
   PickupTarget: ForcefieldEmitterBlocks
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
 }
@@ -48141,7 +48141,7 @@
   CPUIn: 0, type: int, display: false
   TemplateRoot: VentilatorBlocks
   PickupTarget: VentilatorBlocks
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
 }
@@ -48181,7 +48181,7 @@
   HitPoints: 80, type: int, display: false
   CPUIn: 0, type: int, display: false
   Mass: 150, type: float, display: true, formatter: Kilogram
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
 
@@ -48226,7 +48226,7 @@
   EnergyIn: 1, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   TemplateRoot: LegacyPOIBlocks
@@ -48266,7 +48266,7 @@
   EnergyIn: 1, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   TemplateRoot: LegacyPOIBlocks
@@ -48377,7 +48377,7 @@
   EnergyIn: 10, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   TemplateRoot: LegacyPOIBlocks
@@ -48499,7 +48499,7 @@
   CPUIn: 0, type: int, display: false
   ExplosionHardness: 10000
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   TemplateRoot: ForcefieldEmitterBlocks
@@ -48536,7 +48536,7 @@
   CPUIn: 0, type: int, display: false
   ExplosionHardness: 10
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   TemplateRoot: ForcefieldEmitterBlocks
@@ -48634,7 +48634,7 @@
   EnergyIn: 10, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   IsActivatedOnPlace: false
@@ -48673,7 +48673,7 @@
   EnergyIn: 100, type: int, display: true, formatter: Watt
   CPUIn: 0, type: int, display: false
   StabilitySupport: false
-  RemoveOnSI: true
+  RemoveOnSI: false
   AllowedInBlueprint: false, display: true
   RepairToTemplate: false, display: false
   IsActivatedOnPlace: false
@@ -48858,7 +48858,7 @@
   SpawnCount: 4
   Info: bkiEntitySpawner, display: true
   AllowWander: true
-  RemoveOnSI: true
+  RemoveOnSI: false
 }
 
 # Egg Sac
@@ -48911,7 +48911,7 @@
   SpawnCount: 2
   Info: bkiEntitySpawner, display: true
   AllowWander: true
-  RemoveOnSI: true
+  RemoveOnSI: false
 }
 # New NPC Spawners 
 { Block Name: EntitySpawnerPlateThinOffsetBack, Ref: EntitySpawnerPlateThin  #2648
@@ -48924,7 +48924,7 @@
   IsTextureable: true   # !!!
   IsGPUInstance: false  # !!!
   AllowWander: true
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 }
 
 { Block Name: EntitySpawnerPlateThinOffsetFront, Ref: EntitySpawnerPlateThin  #2649
@@ -48937,7 +48937,7 @@
   IsTextureable: true   # !!!
   IsGPUInstance: false  # !!!
   AllowWander: true
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 }
 
 { Block Name: EntitySpawnerPlateThinEdgeInwards, Ref: EntitySpawnerPlateThin  #2649
@@ -48950,7 +48950,7 @@
   IsTextureable: true   # !!!
   IsGPUInstance: false  # !!!
   AllowWander: true
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 }
 
 { Block Name: EntitySpawnerPlateThinEdgeOutwards, Ref: EntitySpawnerPlateThin  #2649
@@ -48963,7 +48963,7 @@
   IsTextureable: true   # !!!
   IsGPUInstance: false  # !!!
   AllowWander: true
-  RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 }
 
 
@@ -49893,41 +49893,40 @@
   TemplateRoot: Eden_HydroponicsSpice
 }
 
-# Hydroponics Bay (Berries)
-{ +Block Name: Eden_HydroponicsBerries, Ref: Eden_HydroponicsGrain
-  Model: @eden_blockmodels/Eden_Hydroponics2Berries
+# Hydroponics Bay (PromethiumPellets)
+{ +Block Name: Eden_HydroponicsPromethiumPellets, Ref: Eden_HydroponicsGrain
+  Model: @models2/Environment/Rocks/Crystals/CrystalIcePlatePrefab
   { Child PlantGrowing
-    Next: Eden_HydroponicsBerriesGrown
-    GrowthRate: 40
+    Next: Eden_HydroponicsPromethiumPelletsGrown
+    GrowthRate: 5
     FertileLevel: 3
     OnDeath: Eden_HydroponicsEmpty
   }
-  CropType: Berries, display: true
-  CropYield: 18, display: true
-  GrowthTimeInfo: 40, type: int, display: true, formatter: Minutes
-  PickupTarget: Eden_HydroponicsBerries
-  TemplateRoot: Eden_HydroponicsBerries
+  CropType: PromethiumPellets, display: true
+  CropYield: 100, display: true
+  GrowthTimeInfo: 5, type: int, display: true, formatter: Minutes
+  PickupTarget: Eden_HydroponicsPromethiumPellets
+  TemplateRoot: Eden_HydroponicsPromethiumPellets
 
-  UnlockCost: 25, display: true
-  UnlockLevel: 20, display: true
-  TechTreeParent: Eden_HydroponicsFruit
+  UnlockCost: 200, display: true
+  UnlockLevel: 15, display: true
   TechTreeNames: "Base,Capital Vessel"
 }
 
-# Hydroponics Bay (Berries) Ready for Harvest
-{ +Block Name: Eden_HydroponicsBerriesGrown, Ref: Eden_HydroponicsGrainGrown
-  Model: @eden_blockmodels/Eden_Hydroponics2BerriesGrown
-  CustomIcon: Eden_HydroponicsBerries
+# Hydroponics Bay (PromethiumPellets) Ready for Harvest
+{ +Block Name: Eden_HydroponicsPromethiumPelletsGrown, Ref: Eden_HydroponicsGrainGrown
+  Model: @models2/Environment/Rocks/Crystals/CrystalIcePlatePrefab
+  CustomIcon: PromethiumPellets
   { Child DropOnHarvest
-    Item: Berries
-    Count: 18
+    Item: PromethiumPellets
+    Count: 100
   }
   { Child CropsGrown
-    OnHarvest: Eden_HydroponicsBerries
+    OnHarvest: Eden_HydroponicsPromethiumPellets
     OnDeath: Eden_HydroponicsEmpty 
   }
-  PickupTarget: Eden_HydroponicsBerries
-  TemplateRoot: Eden_HydroponicsBerries
+  PickupTarget: Eden_HydroponicsPromethiumPellets
+  TemplateRoot: Eden_HydroponicsPromethiumPellets
 }
 
 # Hydroponics Bay (Pentaxid)
@@ -49937,13 +49936,13 @@
   { Child PlantGrowing
     Next: Eden_HydroponicsPentaxidGrown
     # GrowthRate: 30
-    GrowthRate: 140
+    GrowthRate: 5
     FertileLevel: 3
     OnDeath: Eden_HydroponicsEmpty
   }
   CropType: PentaxidOre, display: true
-  CropYield: 18, display: true
-  GrowthTimeInfo: 105, type: int, display: true, formatter: Minutes
+  CropYield: 100, display: true
+  GrowthTimeInfo: 5, type: int, display: true, formatter: Minutes
   PickupTarget: Eden_HydroponicsPentaxid
   TemplateRoot: Eden_HydroponicsPentaxid
   EnergyIn: 56, type: int, display: true, formatter: Watt
@@ -49960,7 +49959,7 @@
   CustomIcon: Eden_HydroponicsPentaxid
   { Child DropOnHarvest
     Item: PentaxidOre
-    Count: 18
+    Count: 100
   }
   { Child CropsGrown
     OnHarvest: Eden_HydroponicsPentaxid
@@ -55359,7 +55358,7 @@
   # SpawnCount: 4
   # Info: bkiEntitySpawner, display: true
   # AllowWander: true
-  # RemoveOnSI: true
+  # RemoveOnSI: false
 # }
 
 # # Egg Sac
@@ -55418,7 +55417,7 @@
   SpawnCount: 2
   Info: bkiEntitySpawner, display: true
   AllowWander: true
-  RemoveOnSI: true
+  RemoveOnSI: false
 }
 
 # Invisible Drone Spawner
@@ -56593,7 +56592,7 @@
   # IsTextureable: true   # !!!
   # IsGPUInstance: false  # !!!
   # AllowWander: true
-  # RemoveOnSI: true       # avoid to show the dummy block on SI collapse 
+  # RemoveOnSI: false       # avoid to show the dummy block on SI collapse 
 # }
 
 # Example of a rich resource.
@@ -57083,7 +57082,7 @@
   # SpawnCount: 1
   # Info: bkiEntitySpawner, display: true
   # AllowWander: true
-  # RemoveOnSI: true       # avoid to show the dummy block on SI collapse
+  # RemoveOnSI: false       # avoid to show the dummy block on SI collapse
   # ShowUser: Yes
 # }
 
@@ -57542,7 +57541,7 @@
   # SpawnCount: 1
   # Info: Eden_GuardSpawnerHumanSoldierinfo, display: true
   # AllowWander: true
-  # RemoveOnSI: true
+  # RemoveOnSI: false
   # ShowUser: Yes
 # }
 
@@ -57637,7 +57636,7 @@
   # CPUIn: 0, type: int, display: false
   # TemplateRoot: ForcefieldEmitterBlocks
   # PickupTarget: ForcefieldEmitterBlocks
-  # RemoveOnSI: true
+  # RemoveOnSI: false
   # AllowedInBlueprint: false, display: true
   # RepairToTemplate: false, display: false
 # }
@@ -57671,7 +57670,7 @@
   # CPUIn: 0, type: int, display: false
   # TemplateRoot: VentilatorBlocks
   # PickupTarget: VentilatorBlocks
-  # RemoveOnSI: true
+  # RemoveOnSI: false
   # AllowedInBlueprint: false, display: true
   # RepairToTemplate: false, display: false
 # }

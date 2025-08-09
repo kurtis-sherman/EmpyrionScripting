@@ -10898,16 +10898,16 @@
   }
 }
 
-{ +Template Name: Eden_HydroponicsBerries
+{ +Template Name: Eden_HydroponicsPromethiumPellets
   BaseItem: true
   DeconOverride: Continue 
   CraftTime: 10
   Target: "SmallC,AdvC"
   { Child Inputs
     Eden_HydroponicsEmpty: 1
-    WaterJug: 9
+    FusionCell: 9
+    PromethiumPellets: 10
     OxygenBottleLarge: 9
-    ElderberryStage1: 9
   }
 }
 

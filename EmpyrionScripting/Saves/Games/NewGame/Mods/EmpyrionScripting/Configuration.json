@@ -209,6 +209,15 @@
     },
     {
       "ItemName": "PentaxidTank"
+    },
+    {
+      "ItemName": "Eden_CargoContainerReinforcedS"
+    },
+    {
+      "ItemName": "Eden_CargoContainerReinforcedL"
+    },
+    {
+      "ItemName": "Eden_CargoContainerReinforcedL2"
     }
   ],
   "ElevatedGroups": [

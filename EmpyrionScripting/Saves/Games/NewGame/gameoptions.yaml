@@ -32,7 +32,6 @@ Options:
     ForcePvP: False
     OriginFactionStart: True   
     CustomPlayerTab: "Scenario Change Log;https://steamcommunity.com/sharedfiles/filedetails/changelog/3143225812"
-    RegeneratePOIs: False
     
     FriendlyFireInPvP: True           # default value
     DiffConstrCraftTime: Normal       # default value

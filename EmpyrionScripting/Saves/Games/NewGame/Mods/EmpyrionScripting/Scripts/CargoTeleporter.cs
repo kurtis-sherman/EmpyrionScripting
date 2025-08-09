@@ -1,5 +1,4 @@
 ﻿using Eleon.Modding;
-using EmpyrionScripting;
 using EmpyrionScripting.CustomHelpers;
 using EmpyrionScripting.DataWrapper;
 using EmpyrionScripting.Interface;
@@ -9,7 +8,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 public class ModMain
 {
@@ -191,7 +189,7 @@ public class ModMain
 
         var scanProgress = GetOrCreateScanProgress(persistentData, scanProgressKey, adjustedMinPos, adjustedMaxPos);
 
-        var blocksToProcess = 5000; // Process 5000 blocks per cycle
+        var blocksToProcess = 8000; // Process 8000 blocks per cycle
         var blocksProcessed = 0;
         var coreBlocksFound = 0;
 
@@ -654,7 +652,7 @@ public class ModMain
         try
         {
             // Find and place up to 5 projectors above the core
-            var abovePositions = FindEmptySpaces(structure, corePos, 1, 50, 5); // Search 50, place max 5
+            var abovePositions = FindEmptySpaces(structure, corePos, 1, 100, 5); // Search 100, place max 5
             if (abovePositions.Count > 0)
             {
                 foreach (var pos in abovePositions)
@@ -669,7 +667,7 @@ public class ModMain
             }
 
             // Find and place up to 5 projectors below the core
-            var belowPositions = FindEmptySpaces(structure, corePos, -1, 50, 5); // Search 50, place max 5
+            var belowPositions = FindEmptySpaces(structure, corePos, -1, 100, 5); // Search 100, place max 5
             if (belowPositions.Count > 0)
             {
                 foreach (var pos in belowPositions)
