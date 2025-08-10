@@ -843,7 +843,6 @@
   Target: "SmallC,AdvC"
   { Child Inputs
     PromethiumPellets: 25
-    HydrogenBottle: 10
   }
 }
 
@@ -855,7 +854,6 @@
   { Child Inputs
     Eden_Deuterium: 5
     PromethiumPellets: 600
-    HydrogenBottle: 20
     SteelPlate: 30
     Eden_TungstenIngot: 2
     Coolant: 1

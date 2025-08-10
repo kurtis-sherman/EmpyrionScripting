@@ -5857,7 +5857,7 @@
     Recoil: 0, display: false
     Damage: 100, display: true
     AmmoCapacity: 10, display: false
-    AmmoType: 7.Eden_RocketLauncherDebug_Ammo, display: false
+    AmmoType: Eden_RocketLauncherDebug_Ammo, display: true
     AmmoUnlimited: true
     ReloadDelay: 1, display: false
 
@@ -5874,9 +5874,10 @@
     DamageMultiplier_2: 10.0, param1: metal, display: false  
     DamageMultiplier_3: 10.0, param1: metalhard, display: false
     DamageMultiplier_4: 4.0, param1: head, display: DmgMultiplierHead
+    DamageMultiplier_5: 1000.0, param1: shield
 
-    ShieldDamagePenFac: 0.25, display: true
-    BlastShieldDamagePenFac: 0.25, display: true
+    ShieldDamagePenFac: 100.0, display: true
+    BlastShieldDamagePenFac: 100.0, display: true
  
   }
   { Child 1

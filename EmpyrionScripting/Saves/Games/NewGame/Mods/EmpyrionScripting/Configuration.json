@@ -218,6 +218,18 @@
     },
     {
       "ItemName": "Eden_CargoContainerReinforcedL2"
+    },
+    {
+      "ItemName": "ThrusterMSJunk2x2"
+    },
+    {
+      "ItemName": "ThrusterMSJunk3x3"
+    },
+    {
+      "ItemName": "ThrusterSVJunk2x2"
+    },
+    {
+      "ItemName": "ThrusterSVJunk3x3"
     }
   ],
   "ElevatedGroups": [

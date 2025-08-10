@@ -49903,7 +49903,7 @@
     OnDeath: Eden_HydroponicsEmpty
   }
   CropType: PromethiumPellets, display: true
-  CropYield: 100, display: true
+  CropYield: 500, display: true
   GrowthTimeInfo: 5, type: int, display: true, formatter: Minutes
   PickupTarget: Eden_HydroponicsPromethiumPellets
   TemplateRoot: Eden_HydroponicsPromethiumPellets
@@ -49919,7 +49919,7 @@
   CustomIcon: PromethiumPellets
   { Child DropOnHarvest
     Item: PromethiumPellets
-    Count: 100
+    Count: 500
   }
   { Child CropsGrown
     OnHarvest: Eden_HydroponicsPromethiumPellets
