@@ -45,8 +45,6 @@ namespace EmpyrionScripting.Interface
         IPlayfield GetCurrentPlayfield();
         IEnumerable<IEntity> GetEntities();
         ConcurrentDictionary<string, object> GetPersistendData();
-        object GetPlayfieldScriptData();
-
         bool TimeLimitReached { get; }
         IEntityCultureInfo CultureInfo { get; }
     }

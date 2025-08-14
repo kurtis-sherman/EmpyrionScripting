@@ -1,4 +1,5 @@
 ﻿using Eleon.Modding;
+using EmpyrionNetAPIDefinitions;
 using EmpyrionScripting.CustomHelpers;
 using EmpyrionScripting.DataWrapper;
 using EmpyrionScripting.Interface;
@@ -17,7 +18,38 @@ public class ModMain
 
         Script2(rootObject);
 
+        Script3(rootObject);
+    }
 
+    private static void Script3(IScriptModData rootObject)
+    {
+        //string logPrefix = $"[{rootObject.E.Id}]";
+
+        //EmpyrionScripting.EmpyrionScripting.Log($"{logPrefix} Searching4 config for blockType[{541}]", LogLevel.Message);
+
+        //if (rootObject.ConfigEcfAccess.ConfigBlockById.TryGetValue(541, out var blockConfig))
+        //{
+        //    //output.WriteLine($"{logPrefix} Block config found for blockType[{N}]");
+        //    EmpyrionScripting.EmpyrionScripting.Log($"{logPrefix} Block config found33 for blockType[{541}]", LogLevel.Message);
+
+        //    // todo print all the chilcdren of the block config
+        //    foreach (var kvp in blockConfig.Childs)
+        //    {
+        //        var childName = kvp.Key;
+        //        var childBlock = kvp.Value;
+        //        EmpyrionScripting.EmpyrionScripting.Log($"{logPrefix} Child: {childName} (Name: {childBlock.Name})", LogLevel.Message);
+
+        //        // Optionally, print child attributes
+        //        if (childBlock.Values != null)
+        //        {
+        //            foreach (var attr in childBlock.Values)
+        //            {
+        //                EmpyrionScripting.EmpyrionScripting.Log($"{logPrefix}   Attr: {attr.Key} = {attr.Value}", LogLevel.Message);
+        //            }
+        //        }
+        //    }
+
+        //}
     }
 
     // Helper method to show scan progress during waiting periods
@@ -48,7 +80,7 @@ public class ModMain
         }
     }
 
-    // Update the Script2 method to include periodic cleanup:
+
     private static void Script2(IScriptModData rootObject)
     {
         if (!(rootObject is IScriptSaveGameRootData root)) return;
@@ -803,71 +835,23 @@ public class ModMain
         try
         {
             // Set projector to display vertical line pattern with direction indicator
-            var redLinePattern = CreateVerticalRedLinePattern(direction);
-            projectorLcd.SetText(redLinePattern);
+            var lines = new List<string>();
 
-            // Set background color based on direction
-            if (direction == "ABOVE")
+            // Determine color based on direction
+            string color = "red"; // default color
+
+            // Add multiple lines of colored pipe symbols to create a vertical line effect
+            for (int i = 0; i < 18; i++) // Reduced to make room for direction text
             {
-                // Dark blue background for upward projectors
-                projectorLcd.SetBackgroundColor(new UnityEngine.Color(0.0f, 0.0f, 0.2f, 1.0f)); // Dark blue
+                lines.Add($"<color={color}>| | | |                     | | | |</color>");
             }
-            else if (direction == "BELOW")
-            {
-                // Dark red background for downward projectors
-                projectorLcd.SetBackgroundColor(new UnityEngine.Color(0.2f, 0.0f, 0.0f, 1.0f)); // Dark red
-            }
-            else
-            {
-                // Default black background
-                projectorLcd.SetBackgroundColor(new UnityEngine.Color(0.0f, 0.0f, 0.0f, 1.0f)); // Black
-            }
+
+            projectorLcd.SetText(string.Join("\n", lines));
+
         }
         catch (Exception ex)
         {
             // Silently handle LCD configuration errors
         }
     }
-
-    // Update the CreateVerticalRedLinePattern method to include direction-based colors:
-    private static string CreateVerticalRedLinePattern(string direction = "")
-    {
-        var lines = new List<string>();
-
-        // Determine color based on direction
-        string color = "red"; // default color
-        if (direction == "ABOVE")
-        {
-            color = "blue"; // Blue for upward/above (+Y direction)
-        }
-        else if (direction == "BELOW")
-        {
-            color = "red"; // Red for downward/below (-Y direction)
-        }
-
-        lines.Add($"<color={color}>CORE DETECTED</color>");
-
-        // Add directional indicators with appropriate colors
-        if (direction == "ABOVE")
-        {
-            lines.Add($"<color={color}>↓ CORE BELOW ↓</color>");
-        }
-        else if (direction == "BELOW")
-        {
-            lines.Add($"<color={color}>↑ CORE ABOVE ↑</color>");
-        }
-        else
-        {
-            lines.Add($"<color={color}>↑ BEACON ↑</color>");
-        }
-
-        // Add multiple lines of colored pipe symbols to create a vertical line effect
-        for (int i = 0; i < 18; i++) // Reduced to make room for direction text
-        {
-            lines.Add($"<color={color}>||||||||||||||||||||||||||||||||||||||||</color>");
-        }
-
-        return string.Join("\n", lines);
-    }
-
 }

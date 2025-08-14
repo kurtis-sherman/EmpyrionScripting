@@ -3512,7 +3512,7 @@
   SizeInBlocksLocked: "Base,MS"
   Mass: 2500, type: float, display: true, formatter: Kilogram
   Volume: 2500, type: float, display: true, formatter: Liter    
-  VolumeCapacity: 2500, type: float, display: true, formatter: Liter
+  VolumeCapacity: 20000, type: float, display: true, formatter: Liter
   HitPoints: 1000, type: int, display: true
   StackSize: 500
   Category: Devices
@@ -15970,7 +15970,7 @@
   CPUIn: 100, type: int, display: true
   Mass: 6000, type: float, display: true, formatter: Kilogram
   HitPoints: 1625, type: int, display: true
-  FuelCapacity: 40000, type: int, display: true
+  FuelCapacity: 100000, type: int, display: true
   BlastParticleName: @rg_projectiles/RG_BlastPlasmaCloud
   BlastParticleIndex: 0
   BlastRadius: 5

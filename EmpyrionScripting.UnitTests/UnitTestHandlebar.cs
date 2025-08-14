@@ -16,6 +16,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
+using static UnityEngine.GraphicsBuffer;
 
 namespace EmpyrionScripting.UnitTests
 {
@@ -95,6 +96,10 @@ namespace EmpyrionScripting.UnitTests
                 });
             recycleiStructure.GetBlock(corePositions.First()).Returns(mockCoreBlock);
             recycleEntityCV.S.GetCurrent().GetBlock(corePositions.First()).Returns(mockCoreBlock);
+            recycleEntityCV.S.AllCustomDeviceNames.Returns(new[] { "LootBox98", "LootBox99" });
+            
+            //var firstTarget = GetNextContainer(root, uniqueNames, ref target, ref targetPos);
+            // I need to mock the GetNextContainer(root, uniqueNames, ref target, ref targetPos);
 
             // Setup root data
             var rootRecycleCV = Substitute.For<IScriptRootData>();

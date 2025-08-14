@@ -996,7 +996,7 @@ namespace EmpyrionScripting.CustomHelpers
                 }
 
                 if (!ConvertBlocks("recycle", output, root, options, context as object, arguments,
-                    (arguments.Get(2)?.ToString() ?? "Core-Recycle") + $"-{E.Id}", RemoveItemIds(3, arguments), EmpyrionScripting.Configuration.Current.RecycleSalary,
+                    (arguments.Get(2)?.ToString() ?? "Core-Recycle"), RemoveItemIds(3, arguments), EmpyrionScripting.Configuration.Current.RecycleSalary,
                     ExtractBlockToRecipe)) root.GetPlayfieldScriptData().EntityExclusiveAccess.TryRemove(E.Id, out _);
             }
             catch (Exception error)
@@ -1312,11 +1312,11 @@ namespace EmpyrionScripting.CustomHelpers
         }
 
 
-        private static void MoveContainerItems(
+        public static void MoveContainerItems(
             IScriptRootData root,
             int sourceContainerBlockId,
             string destContainerName,
-            ref TextWriter textWriter)
+            TextWriter textWriter)
         {
             var logPrefix = $"- MoveContainerItems";
 
@@ -1399,13 +1399,82 @@ namespace EmpyrionScripting.CustomHelpers
                             {
                                 block.Get(out var blockType, out _, out _, out _);
 
-                                if (blockType > 0)
+                                if (blockType != null && blockType is int && (int)blockType > 0)
                                 {
-                                    output.WriteLine($"Trying to call MoveContainerItems on blocktype[{blockType}]");
-                                    MoveContainerItems(root, blockType, N, ref output);
-                                    output.WriteLine($"Completed MoveContainerItems call");
+                                    var logPrefix = $"- MoveContainerItems";
+                                    output.WriteLine($"{logPrefix} calling GetAllCustomDeviceNames");
+                                    //EmpyrionScripting.Log($"{logPrefix} calling GetAllCustomDeviceNames", LogLevel.Message);
+                                    var uniqueDestNames = root.E.S.GetCurrent().GetAllCustomDeviceNames().GetUniqueNames(N).ToList();
+                                    if (!uniqueDestNames.Any())
+                                    {
+                                        output.WriteLine($"{logPrefix} no destContainerName found: {N}");
+                                        continue;
+                                    }
+
+                                    IContainer destContainer = null;
+                                    VectorInt3 destContainerPos = VectorInt3.Undef;
+
+                                    //EmpyrionScripting.Log($"{logPrefix} calling GetNextContainer", LogLevel.Message);
+                                    var firstDest = GetNextContainer(root, uniqueDestNames, ref destContainer, ref destContainerPos);
+                                    if (string.IsNullOrEmpty(firstDest))
+                                    {
+                                        if (firstDest == null) output.WriteLine($"{logPrefix} Containers '{N}' are locked");
+                                        continue;
+                                    }
+
+                                    var items = Enumerable.Empty<dynamic>();
+                                    output.WriteLine($"{logPrefix} Searching1 config for blockType[{blockType}]");
+                                    Console.WriteLine($"{logPrefix} Searching2 config for blockType[{blockType}]");
+                                    EmpyrionScripting.Log($"{logPrefix} Searching3 config for blockType[{blockType}]", LogLevel.Message);
+
+                                    // root.ConfigEcfAccess.FlatConfigBlockById.TryGetValue(blockId, out var blockConfig))
+                                    if (root.ConfigEcfAccess.ConfigBlockById.TryGetValue(blockType, out var blockConfig))
+                                    {
+                                        output.WriteLine($"{logPrefix} Block config found for blockType[{N}]");
+
+                                        foreach (var kvp in blockConfig.Childs)
+                                        {
+                                            var childName = kvp.Key;
+                                            var childBlock = kvp.Value;
+                                            EmpyrionScripting.Log($"{logPrefix} Child: {childName} (Name: {childBlock.Name})", LogLevel.Message);
+
+                                            // Optionally, print child attributes
+                                            if (childName.StartsWith("ContainerChild_") && childBlock.Values != null)
+                                            {
+                                                foreach (var attr in childBlock.Values)
+                                                {
+                                                    var attrName = attr.Key;
+                                                    var attrValue = attr.Value?.ToString() ?? "null";
+                                                    // if the attrName starts with Name_ it is a item, but we have to 
+                                                    // if the attrName starts with param1
+                                                    EmpyrionScripting.Log($"{logPrefix}   Attr: {attr.Key} = {attr.Value}", LogLevel.Message);
+                                                }
+                                            }
+                                        }
+
+                                        // ContainerChild can be a list or a single entry, depending on ECF parsing
+                                        //if (blockConfig.Values.TryGetValue("ContainerChild", out var containerChildObj))
+                                        //{
+                                        //    output.WriteLine($"{logPrefix} ContainerChild found for blockType[{N}]");
+
+                                        //    // If it's a list, enumerate; if not, wrap in a list
+                                        //    var containerChildren = containerChildObj as IEnumerable<object> ?? new[] { containerChildObj };
+                                        //    items = containerChildren.Select(child =>
+                                        //    {
+                                        //        // child is usually a dictionary of parameters
+                                        //        if (child is IDictionary<string, object> dict)
+                                        //            return dict;
+                                        //        return new Dictionary<string, object> { { "Value", child } };
+                                        //    });
+                                        //}
+                                    }
+                                    continue;
+
+                                    //output.WriteLine($"Trying to call MoveContainerItems ,blocktype[{blockType}],N[{N}]");
+                                    //MoveContainerItems(root, blockType, N, output);
+                                    //output.WriteLine($"Completed MoveContainerItems call");
                                 }
-                                    
+
 
                                 // Logic after this will destroy and or recycle blocks
                                 if (list != null     && 
