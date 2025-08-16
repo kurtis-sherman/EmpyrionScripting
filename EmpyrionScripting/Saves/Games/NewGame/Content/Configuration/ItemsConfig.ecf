@@ -27620,8 +27620,8 @@
     IsShootThroughCrosshair: true
     AllowAt: "Space,Planet"
     ROF: 1.5, type: float, display: true, formatter: ROF
-    Range: 300, display: false
-    RangeSpace: 900, display: false
+    Range: 1600, display: false
+    RangeSpace: 1600, display: false
     AmmoUnlimited: true
     Automatic: true
     Damage: 1000, display: true
@@ -27652,8 +27652,8 @@
   { Child 0
     Class: Ranged
     ROF: 0.5, type: float, display: true, formatter: ROF
-    Range: 200, display: false
-    RangeSpace: 600, display: false
+    Range: 1600, display: false
+    RangeSpace: 1600, display: false
     Damage: 335, display: true
     SfxBegin: Weapons/SS/LaserSS/weapon_blaster_003
     SfxNoAmmo: Weapons/DryFireFromManuallyCockedHammer
@@ -27682,8 +27682,8 @@
   { Child 0
     Class: Ranged
     ROF: 0.75, type: float, display: true, formatter: ROF
-    Range: 200, display: false
-    RangeSpace: 600, display: false
+    Range: 1600, display: false
+    RangeSpace: 1600, display: false
     Damage: 500, display: true
     SfxBegin: Weapons/SS/LaserSS/weapon_blaster_003
     SfxNoAmmo: Weapons/DryFireFromManuallyCockedHammer
@@ -27716,8 +27716,8 @@
     IsShootThroughCrosshair: true
     AllowAt: "Space,Planet"
     ROF: 2, type: float, display: true, formatter: ROF
-    Range: 425, display: false
-    RangeSpace: 900, display: false
+    Range: 1600, display: false
+    RangeSpace: 1600, display: false
     AmmoUnlimited: true
     Automatic: true
     Damage: 2670, display: true
@@ -27750,8 +27750,8 @@
   { Child 0
     Class: Ranged
     ROF: 1.5, type: float, display: true, formatter: ROF
-    Range: 250, display: false
-    RangeSpace: 650, display: false
+    Range: 1600, display: false
+    RangeSpace: 1600, display: false
     Damage: 2000, display: true
     SfxBegin: Weapons/SS/LaserSS/weapon_blaster_003
     SfxNoAmmo: Weapons/DryFireFromManuallyCockedHammer
@@ -27781,8 +27781,8 @@
   { Child 0
     Class: Ranged
     ROF: 2.25, type: float, display: true, formatter: ROF
-    Range: 250, display: false
-    RangeSpace: 650, display: false
+    Range: 1600, display: false
+    RangeSpace: 1600, display: false
     Damage: 3000, display: true
     SfxBegin: Weapons/SS/LaserSS/weapon_blaster_003
     SfxNoAmmo: Weapons/DryFireFromManuallyCockedHammer

@@ -653,7 +653,7 @@ public class ModMain
         1401,
         1402,
         2768,
-        2769,
+        //2769,
         2770,
         2771,
         //3148, // salvage core
