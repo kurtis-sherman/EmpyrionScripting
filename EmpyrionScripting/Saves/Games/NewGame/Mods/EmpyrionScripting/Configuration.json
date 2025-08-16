@@ -230,6 +230,15 @@
     },
     {
       "ItemName": "ThrusterSVJunk3x3"
+    },
+    {
+      "ItemName": "ContainerRandom"
+    },
+    {
+      "ItemName": "CargoBoxLegacySmall"
+    },
+    {
+      "ItemName": "CargoBoxLegacy"
     }
   ],
   "ElevatedGroups": [
