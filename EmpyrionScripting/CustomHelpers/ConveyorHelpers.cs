@@ -993,7 +993,7 @@ namespace EmpyrionScripting.CustomHelpers
                 }
 
                 if (!ConvertBlocks("recycle", output, root, options, context as object, arguments,
-                    (arguments.Get(2)?.ToString() ?? "Core-Recycle") + $"-{E.Id}", RemoveItemIds(3, arguments), EmpyrionScripting.Configuration.Current.RecycleSalary,
+                    (arguments.Get(2)?.ToString() ?? "recycle"), RemoveItemIds(3, arguments), EmpyrionScripting.Configuration.Current.RecycleSalary,
                     ExtractBlockToRecipe)) root.GetPlayfieldScriptData().EntityExclusiveAccess.TryRemove(E.Id, out _);
             }
             catch (Exception error)
